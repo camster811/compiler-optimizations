@@ -216,3 +216,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Ghidra
+ghidra_12.1.4_PUBLIC/
