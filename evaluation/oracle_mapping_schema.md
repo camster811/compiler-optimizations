@@ -33,7 +33,9 @@ one emitted instance), `target_inlined` (an inlined instance exists),
 |---|---|
 | `candidate_ranges` | Line-table ranges for the copy line, per instance, as `standalone:` or `inline-<function>:` prefixed ranges |
 | `canonical_address` | First instruction that stores into the destination object, in the selected instance |
-| `canonical_target_start` / `canonical_target_end` | Hull of the target line ranges in the selected instance. Heap rows start at the `malloc` size argument so allocation size and write extent are both inside the region |
+| `analysis_region_start` / `analysis_region_end` | The function body handed to the tools: the Ghidra-recovered body of the stripped binary, `end` exclusive (Ghidra max + 1). It equals the oracle `.symtab` `FUNC` extent (`entry + size`), and `analysis_region_start == canonical_function_entry`. For an inlined instance this is the host function (`main`), not the inlined callee |
+| `evidence_region_start` / `evidence_region_end` | The smallest contiguous evidence region containing the facts needed to classify the selected instance. For stack cases this covers the copy-line ranges; for heap cases it begins at allocation-size setup and ends after the final destination write. It lies inside the analysis region. (Renamed from `canonical_target_start` / `canonical_target_end`, whose old definition, the hull of the target line ranges, disagreed with the heap rule) |
+
 | `canonical_instance_type` | `standalone` or `inlined` |
 | `reachable_from_main` | Whether the selected instance executes from `main` |
 | `callsite_addresses` | Call instruction address, or `inline@<entry>` for an inlined instance |
@@ -47,4 +49,48 @@ that is handed to the tools. `canonical_address` is evidence inside that region,
 not the region itself.
 
 Ghidra dumps are in `ghidra/output/recovery_check/` and are produced by
+
 `ghidra/scripts/DumpFunctions.java`.
+
+
+## Interpretation limits
+
+
+Keep this wording in the report.
+
+
+- `strcpy_call_present=false` appears at both O0 and O2. It is compiler builtin
+
+  lowering or constant-copy expansion observed across optimization levels, not an
+  effect of O2 alone.
+
+- The stack labels are source-vulnerable: the copy exceeds the source-language
+  object bounds. The `sample_0001` O2 binary is not shown to overwrite the return
+  address and is not claimed to be exploitable. At O0 the NUL lands on the low byte
+  of the saved `rbp`; that is a layout observation, not an exploit claim.
+
+- The heap overflow may be silent at runtime because allocators can provide more
+  usable space than requested. That is allocator-dependent and was not tested.
+
+- Ghidra recovering the dead standalone `copy_message` in `sample_0002` O2 is
+  unexplained. The `.eh_frame` explanation is a hypothesis until a diagnostic copy
+  with `.eh_frame` and `.eh_frame_hdr` removed is tested.
+
+
+## Checker and freeze
+
+
+`evaluation/check_oracle_mapping.py` validates the table (see its docstring for the
+
+full list) and exits nonzero on any failure. `--freeze` writes
+`evaluation/oracle_freeze.sha256` (SHA-256 of the CSV, the eight oracle ELFs and the
+stripped-binary Ghidra dumps). Later runs fail if any listed file changes.
+
+
+Not verified: that `canonical_address` stores into the intended source object (the
+
+check is the first explicit memory-destination `mov` in the copy ranges), indirect
+
+calls, and Ghidra bodies made of several ranges (the dump only records min, max and
+
+count, so the checker requires a contiguous body).
