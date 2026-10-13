@@ -300,7 +300,11 @@ def main():
     by_hash = {}
     for f in files:
         digest, record = load(f)
-        by_hash.setdefault(digest, {"record_sha256": digest, **analyze(record)})
+        if digest not in by_hash:
+            by_hash[digest] = {
+                "record_sha256": digest,
+                **analyze(record),
+            }
     predictions = sorted(by_hash.values(), key=lambda p: (p["sample_id"], p["record_sha256"]))
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
