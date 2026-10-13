@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "script_version": "1.0.0",
+  "ghidra_version": "12.1.4",
+  "language_id": "x86:LE:64:default",
+  "analysis": {
+    "analyzer_selection": "ghidra-default",
+    "analyzer_overrides": {},
+    "analysis_timeout_per_file_s": 300
+  },
+  "decompiler": {
+    "options": "ghidra-default",
+    "timeout_s": 60
+  },
+  "extraction_rules": {
+    "target": "function containing the launcher-supplied address; Ghidra's own function name is kept unchanged",
+    "instructions": "every instruction of the function body in address order, as '<0xaddr>: <Ghidra listing text>'",
+    "calls": "callee name per call instruction in address order (duplicates kept); '<indirect>' when unresolved",
+    "tail_jumps": "jump instructions whose target is another function's entry outside the body, in address order",
+    "imports": "calls/tail_jumps whose target is an external function or a thunk to one, first-appearance order",
+    "constants": "scalar immediate operands, signed decimal, first-appearance order, deduplicated; memory displacements and addresses excluded",
+    "stack_variables": "variables in Ghidra's stack frame for the function, as analysis created them",
+    "decompilation": "DecompInterface default options; failures are recorded as status 'failed' or 'timeout'"
+  }
+}

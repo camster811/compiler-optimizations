@@ -219,3 +219,5 @@ __marimo__/
 
 # Ghidra
 ghidra_12.1.4_PUBLIC/
+# Private run metadata and headless logs (never analyzer input)
+ghidra/logs/
