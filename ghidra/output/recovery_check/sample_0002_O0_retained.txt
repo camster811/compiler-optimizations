@@ -1,0 +1,139 @@
+program: sample_0002_O0.elf
+== functions (entry name min max numAddresses thunk external callRefs) ==
+00401000 _init 00401000 0040101a 27 thunk=false external=false callRefs=0
+00401020 FUN_00401020 00401020 0040102b 12 thunk=false external=false callRefs=1
+00401030 puts 00401030 00401035 6 thunk=true external=false callRefs=1
+00401040 _start 00401040 00401065 38 thunk=false external=false callRefs=0
+00401070 _dl_relocate_static_pie 00401070 00401074 5 thunk=false external=false callRefs=0
+00401080 deregister_tm_clones 00401080 004010a0 31 thunk=false external=false callRefs=1
+004010b0 register_tm_clones 004010b0 004010e0 49 thunk=false external=false callRefs=1
+004010f0 __do_global_dtors_aux 004010f0 00401110 32 thunk=false external=false callRefs=0
+00401120 frame_dummy 00401120 00401125 6 thunk=true external=false callRefs=0
+00401126 copy_message 00401126 00401150 43 thunk=false external=false callRefs=1
+00401151 main 00401151 00401160 16 thunk=false external=false callRefs=0
+00401164 _fini 00401164 00401170 13 thunk=false external=false callRefs=0
+00405000 __libc_start_main 00405000 00405000 1 thunk=true external=false callRefs=1
+00405008 puts 00405008 00405008 1 thunk=true external=false callRefs=1
+00405010 __gmon_start__ 00405010 00405010 1 thunk=true external=false callRefs=1
+
+== decompiled ==
+---- _init @ 00401000
+
+int _init(EVP_PKEY_CTX *ctx)
+
+{
+  int iVar1;
+  
+  iVar1 = 0;
+  if (PTR___gmon_start___00403fe0 != (undefined *)0x0) {
+    iVar1 = (*(code *)PTR___gmon_start___00403fe0)();
+  }
+  return iVar1;
+}
+
+
+---- FUN_00401020 @ 00401020
+
+void FUN_00401020(void)
+
+{
+  (*(code *)PTR_00403ff8)();
+  return;
+}
+
+
+---- _start @ 00401040
+
+void processEntry _start(undefined8 param_1,undefined8 param_2)
+
+{
+  undefined1 auStack_8 [8];
+  
+  (*(code *)PTR___libc_start_main_00403fd8)(main,param_2,&stack0x00000008,0,0,param_1,auStack_8);
+  do {
+                    /* WARNING: Do nothing block with infinite loop */
+  } while( true );
+}
+
+
+---- _dl_relocate_static_pie @ 00401070
+
+void _dl_relocate_static_pie(void)
+
+{
+  return;
+}
+
+
+---- deregister_tm_clones @ 00401080
+
+/* WARNING: Removing unreachable block (ram,0x0040108d) */
+/* WARNING: Removing unreachable block (ram,0x00401097) */
+
+void deregister_tm_clones(void)
+
+{
+  return;
+}
+
+
+---- register_tm_clones @ 004010b0
+
+/* WARNING: Removing unreachable block (ram,0x004010cf) */
+/* WARNING: Removing unreachable block (ram,0x004010d9) */
+
+void register_tm_clones(void)
+
+{
+  return;
+}
+
+
+---- __do_global_dtors_aux @ 004010f0
+
+void __do_global_dtors_aux(void)
+
+{
+  if (completed_0 == '\0') {
+    deregister_tm_clones();
+    completed_0 = 1;
+    return;
+  }
+  return;
+}
+
+
+---- copy_message @ 00401126
+
+void copy_message(void)
+
+{
+  char local_13 [7];
+  char acStack_c [4];
+  
+  local_13 = (char  [7])src._0_7_;
+  acStack_c = (char  [4])src._7_4_;
+  puts(local_13);
+  return;
+}
+
+
+---- main @ 00401151
+
+undefined8 main(void)
+
+{
+  copy_message();
+  return 0;
+}
+
+
+---- _fini @ 00401164
+
+void _fini(void)
+
+{
+  return;
+}
+
+

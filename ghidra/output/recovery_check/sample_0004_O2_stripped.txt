@@ -1,0 +1,142 @@
+program: sample_0004_O2.elf
+== functions (entry name min max numAddresses thunk external callRefs) ==
+00401000 _DT_INIT 00401000 0040101a 27 thunk=false external=false callRefs=0
+00401020 FUN_00401020 00401020 0040102b 12 thunk=false external=false callRefs=3
+00401030 free 00401030 00401035 6 thunk=true external=false callRefs=1
+00401040 puts 00401040 00401045 6 thunk=true external=false callRefs=1
+00401050 malloc 00401050 00401055 6 thunk=true external=false callRefs=1
+00401060 FUN_00401060 00401060 0040106f 16 thunk=false external=false callRefs=0
+00401070 entry 00401070 00401095 38 thunk=false external=false callRefs=0
+004010a0 FUN_004010a0 004010a0 004010a4 5 thunk=false external=false callRefs=0
+004010b0 FUN_004010b0 004010b0 004010d0 31 thunk=false external=false callRefs=1
+004010e0 FUN_004010e0 004010e0 00401110 49 thunk=false external=false callRefs=1
+00401120 _FINI_0 00401120 00401140 32 thunk=false external=false callRefs=0
+00401150 _INIT_0 00401150 00401155 6 thunk=true external=false callRefs=0
+00401160 FUN_00401160 00401160 00401191 50 thunk=false external=false callRefs=1
+00401194 _DT_FINI 00401194 004011a0 13 thunk=false external=false callRefs=0
+00405000 free 00405000 00405000 1 thunk=true external=false callRefs=1
+00405008 __libc_start_main 00405008 00405008 1 thunk=true external=false callRefs=1
+00405010 puts 00405010 00405010 1 thunk=true external=false callRefs=1
+00405018 __gmon_start__ 00405018 00405018 1 thunk=true external=false callRefs=1
+00405020 malloc 00405020 00405020 1 thunk=true external=false callRefs=1
+
+== decompiled ==
+---- _DT_INIT @ 00401000
+
+void _DT_INIT(void)
+
+{
+  if (PTR___gmon_start___00403fe0 != (undefined *)0x0) {
+    (*(code *)PTR___gmon_start___00403fe0)();
+  }
+  return;
+}
+
+
+---- FUN_00401020 @ 00401020
+
+void FUN_00401020(void)
+
+{
+  (*(code *)PTR_00403ff8)();
+  return;
+}
+
+
+---- FUN_00401060 @ 00401060
+
+undefined8 FUN_00401060(void)
+
+{
+  FUN_00401160();
+  return 0;
+}
+
+
+---- entry @ 00401070
+
+void processEntry entry(undefined8 param_1,undefined8 param_2)
+
+{
+  undefined1 auStack_8 [8];
+  
+  (*(code *)PTR___libc_start_main_00403fd8)
+            (FUN_00401060,param_2,&stack0x00000008,0,0,param_1,auStack_8);
+  do {
+                    /* WARNING: Do nothing block with infinite loop */
+  } while( true );
+}
+
+
+---- FUN_004010a0 @ 004010a0
+
+void FUN_004010a0(void)
+
+{
+  return;
+}
+
+
+---- FUN_004010b0 @ 004010b0
+
+/* WARNING: Removing unreachable block (ram,0x004010bd) */
+/* WARNING: Removing unreachable block (ram,0x004010c7) */
+
+void FUN_004010b0(void)
+
+{
+  return;
+}
+
+
+---- FUN_004010e0 @ 004010e0
+
+/* WARNING: Removing unreachable block (ram,0x004010ff) */
+/* WARNING: Removing unreachable block (ram,0x00401109) */
+
+void FUN_004010e0(void)
+
+{
+  return;
+}
+
+
+---- _FINI_0 @ 00401120
+
+void _FINI_0(void)
+
+{
+  if (DAT_00404028 == '\0') {
+    FUN_004010b0();
+    DAT_00404028 = 1;
+    return;
+  }
+  return;
+}
+
+
+---- FUN_00401160 @ 00401160
+
+void FUN_00401160(void)
+
+{
+  char *__s;
+  
+  __s = malloc(0xb);
+  *(ulong *)__s = CONCAT17(s_AAAAAAAAAA_00402008[7],s_AAAAAAAAAA_00402008._0_7_);
+  *(undefined4 *)(__s + 7) = s_AAAAAAAAAA_00402008._7_4_;
+  puts(__s);
+  free(__s);
+  return;
+}
+
+
+---- _DT_FINI @ 00401194
+
+void _DT_FINI(void)
+
+{
+  return;
+}
+
+

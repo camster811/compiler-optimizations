@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0004",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401160",
+    "entry": "0x401160",
+    "size_bytes": 50,
+    "instruction_count": 13,
+    "basic_block_count": 1,
+    "body_ranges": [
+      [
+        "0x401160",
+        "0x401192"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid FUN_00401160(void)\n\n{\n  char *__s;\n  \n  __s = malloc(0xb);\n  *(ulong *)__s = CONCAT17(s_AAAAAAAAAA_00402008[7],s_AAAAAAAAAA_00402008._0_7_);\n  *(undefined4 *)(__s + 7) = s_AAAAAAAAAA_00402008._7_4_;\n  puts(__s);\n  free(__s);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401160: PUSH RBX",
+    "0x401161: MOV EDI,0xb",
+    "0x401166: CALL 0x00401050",
+    "0x40116b: MOV RBX,RAX",
+    "0x40116e: MOV RAX,qword ptr [0x00402008]",
+    "0x401175: MOV RDI,RBX",
+    "0x401178: MOV qword ptr [RBX],RAX",
+    "0x40117b: MOV EAX,dword ptr [0x0040200f]",
+    "0x401181: MOV dword ptr [RBX + 0x7],EAX",
+    "0x401184: CALL 0x00401040",
+    "0x401189: MOV RDI,RBX",
+    "0x40118c: POP RBX",
+    "0x40118d: JMP 0x00401030"
+  ],
+  "calls": [
+    "malloc",
+    "puts"
+  ],
+  "tail_jumps": [
+    "free"
+  ],
+  "constants": [
+    "11"
+  ],
+  "stack_variables": [],
+  "imports": [
+    "malloc",
+    "puts",
+    "free"
+  ]
+}

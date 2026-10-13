@@ -1,0 +1,137 @@
+program: sample_0001_O2.elf
+== functions (entry name min max numAddresses thunk external callRefs) ==
+00401000 _init 00401000 0040101a 27 thunk=false external=false callRefs=0
+00401020 FUN_00401020 00401020 0040102b 12 thunk=false external=false callRefs=1
+00401030 puts 00401030 00401035 6 thunk=true external=false callRefs=1
+00401040 main 00401040 0040104f 16 thunk=false external=false callRefs=0
+00401050 _start 00401050 00401075 38 thunk=false external=false callRefs=0
+00401080 _dl_relocate_static_pie 00401080 00401084 5 thunk=false external=false callRefs=0
+00401090 deregister_tm_clones 00401090 004010b0 31 thunk=false external=false callRefs=1
+004010c0 register_tm_clones 004010c0 004010f0 49 thunk=false external=false callRefs=1
+00401100 __do_global_dtors_aux 00401100 00401120 32 thunk=false external=false callRefs=0
+00401130 frame_dummy 00401130 00401135 6 thunk=true external=false callRefs=0
+00401140 copy_message 00401140 00401169 42 thunk=false external=false callRefs=1
+0040116c _fini 0040116c 00401178 13 thunk=false external=false callRefs=0
+00405000 __libc_start_main 00405000 00405000 1 thunk=true external=false callRefs=1
+00405008 puts 00405008 00405008 1 thunk=true external=false callRefs=1
+00405010 __gmon_start__ 00405010 00405010 1 thunk=true external=false callRefs=1
+
+== decompiled ==
+---- _init @ 00401000
+
+int _init(EVP_PKEY_CTX *ctx)
+
+{
+  int iVar1;
+  
+  iVar1 = 0;
+  if (PTR___gmon_start___00403fe0 != (undefined *)0x0) {
+    iVar1 = (*(code *)PTR___gmon_start___00403fe0)();
+  }
+  return iVar1;
+}
+
+
+---- FUN_00401020 @ 00401020
+
+void FUN_00401020(void)
+
+{
+  (*(code *)PTR_00403ff8)();
+  return;
+}
+
+
+---- main @ 00401040
+
+undefined8 main(void)
+
+{
+  copy_message();
+  return 0;
+}
+
+
+---- _start @ 00401050
+
+void processEntry _start(undefined8 param_1,undefined8 param_2)
+
+{
+  undefined1 auStack_8 [8];
+  
+  (*(code *)PTR___libc_start_main_00403fd8)(main,param_2,&stack0x00000008,0,0,param_1,auStack_8);
+  do {
+                    /* WARNING: Do nothing block with infinite loop */
+  } while( true );
+}
+
+
+---- _dl_relocate_static_pie @ 00401080
+
+void _dl_relocate_static_pie(void)
+
+{
+  return;
+}
+
+
+---- deregister_tm_clones @ 00401090
+
+/* WARNING: Removing unreachable block (ram,0x0040109d) */
+/* WARNING: Removing unreachable block (ram,0x004010a7) */
+
+void deregister_tm_clones(void)
+
+{
+  return;
+}
+
+
+---- register_tm_clones @ 004010c0
+
+/* WARNING: Removing unreachable block (ram,0x004010df) */
+/* WARNING: Removing unreachable block (ram,0x004010e9) */
+
+void register_tm_clones(void)
+
+{
+  return;
+}
+
+
+---- __do_global_dtors_aux @ 00401100
+
+void __do_global_dtors_aux(void)
+
+{
+  if (completed_0 == '\0') {
+    deregister_tm_clones();
+    completed_0 = 1;
+    return;
+  }
+  return;
+}
+
+
+---- copy_message @ 00401140
+
+void copy_message(void)
+
+{
+  char local_12 [18];
+  
+  builtin_strncpy(local_12,"AAAAAAAAAA",0xb);
+  puts(local_12);
+  return;
+}
+
+
+---- _fini @ 0040116c
+
+void _fini(void)
+
+{
+  return;
+}
+
+
