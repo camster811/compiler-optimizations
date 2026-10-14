@@ -221,3 +221,6 @@ __marimo__/
 ghidra_12.1.4_PUBLIC/
 # Private run metadata and headless logs (never analyzer input)
 ghidra/logs/
+
+# Local LLM raw evidence and backend process logs; archive with campaign checksums.
+llm_analysis/output/
