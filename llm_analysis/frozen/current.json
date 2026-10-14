@@ -1,0 +1,9 @@
+{
+  "campaign_id": "d5982d9920179520c42798c707708a54205300024fa8d653e64fb179c9491d73",
+  "method_id": "6a18617e0ef4b1985060a76db93755018bc1e99190f0d652ca6d51dff78c1c1d",
+  "minimum_schema_valid_rate": 0.98,
+  "receipt_path": "llm_analysis/frozen/d5982d9920179520c42798c707708a54205300024fa8d653e64fb179c9491d73/method.json",
+  "receipt_sha256": "6d2619ae12dd2391b63add2a3e79a140cf4ad67f82d8ca5e40ea0e45797348fc",
+  "schema_valid_response_rate": 1.0,
+  "selection_criterion": "schema adherence only; prediction accuracy is not a selection criterion"
+}

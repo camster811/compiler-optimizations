@@ -45,6 +45,54 @@ def metrics(rows):
                              "F1": ratio(2 * tp, 2 * tp + fp + fn), "FPR": ratio(fp, fp + tn), "FNR": ratio(fn, fn + tp)}}
 
 
+def paired_symbol_runs(observations, runs, shared_seeds):
+    """Match shared-seed runs; failed responses are unavailable, not model abstentions."""
+    if not shared_seeds:
+        return []
+    by_record = {}
+    for run in runs:
+        key = (run["record_sha256"], run["repetition"])
+        if key in by_record:
+            raise ValueError("duplicate repetition in paired symbol analysis")
+        by_record[key] = run
+    by_case = {}
+    for observation in observations:
+        key = (observation["sample_id"], observation["optimization"])
+        by_case.setdefault(key, {})[observation["condition"]] = observation
+
+    def outcome(observation, run):
+        prediction = run["prediction"] if run["status"] == "valid" else None
+        return {"record_sha256": observation["record_sha256"], "run_id": run["run_id"],
+                "status": run["status"], "classification": prediction["classification"] if prediction else None,
+                "predicted_cwe": prediction["predicted_cwe"] if prediction else None,
+                "confidence": prediction["confidence"] if prediction else None}
+
+    comparisons = []
+    for (sid, opt), conditions in sorted(by_case.items()):
+        if not {"retained", "stripped"} <= set(conditions):
+            continue
+        retained, stripped = conditions["retained"], conditions["stripped"]
+        for repetition in (1, 2, 3):
+            try:
+                a = by_record[(retained["record_sha256"], repetition)]
+                b = by_record[(stripped["record_sha256"], repetition)]
+            except KeyError as e:
+                raise ValueError("missing repetition in paired symbol analysis") from e
+            if a["seed"] != b["seed"]:
+                raise ValueError(f"symbol comparison seed mismatch for {sid}/{opt}/r{repetition}")
+            valid = a["status"] == b["status"] == "valid"
+            agree = ((a["prediction"]["classification"], a["prediction"]["predicted_cwe"])
+                     == (b["prediction"]["classification"], b["prediction"]["predicted_cwe"])) if valid else None
+            comparisons.append({"sample_id": sid, "pair_id": retained["pair_id"], "optimization": opt,
+                                "repetition": repetition, "seed": a["seed"],
+                                "shared_record": retained["record_sha256"] == stripped["record_sha256"],
+                                "retained": outcome(retained, a), "stripped": outcome(stripped, b),
+                                "both_valid": valid, "same_classification_and_cwe": agree,
+                                "confidence_difference_retained_minus_stripped":
+                                    a["prediction"]["confidence"] - b["prediction"]["confidence"] if valid else None})
+    return comparisons
+
+
 def check(campaign, experiment_path):
     m, runs, predictions = replay_campaign(campaign)
     experiment, experiment_hash = load_experiment(experiment_path)
@@ -83,7 +131,7 @@ def check(campaign, experiment_path):
                 or (not positive and cls == "not_vulnerable") else "incorrect")
             return {"observation_id": o["observation_id"], "pair_id": o["pair_id"],
                     "sample_id": sid, "optimization": optimization, "condition": condition,
-                    "cwe": t["cwe"], "record_sha256": h, "positive": positive,
+                    "cwe": t["cwe"], "ground_truth": t["ground_truth"], "record_sha256": h, "positive": positive,
                     "classification": cls, "predicted_cwe": cwe, "decision": decision, "failure_count": failures}
         p = by_hash[h]
         rows.append({**scored(p, p["failure_count"]), "median_confidence": p["median_confidence"],
@@ -114,6 +162,7 @@ def check(campaign, experiment_path):
                             if a["median_confidence"] is not None and b["median_confidence"] is not None else None})
     # Confidence is descriptive; this threshold does not change predictions.
     high_confidence = [r for r in run_rows if r["decision"] == "incorrect" and (r["confidence"] or 0) >= 0.8]
+    paired_runs = paired_symbol_runs(observations, runs, m["method"]["config"].get("seed_policy") == "shared_repetition")
     report = {"development_data": m["development_data"], "campaign_id": m["campaign_id"], "method_id": m["method_id"],
               "experiment_sha256": experiment_hash, "dataset_id": experiment["dataset_id"],
               "distinct_records": len(predictions), "scheduled_runs": len(runs), "http_attempts": attempt_count,
@@ -128,10 +177,19 @@ def check(campaign, experiment_path):
               "overall": metrics(rows), "breakdowns": {}, "observations": rows,
               "per_run_observation_metrics": metrics(run_rows), "high_confidence_incorrect_runs": high_confidence,
               "symbol_comparisons": comparisons,
+              "paired_run_symbol_comparisons": paired_runs,
+              "paired_run_symbol_summary": {
+                  "matched_pairs": len(paired_runs), "both_valid_pairs": sum(p["both_valid"] for p in paired_runs),
+                  "unavailable_pairs": sum(not p["both_valid"] for p in paired_runs),
+                  "agreeing_pairs": sum(p["same_classification_and_cwe"] is True for p in paired_runs),
+                  "disagreeing_pairs": sum(p["same_classification_and_cwe"] is False for p in paired_runs),
+                  "shared_record_pairs": sum(p["shared_record"] for p in paired_runs)},
               "notes": ["Repeated conditions and generations are related measurements, not independent samples.",
                         "Forced binary alert: vulnerable=alert; uncertain, including failure-driven uncertainty, produces no alert.",
-                        "A schema-valid answer can still be factually incorrect. Evidence checks validate address membership only."]}
-    for factor in ("cwe", "optimization", "condition"):
+                        "A schema-valid answer can still be factually incorrect. Evidence checks validate address membership only.",
+                        "Run-level symbol comparisons require shared seeds. Legacy differing-seed runs are not paired.",
+                        "Failed runs remain unavailable in paired comparisons; valid uncertain predictions remain model abstentions."]}
+    for factor in ("cwe", "optimization", "condition", "ground_truth"):
         report["breakdowns"][factor] = {value: metrics([r for r in rows if r[factor] == value])
                                            for value in sorted({r[factor] for r in rows})}
     return report

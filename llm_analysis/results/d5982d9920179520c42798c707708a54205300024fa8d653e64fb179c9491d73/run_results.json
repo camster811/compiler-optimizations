@@ -1,0 +1,1931 @@
+[
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 14.355487508000806,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401132",
+            "0x401146"
+          ],
+          "observation": "The function writes 8 bytes to local_12 at 0x401132 and another 4 bytes at 0x401146, exceeding the 11-byte capacity, causing a stack-based buffer overflow."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes beyond the 11-byte local_12 array, causing a stack-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "177c4753fd1397cfcc4a6f603c19a49f82bd1c0669eddf8fc4defb8bbbd0fa44",
+    "repetition": 1,
+    "request_sha256": "c91c1cbe53563da4a81105f2c5c07624cd92dba3c2284c3a16296abf6dba4c5d",
+    "run_id": "177c4753fd1397cfcc4a6f603c19a49f82bd1c0669eddf8fc4defb8bbbd0fa44-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 864,
+      "prompt_tokens": 1089,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1953
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 13.206618766998872,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x40112a",
+            "0x401132",
+            "0x40113f",
+            "0x40112e"
+          ],
+          "observation": "The function allocates a stack buffer of 11 bytes (local_12). It writes 8 bytes to the buffer and then an additional 4 bytes starting at offset 7, which fits within the buffer's capacity."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function writes exactly within the bounds of the local_12 buffer, so it is not vulnerable to a buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "177c4753fd1397cfcc4a6f603c19a49f82bd1c0669eddf8fc4defb8bbbd0fa44",
+    "repetition": 2,
+    "request_sha256": "0b6e89e9b675c363f3c214535053cd0ebba7fb07ab105d16131ebe63334da14f",
+    "run_id": "177c4753fd1397cfcc4a6f603c19a49f82bd1c0669eddf8fc4defb8bbbd0fa44-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 801,
+      "prompt_tokens": 1089,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1890
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 15.865190758995595,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401126",
+            "0x40112a",
+            "0x40113c",
+            "0x401146"
+          ],
+          "observation": "The function allocates 16 bytes on the stack, creates a local array of 11 bytes, and writes exactly 11 bytes (8 bytes followed by 3 bytes) within the array's bounds."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function does not exhibit a buffer overflow as all writes are within the allocated stack space.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "177c4753fd1397cfcc4a6f603c19a49f82bd1c0669eddf8fc4defb8bbbd0fa44",
+    "repetition": 3,
+    "request_sha256": "72258a5df5d6894618182657da43967b0e90ead536c2e0d2350995dc99e5ecb2",
+    "run_id": "177c4753fd1397cfcc4a6f603c19a49f82bd1c0669eddf8fc4defb8bbbd0fa44-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 902,
+      "prompt_tokens": 1089,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1991
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 25.182348609989276,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401050"
+          ],
+          "observation": "MOV qword ptr [RSP + 0x5], RAX writes 8 bytes into memory at RSP + 0x5, which is within the stack frame allocated by SUB RSP,0x18 (24 bytes)."
+        },
+        {
+          "addresses": [
+            "0x40105b"
+          ],
+          "observation": "MOV dword ptr [RSP + 0xc], EAX writes 4 bytes into memory at RSP + 0xc, which is within the same stack frame."
+        },
+        {
+          "addresses": [
+            "0x40104b"
+          ],
+          "observation": "LEA RDI,[RSP + 0x5] sets RDI to RSP + 0x5, which is the start of the 8-byte write."
+        },
+        {
+          "addresses": [
+            "0x401040"
+          ],
+          "observation": "SUB RSP,0x18 allocates 24 bytes on the stack for local variables."
+        },
+        {
+          "addresses": [
+            "0x401044"
+          ],
+          "observation": "MOV RAX,qword ptr [0x00402008] loads an 8-byte value from a global variable."
+        },
+        {
+          "addresses": [
+            "0x401055"
+          ],
+          "observation": "MOV EAX,dword ptr [0x0040200f] loads a 4-byte value from another global variable."
+        },
+        {
+          "addresses": [
+            "0x40105f"
+          ],
+          "observation": "CALL 0x00401030 calls puts(local_13), which is a 7-byte array, but local_13 was written with 8 bytes earlier."
+        },
+        {
+          "addresses": [
+            "0x401050"
+          ],
+          "observation": "The write at 0x401050 exceeds the 7-byte capacity of local_13, causing a stack-based buffer overflow."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes 8 bytes into a 7-byte buffer (local_13), causing a stack-based buffer overflow. This is a clear case of CWE-121, with high confidence due to the direct evidence of the write operation exceeding the buffer's capacity.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "39b90320b436ad044ab60695fddbda8a11922bc40a42b6f93c50fccba7d7fd52",
+    "repetition": 1,
+    "request_sha256": "674cbc2eb6ff2ad3dbda784aa19d6ad27a7ec6dae151cc5dd40854a0809d7392",
+    "run_id": "39b90320b436ad044ab60695fddbda8a11922bc40a42b6f93c50fccba7d7fd52-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1543,
+      "prompt_tokens": 1038,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2581
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 13.20345964000444,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401050"
+          ],
+          "observation": "Writes 8 bytes to [RSP + 0x5], which is part of the local_13 array of size 7 bytes."
+        },
+        {
+          "addresses": [
+            "0x401055"
+          ],
+          "observation": "Writes 4 bytes to [RSP + 0xc], which may exceed the stack frame's allocated space."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes beyond the capacity of the local_13 array, indicating a stack-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "39b90320b436ad044ab60695fddbda8a11922bc40a42b6f93c50fccba7d7fd52",
+    "repetition": 2,
+    "request_sha256": "222486075ef7543141ec4b06bfd438b12392a04bc0f05d76bbc685b9902c7859",
+    "run_id": "39b90320b436ad044ab60695fddbda8a11922bc40a42b6f93c50fccba7d7fd52-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 692,
+      "prompt_tokens": 1038,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1730
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 12.045333982998272,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401040",
+            "0x40104b",
+            "0x401050"
+          ],
+          "observation": "The function allocates 24 bytes on the stack (SUB RSP,0x18) and writes 8 bytes into a 7-byte local_13 array (local_13 [7]), causing a stack-based buffer overflow."
+        },
+        {
+          "addresses": [
+            "0x401040",
+            "0x40104b",
+            "0x401050"
+          ],
+          "observation": "The instruction at 0x401050 writes beyond the 7-byte capacity of local_13, leading to a stack overflow."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function is vulnerable to a stack-based buffer overflow due to writing beyond the capacity of the local_13 array.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "39b90320b436ad044ab60695fddbda8a11922bc40a42b6f93c50fccba7d7fd52",
+    "repetition": 3,
+    "request_sha256": "c568aa179c00e02d55eeeb80552288dd05063d048a9b01b818699b92e92ba8ed",
+    "run_id": "39b90320b436ad044ab60695fddbda8a11922bc40a42b6f93c50fccba7d7fd52-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 734,
+      "prompt_tokens": 1038,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1772
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 11.638457121996908,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401166",
+            "0x401175",
+            "0x401181"
+          ],
+          "observation": "Allocates 11 bytes with malloc, writes 8 bytes at offset 0, then writes 4 bytes at offset 7, exceeding the allocated 11-byte buffer by 1 byte."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "Vulnerable to heap-based buffer overflow due to writing beyond allocated memory.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "4f828099ca2538b9a98b72e095649fed881f565fb11a2606e580c6851666fa4c",
+    "repetition": 1,
+    "request_sha256": "f3e77d2195707b3723b2c9df5843ea408179cc7514a5c80ea63de6d2f895c378",
+    "run_id": "4f828099ca2538b9a98b72e095649fed881f565fb11a2606e580c6851666fa4c-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 705,
+      "prompt_tokens": 1017,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1722
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 17.425927834003232,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160"
+          ],
+          "observation": "Function allocates 11 bytes with malloc(0xb)"
+        },
+        {
+          "addresses": [
+            "0x401175",
+            "0x40117b"
+          ],
+          "observation": "Writes 8 bytes at offset 0 and 4 bytes at offset 7 within the allocated 11-byte block."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "Function allocates 11 bytes and writes within the allocated space, no overflow occurs.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "4f828099ca2538b9a98b72e095649fed881f565fb11a2606e580c6851666fa4c",
+    "repetition": 2,
+    "request_sha256": "08efada25a5cd8455e39612e07c890651f97be8576b738265e6b94037925cc61",
+    "run_id": "4f828099ca2538b9a98b72e095649fed881f565fb11a2606e580c6851666fa4c-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1063,
+      "prompt_tokens": 1017,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2080
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 9.744358208001358,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401178"
+          ],
+          "observation": "Writes 8 bytes to the allocated heap memory at RBX."
+        },
+        {
+          "addresses": [
+            "0x401181"
+          ],
+          "observation": "Writes 4 bytes to RBX + 7, exceeding the 11-byte allocation."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "Heap-based buffer overflow due to writing 12 bytes into an 11-byte allocation.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "4f828099ca2538b9a98b72e095649fed881f565fb11a2606e580c6851666fa4c",
+    "repetition": 3,
+    "request_sha256": "d7eeec0fbb008f01561d795b0390423f27854b70b7fe808c603f508234b1dff4",
+    "run_id": "4f828099ca2538b9a98b72e095649fed881f565fb11a2606e580c6851666fa4c-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 586,
+      "prompt_tokens": 1017,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1603
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 13.007513913005823,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160"
+          ],
+          "observation": "Writes a 64-bit value to the allocated memory, which is within the 10-byte buffer."
+        },
+        {
+          "addresses": [
+            "0x401170"
+          ],
+          "observation": "Writes a 32-bit value starting at offset 7 of the buffer, exceeding the 10-byte allocation by one byte."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "The function writes beyond the allocated heap memory, causing a heap-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "6aaaa25f81a4d207e96bbfe1bc12aec6c04fe6894ef137a5f3e9cd84b226fdbe",
+    "repetition": 1,
+    "request_sha256": "be4b5d1b28dcae36364a11564e090deb2fdccd1350f70e189b173815adb82a85",
+    "run_id": "6aaaa25f81a4d207e96bbfe1bc12aec6c04fe6894ef137a5f3e9cd84b226fdbe-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 780,
+      "prompt_tokens": 1212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1992
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 11.201444521007943,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401170"
+          ],
+          "observation": "Writes 8 bytes at RAX and then 4 bytes at RAX+7, exceeding the 10-byte heap allocation."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "The function writes beyond the allocated heap memory, causing a heap-based buffer overflow. The writes exceed the 10-byte allocation by 1 byte.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "6aaaa25f81a4d207e96bbfe1bc12aec6c04fe6894ef137a5f3e9cd84b226fdbe",
+    "repetition": 2,
+    "request_sha256": "4f637c97935b90b5bf9425d1be31025009e5945acdcf837d2f2f512d2eb5b846",
+    "run_id": "6aaaa25f81a4d207e96bbfe1bc12aec6c04fe6894ef137a5f3e9cd84b226fdbe-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 669,
+      "prompt_tokens": 1212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1881
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 10.74714566100738,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "Heap allocation of 10 bytes followed by writes exceeding the buffer size: writes at offset 0 (8 bytes) and offset 7 (4 bytes) total 12 bytes, exceeding the 10-byte allocation."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "The function allocates 10 bytes on the heap but writes 12 bytes, causing a heap-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "6aaaa25f81a4d207e96bbfe1bc12aec6c04fe6894ef137a5f3e9cd84b226fdbe",
+    "repetition": 3,
+    "request_sha256": "ce36d6087fc08dcc01cf9173013b49f0f82653addc0deced6d86fb148d50be6a",
+    "run_id": "6aaaa25f81a4d207e96bbfe1bc12aec6c04fe6894ef137a5f3e9cd84b226fdbe-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 634,
+      "prompt_tokens": 1212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1846
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 12.264043358009076,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401178"
+          ],
+          "observation": "Writes 8 bytes to the heap-allocated buffer starting at RBX."
+        },
+        {
+          "addresses": [
+            "0x401181"
+          ],
+          "observation": "Writes 4 bytes to the heap-allocated buffer at RBX + 7, exceeding the 10-byte allocation."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "Heap-based buffer overflow occurs when writing beyond the 10-byte allocation.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "797f217f8b5fe246129ad1756b5370ba0540e7be0864b5df174394ce021e6755",
+    "repetition": 1,
+    "request_sha256": "3b01a622a5fe14cec11ad0627f542de6acaa05857feae5f21524b85c74cb7156",
+    "run_id": "797f217f8b5fe246129ad1756b5370ba0540e7be0864b5df174394ce021e6755-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 742,
+      "prompt_tokens": 1069,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1811
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 9.560470930999145,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401175",
+            "0x401178",
+            "0x401181",
+            "0x401184"
+          ],
+          "observation": "Heap allocation of 10 bytes is followed by writes of 8 bytes at offset 0 and 4 bytes at offset 7, exceeding the allocated size (8 + 4 = 12 > 10)."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "The function writes beyond the heap-allocated buffer, causing a heap-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "797f217f8b5fe246129ad1756b5370ba0540e7be0864b5df174394ce021e6755",
+    "repetition": 2,
+    "request_sha256": "1d16cef9c922a1c7364b030d0b2d1ca8b54be60bbc3e8954db8540947412a8a7",
+    "run_id": "797f217f8b5fe246129ad1756b5370ba0540e7be0864b5df174394ce021e6755-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 572,
+      "prompt_tokens": 1069,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1641
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 12.964518006003345,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401175",
+            "0x401178",
+            "0x401181"
+          ],
+          "observation": "Writes 8 bytes at [RBX] and 4 bytes at [RBX+7], exceeding the 10-byte allocation from malloc(10)."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "Heap-based buffer overflow due to writing 12 bytes into a 10-byte allocation.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "797f217f8b5fe246129ad1756b5370ba0540e7be0864b5df174394ce021e6755",
+    "repetition": 3,
+    "request_sha256": "f665d5a9382ccf45cdeea8152678403ad2d7a59c38c2910384b20c30935ab18d",
+    "run_id": "797f217f8b5fe246129ad1756b5370ba0540e7be0864b5df174394ce021e6755-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 778,
+      "prompt_tokens": 1069,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1847
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 7.749181595005211,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x40112e",
+            "0x401132",
+            "0x401146",
+            "0x40113f"
+          ],
+          "observation": "The function writes 12 bytes into a 11-byte local_12 array, causing a stack-based buffer overflow."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function copies 12 bytes into a 11-byte buffer, causing a stack overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "997cdc43fd6c1f59e6359196b1c1f67bac1aaf8d04f3b5f8209691742eec37a4",
+    "repetition": 1,
+    "request_sha256": "6abafb0c4a26a1db1021a26e6d616e8f47c3eac7cd9ae73981d4b629775b9891",
+    "run_id": "997cdc43fd6c1f59e6359196b1c1f67bac1aaf8d04f3b5f8209691742eec37a4-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 453,
+      "prompt_tokens": 1073,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1526
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 21.735652182003832,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401132"
+          ],
+          "observation": "builtin_strncpy copies 11 bytes into local_12, which is an 11-byte stack array."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function copies exactly 11 bytes into a 11-byte stack buffer, so no overflow occurs.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "997cdc43fd6c1f59e6359196b1c1f67bac1aaf8d04f3b5f8209691742eec37a4",
+    "repetition": 2,
+    "request_sha256": "cc2911868fd647094f6ba4a5d2b4aefcf3be5a3cb8beda20b3cecb27a0629558",
+    "run_id": "997cdc43fd6c1f59e6359196b1c1f67bac1aaf8d04f3b5f8209691742eec37a4-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1333,
+      "prompt_tokens": 1073,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2406
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 19.02966786599427,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401132"
+          ],
+          "observation": "Writes 0x4141414141414141 to [RAX], potentially overfilling the 11-byte local_12 array."
+        },
+        {
+          "addresses": [
+            "0x401146"
+          ],
+          "observation": "Moves 0x414141 to [RAX + 0x7], exceeding the 11-byte local_12 array's bounds."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes beyond the bounds of the local_12 stack array, causing a stack-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "997cdc43fd6c1f59e6359196b1c1f67bac1aaf8d04f3b5f8209691742eec37a4",
+    "repetition": 3,
+    "request_sha256": "edd60bd28aa26fe2b9a74b8a4829374e3aa7018f410f0cf73754043808e4eed8",
+    "run_id": "997cdc43fd6c1f59e6359196b1c1f67bac1aaf8d04f3b5f8209691742eec37a4-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1163,
+      "prompt_tokens": 1073,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2236
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 11.868530225008726,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401135",
+            "0x40113f"
+          ],
+          "observation": "The function copies 8 bytes into a 7-byte local_13 buffer, causing a stack-based buffer overflow."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function is vulnerable to a stack-based buffer overflow due to writing beyond the local_13 buffer's capacity.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "9bcde65df137c666bb2a3d3820a5091412bfc7f4139912a7d74de1baa739d0de",
+    "repetition": 1,
+    "request_sha256": "3a962747cd7d240947241f172c597a8776ee122f316cd519f1fa38cbb3af39e1",
+    "run_id": "9bcde65df137c666bb2a3d3820a5091412bfc7f4139912a7d74de1baa739d0de-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 715,
+      "prompt_tokens": 1073,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1788
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 8.822449141996913,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x40112e",
+            "0x401135"
+          ],
+          "observation": "MOV RAX from global [0x00402008] (8 bytes) into local_13 (7 bytes), causing stack overflow."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function copies 8 bytes into a 7-byte local array, causing a stack-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "9bcde65df137c666bb2a3d3820a5091412bfc7f4139912a7d74de1baa739d0de",
+    "repetition": 2,
+    "request_sha256": "51e0df3663b381a0a449b6143f0e1ae74418cce2fac9c739ad1848acee344edc",
+    "run_id": "9bcde65df137c666bb2a3d3820a5091412bfc7f4139912a7d74de1baa739d0de-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 520,
+      "prompt_tokens": 1073,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1593
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 14.376825102997827,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x40112e",
+            "0x401135"
+          ],
+          "observation": "MOV qword ptr [RBP + -0xb], RAX writes an 8-byte value into local_13, a 7-byte array, causing a stack-based buffer overflow."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes 8 bytes into a 7-byte buffer, causing a stack-based buffer overflow (CWE-121).",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "9bcde65df137c666bb2a3d3820a5091412bfc7f4139912a7d74de1baa739d0de",
+    "repetition": 3,
+    "request_sha256": "39aed80e0efd76d10dcc12bdd07ed16f3df79837e1c796861f0d053519c67874",
+    "run_id": "9bcde65df137c666bb2a3d3820a5091412bfc7f4139912a7d74de1baa739d0de-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 876,
+      "prompt_tokens": 1073,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1949
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 12.302209739005775,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "Writes 8 bytes to allocated memory at [RAX] and 4 bytes starting at [RAX + 0x7], totaling 11 bytes within the 11-byte allocation from malloc(0xb)."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function writes exactly the allocated 11 bytes without overflow, making it not vulnerable.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "a4a439216b2cd257f9f60b7e6fecd0e90b4fd42f46c0bd6135b93b0e21ef9e4d",
+    "repetition": 1,
+    "request_sha256": "d39664ea76c1348c7f044d490ec52dea7d6aca4e83f8079131f57d72be314dbe",
+    "run_id": "a4a439216b2cd257f9f60b7e6fecd0e90b4fd42f46c0bd6135b93b0e21ef9e4d-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 751,
+      "prompt_tokens": 1264,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2015
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 14.323204453990911,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401153"
+          ],
+          "observation": "malloc(0xb) allocates 11 bytes for the buffer."
+        },
+        {
+          "addresses": [
+            "0x401167"
+          ],
+          "observation": "Writes 8 bytes to the allocated buffer starting at offset 0."
+        },
+        {
+          "addresses": [
+            "0x401170"
+          ],
+          "observation": "Writes 4 bytes to the buffer starting at offset 7, within the 11-byte allocation."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function allocates 11 bytes and writes exactly 11 bytes within the buffer, so no overflow occurs.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "a4a439216b2cd257f9f60b7e6fecd0e90b4fd42f46c0bd6135b93b0e21ef9e4d",
+    "repetition": 2,
+    "request_sha256": "c021b950241399a517bf46715685c4c4eefe46ded24b65858294733c1f6779ff",
+    "run_id": "a4a439216b2cd257f9f60b7e6fecd0e90b4fd42f46c0bd6135b93b0e21ef9e4d-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 862,
+      "prompt_tokens": 1264,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2126
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 18.89284046200919,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401153",
+            "0x401160",
+            "0x401167",
+            "0x401170",
+            "0x401173"
+          ],
+          "observation": "The function allocates 11 bytes (0xb) using malloc, writes exactly 11 bytes into the buffer without exceeding its capacity, and properly frees the memory."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function is not vulnerable to buffer overflow as it correctly writes within the allocated buffer size.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "a4a439216b2cd257f9f60b7e6fecd0e90b4fd42f46c0bd6135b93b0e21ef9e4d",
+    "repetition": 3,
+    "request_sha256": "9da3f26e97918cdc43d32281bd7799d7c90343e42ed22614985f631e464ec642",
+    "run_id": "a4a439216b2cd257f9f60b7e6fecd0e90b4fd42f46c0bd6135b93b0e21ef9e4d-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1145,
+      "prompt_tokens": 1264,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2409
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 37.63360121300502,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401166",
+            "0x401175",
+            "0x401181"
+          ],
+          "observation": "Allocates 11 bytes with malloc, writes 8 bytes at offset 0, then writes 4 bytes starting at offset 7, totaling exactly 11 bytes within the allocated buffer."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function allocates 11 bytes and writes exactly 11 bytes, preventing a buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "b16052b5f7af6772b56dd2caec4fd9f8b80882e4f9de25f3017bd9f077899a02",
+    "repetition": 1,
+    "request_sha256": "5efaa1b9b90b3f95c4eb57f76556342df3db813549b2f09727686f5dd903d8ff",
+    "run_id": "b16052b5f7af6772b56dd2caec4fd9f8b80882e4f9de25f3017bd9f077899a02-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 2000,
+      "prompt_tokens": 1069,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 3069
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 23.55208472198865,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401175",
+            "0x401181"
+          ],
+          "observation": "Writes 8 bytes to *RBX and 4 bytes to *RBX + 7, totaling 12 bytes into an 11-byte buffer allocated by malloc(0xb), but the writes do not exceed the buffer's capacity as 8+4=12 bytes but the buffer is 11 bytes, however the writes are within the 0-10 indices."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function allocates 11 bytes and writes exactly 11 bytes within the buffer, no overflow occurs.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "b16052b5f7af6772b56dd2caec4fd9f8b80882e4f9de25f3017bd9f077899a02",
+    "repetition": 2,
+    "request_sha256": "14f3396761f1091caaa770ae62aea90ceade3d13866fbb64b950ed3f0979e667",
+    "run_id": "b16052b5f7af6772b56dd2caec4fd9f8b80882e4f9de25f3017bd9f077899a02-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1246,
+      "prompt_tokens": 1069,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2315
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 23.42294697300531,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401161",
+            "0x401166",
+            "0x40116b",
+            "0x401175",
+            "0x401178",
+            "0x401181",
+            "0x401184",
+            "0x401189",
+            "0x40118c",
+            "0x40118d"
+          ],
+          "observation": "The function allocates 11 bytes with malloc(0xb), writes 8 bytes at offset 0 and 4 bytes at offset 7, totaling 12 bytes within the 11-byte buffer without overflow."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function does not exhibit a buffer overflow as writes fit within the allocated buffer size.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "b16052b5f7af6772b56dd2caec4fd9f8b80882e4f9de25f3017bd9f077899a02",
+    "repetition": 3,
+    "request_sha256": "6dd2d8431961b8a8bec22f5b64f00151dffe44e4a6c4d5c393dae9fa020e6b0e",
+    "run_id": "b16052b5f7af6772b56dd2caec4fd9f8b80882e4f9de25f3017bd9f077899a02-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1439,
+      "prompt_tokens": 1069,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2508
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 10.982524071005173,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401153"
+          ],
+          "observation": "Allocates 11 bytes with malloc(0xb)"
+        },
+        {
+          "addresses": [
+            "0x401167"
+          ],
+          "observation": "Writes 8 bytes to *__s, potentially exceeding the 11-byte allocation"
+        },
+        {
+          "addresses": [
+            "0x401170"
+          ],
+          "observation": "Writes 4 bytes to *__s + 7, which combined with prior write exceeds the 11-byte buffer"
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes a total of 12 bytes to a 11-byte buffer allocated with malloc, causing a buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "c39286c3e4b66b6dc53ae383012990de194ed5e8e51392fcaa42db25fbf7d6c9",
+    "repetition": 1,
+    "request_sha256": "df208b68ef8b8b0704343a68db8b66129900f016ba30ff909443e9441f4af853",
+    "run_id": "c39286c3e4b66b6dc53ae383012990de194ed5e8e51392fcaa42db25fbf7d6c9-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 652,
+      "prompt_tokens": 1212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1864
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 10.528009072004352,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "Writes beyond the allocated heap buffer of 11 bytes, causing a heap overflow."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "The function allocates 11 bytes but writes 12 bytes, causing a heap overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "c39286c3e4b66b6dc53ae383012990de194ed5e8e51392fcaa42db25fbf7d6c9",
+    "repetition": 2,
+    "request_sha256": "7c81ebb2f08b5b5512ba7cbefc577452b157aa1029861ec5a244e1f970a721c0",
+    "run_id": "c39286c3e4b66b6dc53ae383012990de194ed5e8e51392fcaa42db25fbf7d6c9-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 624,
+      "prompt_tokens": 1212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1836
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 11.990194258993142,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "Writes beyond the allocated heap memory: writes 8 bytes at *RAX and 4 bytes at RAX+0x7, exceeding the 11-byte allocation."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "The function writes beyond the heap-allocated buffer, causing a CWE-122 heap-based buffer overflow. The writes extend past the allocated 0xb (11 bytes) by one byte.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "c39286c3e4b66b6dc53ae383012990de194ed5e8e51392fcaa42db25fbf7d6c9",
+    "repetition": 3,
+    "request_sha256": "0c96e1d2fa85e4501aa1da47243717b4dcd7c972084d075bb7af155b6383ff00",
+    "run_id": "c39286c3e4b66b6dc53ae383012990de194ed5e8e51392fcaa42db25fbf7d6c9-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 714,
+      "prompt_tokens": 1212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1926
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 17.478611487007583,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [],
+          "observation": "The function allocates 24 bytes on the stack (SUB RSP,0x18) and uses local variables totaling 11 bytes, with no evidence of writes beyond allocated stack space."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function correctly manages stack space and does not exhibit buffer overflow behavior.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "ca341d5a70bff3a98b2c9a1638d83c30e0080c83eeeaa60c10e9a73db0744b17",
+    "repetition": 1,
+    "request_sha256": "45baef668b2b7dc30918cd947910fd44fe3278a9dca4a3eb5a2983cf2526ea0f",
+    "run_id": "ca341d5a70bff3a98b2c9a1638d83c30e0080c83eeeaa60c10e9a73db0744b17-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1071,
+      "prompt_tokens": 996,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2067
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 17.111138826003298,
+    "prediction": {
+      "classification": "uncertain",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401040",
+            "0x401044",
+            "0x40104b",
+            "0x401050",
+            "0x401055",
+            "0x40105f",
+            "0x401064",
+            "0x401066",
+            "0x40106a"
+          ],
+          "observation": "The function allocates 24 bytes on the stack (SUB RSP,0x18) and declares local_13 as a char array of size 7, but Ghidra infers it as 11 bytes. The writes to local_13 and acStack_c may exceed their declared sizes, but the exact source and length of data written are unclear."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "Uncertain due to discrepancies in buffer sizes and unclear data sources for writes.",
+      "uncertainty_reason": "Inferred buffer sizes differ from declared sizes, and the exact data being written isn't fully established from the provided record."
+    },
+    "record_sha256": "ca341d5a70bff3a98b2c9a1638d83c30e0080c83eeeaa60c10e9a73db0744b17",
+    "repetition": 2,
+    "request_sha256": "207fbc9505c39af8bf2549eedd3c996e74d0ad27ff8307865192ac8fc904c2e1",
+    "run_id": "ca341d5a70bff3a98b2c9a1638d83c30e0080c83eeeaa60c10e9a73db0744b17-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1011,
+      "prompt_tokens": 996,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2007
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 11.9418044549966,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401050"
+          ],
+          "observation": "MOV qword ptr [RSP + 0x5], RAX writes 8 bytes to RSP + 0x5, which is beyond the 7-byte local_13 array."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes 8 bytes into a 7-byte stack array, causing a stack-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "ca341d5a70bff3a98b2c9a1638d83c30e0080c83eeeaa60c10e9a73db0744b17",
+    "repetition": 3,
+    "request_sha256": "4e6f539cf8a3bb7b8641026900eabc7deda0a6632aa5b9f2c66b145afb97077d",
+    "run_id": "ca341d5a70bff3a98b2c9a1638d83c30e0080c83eeeaa60c10e9a73db0744b17-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 719,
+      "prompt_tokens": 996,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1715
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 11.425488520006184,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [],
+          "observation": "Function copy_message declares local_13 as char[7] and acStack_c as char[4], both within their respective sizes. Data from sources fit within these bounds."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "No evidence of buffer overflow; all writes are within bounds.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "cee0274ea33bf8a1209db17239a691a965a3b527ad0cf7a48ecb4be812692f09",
+    "repetition": 1,
+    "request_sha256": "2c328940fe423689fefb014227b964f22889b99906ec2b34176a60231552d788",
+    "run_id": "cee0274ea33bf8a1209db17239a691a965a3b527ad0cf7a48ecb4be812692f09-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 668,
+      "prompt_tokens": 1033,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1701
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 11.669248730002437,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x40112e"
+          ],
+          "observation": "MOV qword ptr [RBP + -0xb], RAX writes 8 bytes to local_13, which is a 7-byte array."
+        },
+        {
+          "addresses": [
+            "0x401139"
+          ],
+          "observation": "MOV dword ptr [RBP + -0x4], EAX writes 4 bytes to acStack_c, which is a 4-byte array."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes beyond the bounds of local_13, causing a stack-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "cee0274ea33bf8a1209db17239a691a965a3b527ad0cf7a48ecb4be812692f09",
+    "repetition": 2,
+    "request_sha256": "753c7c973b8bbf12f04314f93d007e610e485a8d26f218f9c3e299ea8edce16f",
+    "run_id": "cee0274ea33bf8a1209db17239a691a965a3b527ad0cf7a48ecb4be812692f09-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 699,
+      "prompt_tokens": 1033,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1732
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 10.608128599997144,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x40112a"
+          ],
+          "observation": "Allocates 16 bytes on the stack for local variables."
+        },
+        {
+          "addresses": [
+            "0x401135",
+            "0x40113f"
+          ],
+          "observation": "Copies data into local variables within their declared sizes."
+        },
+        {
+          "addresses": [
+            "0x401142"
+          ],
+          "observation": "Prepares argument for puts within local_13's capacity."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function copies data into stack variables within their declared sizes, no overflow occurs.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "cee0274ea33bf8a1209db17239a691a965a3b527ad0cf7a48ecb4be812692f09",
+    "repetition": 3,
+    "request_sha256": "09436ec92edad333a7bcc2a809523d7e9f1cc74fd19d80d0d6c72c686f50f6dd",
+    "run_id": "cee0274ea33bf8a1209db17239a691a965a3b527ad0cf7a48ecb4be812692f09-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 631,
+      "prompt_tokens": 1033,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1664
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 33.511115830988274,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.8,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401153",
+            "0x401158"
+          ],
+          "observation": "Writes 12 bytes into a 11-byte stack buffer, causing a buffer overflow."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes beyond the capacity of a stack-allocated buffer, causing a stack-based buffer overflow. The writes exceed the buffer's inferred size of 11 bytes, making it vulnerable to CWE-121.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "d6d1ffc89a3f1b4a99eaadabd21515b70abbd9f66fcd5849b56bfbe93b72bef0",
+    "repetition": 1,
+    "request_sha256": "03872c7ce5029a4585b09a86211b043f11a4033a17059b6c5392dccf6223c534",
+    "run_id": "d6d1ffc89a3f1b4a99eaadabd21515b70abbd9f66fcd5849b56bfbe93b72bef0-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 2069,
+      "prompt_tokens": 959,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 3028
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 22.292372171999887,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401140"
+          ],
+          "observation": "Function allocates 24 bytes on the stack (SUB RSP,0x18)."
+        },
+        {
+          "addresses": [
+            "0x401153",
+            "0x401158"
+          ],
+          "observation": "Writes 8 bytes at RSP+0x6 and 4 bytes at RSP+0xd, totaling 12 bytes within the allocated space."
+        },
+        {
+          "addresses": [
+            "0x401140"
+          ],
+          "observation": "Local variable 'local_12' is inferred as 11 bytes, but stack allocation of 24 bytes suggests sufficient capacity for writes."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "Function writes 12 bytes into a 24-byte stack allocation, within bounds. No evidence of buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "d6d1ffc89a3f1b4a99eaadabd21515b70abbd9f66fcd5849b56bfbe93b72bef0",
+    "repetition": 2,
+    "request_sha256": "9192b0f5f5826ee039012ed2e033d8250ce600737e0084a85697e7df10dd6182",
+    "run_id": "d6d1ffc89a3f1b4a99eaadabd21515b70abbd9f66fcd5849b56bfbe93b72bef0-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1375,
+      "prompt_tokens": 959,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2334
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 39.510370793999755,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401153",
+            "0x401158"
+          ],
+          "observation": "Writes 8 bytes to local_12 at RSP+0x6 and 4 bytes at RSP+0xd, exceeding the declared 11-byte size."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes more bytes into the local_12 array than its declared size, causing a stack-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "d6d1ffc89a3f1b4a99eaadabd21515b70abbd9f66fcd5849b56bfbe93b72bef0",
+    "repetition": 3,
+    "request_sha256": "6be586f7739f7afab08e153db8e03c5d6e7bc0097b51b340342cec10d1538888",
+    "run_id": "d6d1ffc89a3f1b4a99eaadabd21515b70abbd9f66fcd5849b56bfbe93b72bef0-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 2426,
+      "prompt_tokens": 959,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 3385
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 15.62895793399366,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401167"
+          ],
+          "observation": "Writes 8 bytes to __s, which is allocated with malloc(10)."
+        },
+        {
+          "addresses": [
+            "0x401170"
+          ],
+          "observation": "Writes 4 bytes to __s + 7, exceeding the 10-byte allocation."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "Heap-based buffer overflow due to writing beyond the allocated 10-byte buffer.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "d9156910d274b42695a069662707269dbd05128e269a3448980a53299ca02cfa",
+    "repetition": 1,
+    "request_sha256": "0a0fae73a8e2a1d51b84cde6cf45ad13ed94e55a3c48237c2e021d82afd262a3",
+    "run_id": "d9156910d274b42695a069662707269dbd05128e269a3448980a53299ca02cfa-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 940,
+      "prompt_tokens": 1264,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2204
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 10.652686895002262,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "Writes 8 bytes to __s, then 4 bytes to __s + 7, exceeding the 10-byte allocation."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "Heap-based buffer overflow when writing 8 bytes to __s and 4 bytes to __s + 7, exceeding the 10-byte allocation.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "d9156910d274b42695a069662707269dbd05128e269a3448980a53299ca02cfa",
+    "repetition": 2,
+    "request_sha256": "1e2cebd2919f77149908595aa4848e5133b299cdc6ce773104bc625d27f63d31",
+    "run_id": "d9156910d274b42695a069662707269dbd05128e269a3448980a53299ca02cfa-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 635,
+      "prompt_tokens": 1264,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1899
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 9.235101687998394,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "Writes 8 bytes to __s, then 4 bytes to __s + 7, exceeding the 10-byte heap allocation."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "Heap-based buffer overflow when writing beyond the 10-byte allocation.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "d9156910d274b42695a069662707269dbd05128e269a3448980a53299ca02cfa",
+    "repetition": 3,
+    "request_sha256": "1b0f6bd6de899908ebcf15618fefc050c0d268ce0ae6ea2168a1d6608be1528e",
+    "run_id": "d9156910d274b42695a069662707269dbd05128e269a3448980a53299ca02cfa-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 544,
+      "prompt_tokens": 1264,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1808
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 30.238579090990243,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401140"
+          ],
+          "observation": "The function declares a stack array 'local_12' of size 18 bytes and writes 12 bytes into it, staying within bounds."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function writes within the bounds of its stack array, so it is not vulnerable to a buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "dcf063f899f8f768f1ead4d5e6d17edd1b52afaacc882976c9d63cc2253a3941",
+    "repetition": 1,
+    "request_sha256": "9248f86a49b2874e5b6d4060aa3aaf0c0b3fd33960952a54f6453521ff1b4b76",
+    "run_id": "dcf063f899f8f768f1ead4d5e6d17edd1b52afaacc882976c9d63cc2253a3941-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1878,
+      "prompt_tokens": 975,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2853
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 20.10508623899659,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401140"
+          ],
+          "observation": "Function allocates 24 bytes of stack space with SUB RSP,0x18."
+        },
+        {
+          "addresses": [
+            "0x40114e"
+          ],
+          "observation": "LEA RDI,[RSP + 0x6] sets up destination for strncpy within allocated stack space."
+        },
+        {
+          "addresses": [
+            "0x401153"
+          ],
+          "observation": "MOV qword ptr [RSP + 0x6],RAX writes 8 bytes into stack space."
+        },
+        {
+          "addresses": [
+            "0x401158"
+          ],
+          "observation": "MOV dword ptr [RSP + 0xd],0x414141 writes 4 additional bytes, totaling 12 bytes written."
+        },
+        {
+          "addresses": [
+            "0x401160"
+          ],
+          "observation": "puts(local_12) prints the 18-byte buffer, which was written within its capacity."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function writes 12 bytes into a 24-byte stack allocation, well within bounds. No evidence of buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "dcf063f899f8f768f1ead4d5e6d17edd1b52afaacc882976c9d63cc2253a3941",
+    "repetition": 2,
+    "request_sha256": "d108d984bd3bf59224af5b211ff2c54d270cd0be54f8b446ef0ca94e45b8ce81",
+    "run_id": "dcf063f899f8f768f1ead4d5e6d17edd1b52afaacc882976c9d63cc2253a3941-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1237,
+      "prompt_tokens": 975,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2212
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 31.456064810001408,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401153",
+            "0x401158"
+          ],
+          "observation": "Writes 8 bytes to RSP+0x6 and 3 bytes to RSP+0xd, totaling 11 bytes within a 24-byte stack allocation."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function writes 11 bytes into a 24-byte stack allocation without exceeding the buffer's capacity.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "dcf063f899f8f768f1ead4d5e6d17edd1b52afaacc882976c9d63cc2253a3941",
+    "repetition": 3,
+    "request_sha256": "974484a32ae98805af1a86a5bb448d629c316528859f1ad04079c49bf82305ac",
+    "run_id": "dcf063f899f8f768f1ead4d5e6d17edd1b52afaacc882976c9d63cc2253a3941-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1942,
+      "prompt_tokens": 975,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2917
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 11.305426433988032,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401178"
+          ],
+          "observation": "Writes 8 bytes to the allocated buffer at RBX."
+        },
+        {
+          "addresses": [
+            "0x401181"
+          ],
+          "observation": "Writes 4 bytes to RBX + 0x7, exceeding the 10-byte allocation."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "Heap-based buffer overflow due to writing 12 bytes into a 10-byte allocation.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "e01fcaf4e88d48e9e44936535c4d79509fd9fa1f37cc372febe9145e55dff88a",
+    "repetition": 1,
+    "request_sha256": "25821e8c2dfe17e75607bf2878dc5a04b9c0ecff687531ecb2b5e4d0c02c6bef",
+    "run_id": "e01fcaf4e88d48e9e44936535c4d79509fd9fa1f37cc372febe9145e55dff88a-r1",
+    "seed": 1406227738,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 684,
+      "prompt_tokens": 1017,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1701
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 9.988184148998698,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401175"
+          ],
+          "observation": "Writes 8 bytes to __s, which is allocated with 10 bytes, potentially exceeding stack or heap boundaries."
+        },
+        {
+          "addresses": [
+            "0x401181"
+          ],
+          "observation": "Writes 4 bytes to __s + 7, exceeding the 10-byte allocation and causing a heap overflow."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "Heap-based buffer overflow occurs when writing 12 bytes into a 10-byte allocated buffer.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "e01fcaf4e88d48e9e44936535c4d79509fd9fa1f37cc372febe9145e55dff88a",
+    "repetition": 2,
+    "request_sha256": "7d2711a98784c006cadc9de49235937b8ab4a9852087942abc3c39f89bbd7ad8",
+    "run_id": "e01fcaf4e88d48e9e44936535c4d79509fd9fa1f37cc372febe9145e55dff88a-r2",
+    "seed": 1995257104,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 598,
+      "prompt_tokens": 1017,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1615
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 9.088825695987907,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401178"
+          ],
+          "observation": "Writes 8 bytes to the allocated memory at RBX."
+        },
+        {
+          "addresses": [
+            "0x401181"
+          ],
+          "observation": "Writes 4 bytes to RBX + 0x7, exceeding the 10-byte allocation."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "Heap-based buffer overflow due to writing 12 bytes into a 10-byte buffer.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "e01fcaf4e88d48e9e44936535c4d79509fd9fa1f37cc372febe9145e55dff88a",
+    "repetition": 3,
+    "request_sha256": "146fbdc61fb4ee54620fd5ca89fb85ff23106bcb1f920bc5b92e309ebde17ce0",
+    "run_id": "e01fcaf4e88d48e9e44936535c4d79509fd9fa1f37cc372febe9145e55dff88a-r3",
+    "seed": 1887179923,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 537,
+      "prompt_tokens": 1017,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1554
+    }
+  }
+]

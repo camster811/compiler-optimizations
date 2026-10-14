@@ -21,6 +21,12 @@ def load_experiment(path):
     if digest(raw) != frozen_hash:
         raise ValueError("private experiment manifest drift")
     experiment = decode(raw)
+    validate_experiment(experiment, path.parent)
+    return experiment, frozen_hash
+
+
+def validate_experiment(experiment, record_directory):
+    """Validate the matrix and source pairs without publishing any artifacts."""
     Draft202012Validator(load(SCHEMA)).validate(experiment)
     cases = [(r["sample_id"], r["optimization"]) for r in experiment["expected_matrix"]["cases"]]
     if len(cases) != len(set(cases)):
@@ -35,7 +41,7 @@ def load_experiment(path):
     facts = {}
     pair_cwes = {}
     for o in observations:
-        record_path = (path.parent / o["record_path"]).resolve()
+        record_path = (record_directory / o["record_path"]).resolve()
         raw = record_path.read_bytes()
         if digest(raw) != o["record_sha256"]:
             raise ValueError("experiment record content drift")
@@ -49,7 +55,14 @@ def load_experiment(path):
         if o["pair_id"] in pair_cwes and pair_cwes[o["pair_id"]] != o["cwe"]:
             raise ValueError("pair spans multiple CWE labels")
         pair_cwes[o["pair_id"]] = o["cwe"]
-    return experiment, frozen_hash
+    pairs = {}
+    for sample_id, (pair_id, _, ground_truth) in facts.items():
+        pairs.setdefault(pair_id, {})[sample_id] = ground_truth
+    for pair_id, members in sorted(pairs.items()):
+        if len(members) != 2:
+            raise ValueError(f"pair {pair_id} requires exactly two unique source cases; found {len(members)}")
+        if set(members.values()) != {"vulnerable", "not_vulnerable"}:
+            raise ValueError(f"pair {pair_id} requires one vulnerable and one fixed source case")
 
 
 def prepare_experiment(build_manifest, conditions, destination, dataset_id, development_data=True):
@@ -81,7 +94,7 @@ def prepare_experiment(build_manifest, conditions, destination, dataset_id, deve
                   "expected_matrix": {"conditions": sorted(conditions), "cases": [
                       {"sample_id": r["sample_id"], "optimization": r["optimization"]}
                       for r in sorted(cases, key=lambda r: (r["sample_id"], r["optimization"]))]}, "observations": observations}
-    Draft202012Validator(load(SCHEMA)).validate(experiment)
+    validate_experiment(experiment, destination.parent)
     save(destination, experiment, immutable=True)
     write(destination.with_suffix(destination.suffix + ".sha256"), (file_hash(destination) + "\n").encode(), immutable=True)
     _, experiment_hash = load_experiment(destination)

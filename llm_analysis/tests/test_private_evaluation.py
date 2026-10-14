@@ -59,6 +59,14 @@ class PrivateEvaluationTests(unittest.TestCase):
                 self.assertEqual(report["overall"]["selective_accuracy"], 0.5)
                 self.assertEqual(report["overall"]["binary_alert"]["FN"], 8)
                 self.assertIsNone(report["overall"]["binary_alert"]["precision"])
+                self.assertEqual(report["breakdowns"]["ground_truth"]["vulnerable"]["binary_alert"]["FN"], 8)
+                self.assertEqual(report["breakdowns"]["ground_truth"]["not_vulnerable"]["binary_alert"]["TN"], 8)
+                for component in ("TP", "TN", "FP", "FN"):
+                    self.assertEqual(report["overall"]["binary_alert"][component], sum(
+                        group["binary_alert"][component] for group in report["breakdowns"]["ground_truth"].values()))
+                self.assertEqual(report["paired_run_symbol_summary"]["matched_pairs"], 24)
+                self.assertEqual(report["paired_run_symbol_summary"]["agreeing_pairs"], 24)
+                self.assertEqual(report["paired_run_symbol_summary"]["unavailable_pairs"], 0)
                 receipt = evaluator.freeze(campaign, report, experiment)
                 self.assertTrue((root / receipt["archive_path"]).is_file())
                 self.assertEqual(evaluator.freeze(campaign, report, experiment), receipt)
@@ -85,6 +93,7 @@ class PrivateEvaluationTests(unittest.TestCase):
                 self.assertFalse(final_report["development_data"])
                 self.assertEqual(final_report["overall"]["observations"], 8)
                 self.assertEqual(final_report["symbol_comparisons"], [])
+                self.assertEqual(final_report["paired_run_symbol_comparisons"], [])
                 final_receipt = evaluator.freeze(final_campaign, final_report, final_experiment)
                 self.assertNotEqual(receipt["campaign_id"], final_receipt["campaign_id"])
                 self.assertEqual(receipt["method_id"], final_receipt["method_id"])
