@@ -223,4 +223,7 @@ ghidra_12.1.4_PUBLIC/
 ghidra/logs/
 
 # Local LLM raw evidence and backend process logs; archive with campaign checksums.
-llm_analysis/output/
+llm_analysis/output/*
+!llm_analysis/output/releases/
+llm_analysis/output/releases/*
+!llm_analysis/output/releases/*.tar.gz

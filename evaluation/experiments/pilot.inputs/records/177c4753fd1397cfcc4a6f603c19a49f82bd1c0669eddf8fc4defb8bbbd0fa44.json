@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0001",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401126",
+    "entry": "0x401126",
+    "size_bytes": 47,
+    "instruction_count": 13,
+    "basic_block_count": 1,
+    "body_ranges": [
+      [
+        "0x401126",
+        "0x401155"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid FUN_00401126(void)\n\n{\n  undefined8 unaff_RBP;\n  char local_12 [11];\n  undefined7 uStack_7;\n  \n  uStack_7 = (undefined7)((ulong)unaff_RBP >> 8);\n  builtin_strncpy(local_12,\"AAAAAAAAAA\",0xb);\n  puts(local_12);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401126: PUSH RBP",
+    "0x401127: MOV RBP,RSP",
+    "0x40112a: SUB RSP,0x10",
+    "0x40112e: LEA RAX,[RBP + -0xa]",
+    "0x401132: MOV RDX,0x4141414141414141",
+    "0x40113c: MOV qword ptr [RAX],RDX",
+    "0x40113f: MOV dword ptr [RAX + 0x7],0x414141",
+    "0x401146: LEA RAX,[RBP + -0xa]",
+    "0x40114a: MOV RDI,RAX",
+    "0x40114d: CALL 0x00401030",
+    "0x401152: NOP",
+    "0x401153: LEAVE",
+    "0x401154: RET"
+  ],
+  "calls": [
+    "puts"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "16",
+    "4702111234474983745",
+    "4276545"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_12",
+      "stack_offset": -18,
+      "size_bytes": 11,
+      "data_type": "undefined1[11]"
+    }
+  ],
+  "imports": [
+    "puts"
+  ]
+}

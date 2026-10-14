@@ -1,0 +1,1377 @@
+[
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 13.305833770005847,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401126",
+            "0x40112a",
+            "0x40112e",
+            "0x401132",
+            "0x40113c",
+            "0x40113f",
+            "0x401146",
+            "0x40114a",
+            "0x40114d",
+            "0x401152",
+            "0x401153",
+            "0x401154"
+          ],
+          "observation": "The function allocates 16 bytes on the stack, but writes exactly 11 bytes into a local_12 array of size 11, with no overflow beyond the array's bounds."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function does not exhibit a buffer overflow vulnerability as the writes to local_12 stay within its allocated capacity of 11 bytes.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "177c4753fd1397cfcc4a6f603c19a49f82bd1c0669eddf8fc4defb8bbbd0fa44",
+    "repetition": 1,
+    "request_sha256": "584aaad8fcbb120069a0af153de2f3a074c9ea00c6c80b4b4e45255897c084ce",
+    "run_id": "177c4753fd1397cfcc4a6f603c19a49f82bd1c0669eddf8fc4defb8bbbd0fa44-r1",
+    "seed": 919112663,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 796,
+      "prompt_tokens": 1089,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1885
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 10.49440134500037,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x40112e",
+            "0x401132",
+            "0x40113f",
+            "0x401146"
+          ],
+          "observation": "The function writes 0xb (11) bytes to local_12, which is declared as size 11. The LEA RAX,[RBP -0xa] points to local_12, and the subsequent moves write beyond its capacity."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes beyond the capacity of the local_12 array, causing a stack-based buffer overflow. This is a clear case of CWE-121, with high confidence in the assessment.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "177c4753fd1397cfcc4a6f603c19a49f82bd1c0669eddf8fc4defb8bbbd0fa44",
+    "repetition": 2,
+    "request_sha256": "ed23c7539d30efecb7403410a1b180d54f7c87c87cec294b9f627927205f3167",
+    "run_id": "177c4753fd1397cfcc4a6f603c19a49f82bd1c0669eddf8fc4defb8bbbd0fa44-r2",
+    "seed": 619455494,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 586,
+      "prompt_tokens": 1089,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1675
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 45.57934182300232,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "addresses": [
+            "0x40113c",
+            "0x40113f"
+          ],
+          "observation": "Writes 8 bytes to local_12[0] and 4 bytes to local_12[7], exceeding the 11-byte buffer size."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes beyond the bounds of the local_12 array, causing a stack-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "177c4753fd1397cfcc4a6f603c19a49f82bd1c0669eddf8fc4defb8bbbd0fa44",
+    "repetition": 3,
+    "request_sha256": "bb58877459e44c1024dc8a5cd830c155fe0763c0750238b8deffc0175bb18c77",
+    "run_id": "177c4753fd1397cfcc4a6f603c19a49f82bd1c0669eddf8fc4defb8bbbd0fa44-r3",
+    "seed": 357359068,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 2794,
+      "prompt_tokens": 1089,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 3883
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 10.829692158004036,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401050"
+          ],
+          "observation": "MOV qword ptr [RSP + 0x5], RAX writes 8 bytes into a 7-byte local_13 buffer, causing a stack-based buffer overflow."
+        },
+        {
+          "addresses": [
+            "0x401040"
+          ],
+          "observation": "SUB RSP,0x18 allocates 24 bytes for the stack frame, but the write at 0x401050 exceeds the 7-byte local_13 buffer."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes 8 bytes into a 7-byte buffer on the stack, causing a stack-based buffer overflow (CWE-121).",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "39b90320b436ad044ab60695fddbda8a11922bc40a42b6f93c50fccba7d7fd52",
+    "repetition": 1,
+    "request_sha256": "76643ff14778d20940d8819612814cc3a06d145e721de7658fd3dc86f475eaa0",
+    "run_id": "39b90320b436ad044ab60695fddbda8a11922bc40a42b6f93c50fccba7d7fd52-r1",
+    "seed": 375497475,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 638,
+      "prompt_tokens": 1038,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1676
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 21.829390400002012,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401040",
+            "0x401044",
+            "0x40104b",
+            "0x401050",
+            "0x401055",
+            "0x40105b",
+            "0x401064",
+            "0x401066",
+            "0x40106a"
+          ],
+          "observation": "The function allocates 24 bytes on the stack (SUB RSP,0x18) and writes 8 bytes at RSP+5 and 4 bytes at RSP+12, totaling 12 bytes within the allocated space. Local variables are within their declared capacities."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function does not exhibit a buffer overflow as all writes are within the allocated stack space.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "39b90320b436ad044ab60695fddbda8a11922bc40a42b6f93c50fccba7d7fd52",
+    "repetition": 2,
+    "request_sha256": "a345e4e54f97abb5defbd79ac8c884f52c2531185fc215751286b3d79f760492",
+    "run_id": "39b90320b436ad044ab60695fddbda8a11922bc40a42b6f93c50fccba7d7fd52-r2",
+    "seed": 1904537279,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1175,
+      "prompt_tokens": 1038,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2213
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 17.040327358001377,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x40104b"
+          ],
+          "observation": "LEA RDI,[RSP + 0x5] suggests writing to RSP + 0x5, which is within the local_13 array of size 7 (bytes 0x5 to 0xd)."
+        },
+        {
+          "addresses": [
+            "0x401050"
+          ],
+          "observation": "MOV qword ptr [RSP + 0x5],RAX writes 8 bytes into a 7-byte local_13 array, causing a stack-based buffer overflow."
+        },
+        {
+          "addresses": [
+            "0x401055"
+          ],
+          "observation": "MOV dword ptr [RSP + 0xc],EAX writes 4 bytes into acStack_c, which may overlap with local_13's bounds."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes 8 bytes into a 7-byte local_13 array, causing a stack-based buffer overflow (CWE-121).",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "39b90320b436ad044ab60695fddbda8a11922bc40a42b6f93c50fccba7d7fd52",
+    "repetition": 3,
+    "request_sha256": "608f2070681a3f29d18afc89a64c99eb360e669b4a8c68e21d0d90f884a44c8b",
+    "run_id": "39b90320b436ad044ab60695fddbda8a11922bc40a42b6f93c50fccba7d7fd52-r3",
+    "seed": 770344449,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1041,
+      "prompt_tokens": 1038,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2079
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 11.009107664998737,
+    "prediction": null,
+    "record_sha256": "4f828099ca2538b9a98b72e095649fed881f565fb11a2606e580c6851666fa4c",
+    "repetition": 1,
+    "request_sha256": "26bd3716ce5e2c9ddded2c9cc81758362e9ea37691d6dba006c23f43de34210b",
+    "run_id": "4f828099ca2538b9a98b72e095649fed881f565fb11a2606e580c6851666fa4c-r1",
+    "seed": 1850951027,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 663,
+      "prompt_tokens": 1017,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1680
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 24.884316645999206,
+    "prediction": null,
+    "record_sha256": "4f828099ca2538b9a98b72e095649fed881f565fb11a2606e580c6851666fa4c",
+    "repetition": 2,
+    "request_sha256": "33d79fb84a86b27d50adc8fdbd4bf586e09509947b6452527da07cf630144777",
+    "run_id": "4f828099ca2538b9a98b72e095649fed881f565fb11a2606e580c6851666fa4c-r2",
+    "seed": 861972202,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 1494,
+      "prompt_tokens": 1017,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2511
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 16.55592943499505,
+    "prediction": null,
+    "record_sha256": "4f828099ca2538b9a98b72e095649fed881f565fb11a2606e580c6851666fa4c",
+    "repetition": 3,
+    "request_sha256": "33b3559920aad0bd2654709fb39f0cf4183da7d9a65407b6814e4881997fbd75",
+    "run_id": "4f828099ca2538b9a98b72e095649fed881f565fb11a2606e580c6851666fa4c-r3",
+    "seed": 1871013225,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 1010,
+      "prompt_tokens": 1017,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2027
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 12.134899110998958,
+    "prediction": null,
+    "record_sha256": "6aaaa25f81a4d207e96bbfe1bc12aec6c04fe6894ef137a5f3e9cd84b226fdbe",
+    "repetition": 1,
+    "request_sha256": "eb2e053986db7abf2eb6cfe8e808ebf344caef22d1e811e6b6c8c5633ffc48fe",
+    "run_id": "6aaaa25f81a4d207e96bbfe1bc12aec6c04fe6894ef137a5f3e9cd84b226fdbe-r1",
+    "seed": 493358458,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 683,
+      "prompt_tokens": 1212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1895
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 12.331870615002117,
+    "prediction": null,
+    "record_sha256": "6aaaa25f81a4d207e96bbfe1bc12aec6c04fe6894ef137a5f3e9cd84b226fdbe",
+    "repetition": 2,
+    "request_sha256": "4f4a85843dbee35ae6cb92423a369d4374df91cfdc7857278c3c656cd6fa60e6",
+    "run_id": "6aaaa25f81a4d207e96bbfe1bc12aec6c04fe6894ef137a5f3e9cd84b226fdbe-r2",
+    "seed": 513477207,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 703,
+      "prompt_tokens": 1212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1915
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 11.549168119003298,
+    "prediction": null,
+    "record_sha256": "6aaaa25f81a4d207e96bbfe1bc12aec6c04fe6894ef137a5f3e9cd84b226fdbe",
+    "repetition": 3,
+    "request_sha256": "2d829f8495a082a38d47f9d50a49f4c888f47804768af94645f9050c35664737",
+    "run_id": "6aaaa25f81a4d207e96bbfe1bc12aec6c04fe6894ef137a5f3e9cd84b226fdbe-r3",
+    "seed": 1286747021,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 691,
+      "prompt_tokens": 1212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1903
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 12.439764069000375,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401178",
+            "0x401181"
+          ],
+          "observation": "Writes 8 bytes to __s at 0x401178, then writes 4 bytes to __s + 7 at 0x401181, exceeding the 10-byte allocation from malloc."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "The function writes beyond the 10-byte heap allocation, causing a heap-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "797f217f8b5fe246129ad1756b5370ba0540e7be0864b5df174394ce021e6755",
+    "repetition": 1,
+    "request_sha256": "d6c97d8d1388b3e9ebe2fc8ad4e71e440dab53689a55d2ada726a59950b0541a",
+    "run_id": "797f217f8b5fe246129ad1756b5370ba0540e7be0864b5df174394ce021e6755-r1",
+    "seed": 862411734,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 755,
+      "prompt_tokens": 1069,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1824
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 8.461641449001036,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401166",
+            "0x401175",
+            "0x401181"
+          ],
+          "observation": "Heap allocation of 10 bytes followed by writes of 8 bytes and 4 bytes at offset 0 and 7, respectively, within the allocated space."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function allocates 10 bytes on the heap and writes 8 bytes followed by 4 bytes starting at offset 7, totaling 8 bytes within the allocated space. No overflow occurs as writes stay within bounds.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "797f217f8b5fe246129ad1756b5370ba0540e7be0864b5df174394ce021e6755",
+    "repetition": 2,
+    "request_sha256": "5a19835d9060a7ca02f1b416e8c3c2cb4a7a0b04adf3714027072e64485f5470",
+    "run_id": "797f217f8b5fe246129ad1756b5370ba0540e7be0864b5df174394ce021e6755-r2",
+    "seed": 565110072,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 481,
+      "prompt_tokens": 1069,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1550
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 11.10460534899903,
+    "prediction": null,
+    "record_sha256": "797f217f8b5fe246129ad1756b5370ba0540e7be0864b5df174394ce021e6755",
+    "repetition": 3,
+    "request_sha256": "26e7b8629c3e9ac770cab1881231d5ad1f8bdda0867cc4249c8c98ce553c317e",
+    "run_id": "797f217f8b5fe246129ad1756b5370ba0540e7be0864b5df174394ce021e6755-r3",
+    "seed": 490469690,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 659,
+      "prompt_tokens": 1069,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1728
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 14.71957729398855,
+    "prediction": null,
+    "record_sha256": "997cdc43fd6c1f59e6359196b1c1f67bac1aaf8d04f3b5f8209691742eec37a4",
+    "repetition": 1,
+    "request_sha256": "dd474be8679a237917861af2e6ee71a15ddd2c4e5a9a7013d607e541e989ee35",
+    "run_id": "997cdc43fd6c1f59e6359196b1c1f67bac1aaf8d04f3b5f8209691742eec37a4-r1",
+    "seed": 20675886,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 893,
+      "prompt_tokens": 1073,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1966
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 15.13838494499214,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401132",
+            "0x40113f"
+          ],
+          "observation": "The function writes 8 bytes to local_12 at 0x401132 and an additional 4 bytes starting at RAX + 0x7 at 0x40113f, exceeding the 11-byte capacity of local_12."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes beyond the 11-byte capacity of local_12, causing a stack-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "997cdc43fd6c1f59e6359196b1c1f67bac1aaf8d04f3b5f8209691742eec37a4",
+    "repetition": 2,
+    "request_sha256": "1a96cbe6b965e5075fb25806f7a5777185f9f1d02029acbd19a4b28dc748fc94",
+    "run_id": "997cdc43fd6c1f59e6359196b1c1f67bac1aaf8d04f3b5f8209691742eec37a4-r2",
+    "seed": 1387111834,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 922,
+      "prompt_tokens": 1073,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1995
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 34.716522504997556,
+    "prediction": null,
+    "record_sha256": "997cdc43fd6c1f59e6359196b1c1f67bac1aaf8d04f3b5f8209691742eec37a4",
+    "repetition": 3,
+    "request_sha256": "e80e9213a54e1308c318fb63ffb79f315c031015fabfe86a6e07f0dfe2c8d194",
+    "run_id": "997cdc43fd6c1f59e6359196b1c1f67bac1aaf8d04f3b5f8209691742eec37a4-r3",
+    "seed": 836538174,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 2111,
+      "prompt_tokens": 1073,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 3184
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 15.090108074000455,
+    "prediction": null,
+    "record_sha256": "9bcde65df137c666bb2a3d3820a5091412bfc7f4139912a7d74de1baa739d0de",
+    "repetition": 1,
+    "request_sha256": "87740586f3be81cb44b9051ad6e19115531dd300df136f6398e73590f35d6812",
+    "run_id": "9bcde65df137c666bb2a3d3820a5091412bfc7f4139912a7d74de1baa739d0de-r1",
+    "seed": 969410797,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 917,
+      "prompt_tokens": 1073,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1990
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 12.663003914,
+    "prediction": null,
+    "record_sha256": "9bcde65df137c666bb2a3d3820a5091412bfc7f4139912a7d74de1baa739d0de",
+    "repetition": 2,
+    "request_sha256": "255da94a253a80ae4bb4bc65082d56551ef1a3d16028f1aacd21666febc2c938",
+    "run_id": "9bcde65df137c666bb2a3d3820a5091412bfc7f4139912a7d74de1baa739d0de-r2",
+    "seed": 1845005184,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 751,
+      "prompt_tokens": 1073,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1824
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 17.995671440992737,
+    "prediction": null,
+    "record_sha256": "9bcde65df137c666bb2a3d3820a5091412bfc7f4139912a7d74de1baa739d0de",
+    "repetition": 3,
+    "request_sha256": "14bb9542bdb2e762d209c444080ce2482e6d8c7bb8cd38c63ffc579fa2fecba2",
+    "run_id": "9bcde65df137c666bb2a3d3820a5091412bfc7f4139912a7d74de1baa739d0de-r3",
+    "seed": 1733050753,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 1097,
+      "prompt_tokens": 1073,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2170
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 10.112977533004596,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "Heap allocation of 11 bytes with writes of 8 and 4 bytes within the allocated space."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function allocates 11 bytes on the heap and writes 8 and 4 bytes within the allocated space, with no overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "a4a439216b2cd257f9f60b7e6fecd0e90b4fd42f46c0bd6135b93b0e21ef9e4d",
+    "repetition": 1,
+    "request_sha256": "21b118ff8669c0d0d50c9e4a2b64be73399167e3b8a1249f0cdeccf5947e2625",
+    "run_id": "a4a439216b2cd257f9f60b7e6fecd0e90b4fd42f46c0bd6135b93b0e21ef9e4d-r1",
+    "seed": 1287231584,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 588,
+      "prompt_tokens": 1264,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1852
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 30.206344724007067,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "Writes beyond allocated heap buffer: writes 8 bytes to __s and 4 bytes to __s+7 in a 11-byte buffer."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "Heap-based buffer overflow due to excessive writes exceeding allocated size.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "a4a439216b2cd257f9f60b7e6fecd0e90b4fd42f46c0bd6135b93b0e21ef9e4d",
+    "repetition": 2,
+    "request_sha256": "320d97ec7695456045af2dd2f734ef1db2261f34aab20865839ed6f568424257",
+    "run_id": "a4a439216b2cd257f9f60b7e6fecd0e90b4fd42f46c0bd6135b93b0e21ef9e4d-r2",
+    "seed": 1521928256,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1836,
+      "prompt_tokens": 1264,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 3100
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 12.71497672899568,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "Writes to the heap-allocated memory at __s are within the 11-byte allocation: first 8 bytes written at offset 0, then 4 bytes starting at offset 7, totaling 11 bytes."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function allocates 11 bytes, writes 8 bytes, then writes 4 bytes starting at offset 7, totaling exactly 11 bytes without overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "a4a439216b2cd257f9f60b7e6fecd0e90b4fd42f46c0bd6135b93b0e21ef9e4d",
+    "repetition": 3,
+    "request_sha256": "e3dbab4984c11c37d50bb2943d75522c523319dde65c871c6cab97634dbc70da",
+    "run_id": "a4a439216b2cd257f9f60b7e6fecd0e90b4fd42f46c0bd6135b93b0e21ef9e4d-r3",
+    "seed": 1839270087,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 754,
+      "prompt_tokens": 1264,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2018
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 11.492138082001475,
+    "prediction": null,
+    "record_sha256": "b16052b5f7af6772b56dd2caec4fd9f8b80882e4f9de25f3017bd9f077899a02",
+    "repetition": 1,
+    "request_sha256": "ab2ef228476d1c3d671b5e280810134537d1082659097ea5d7ab23764f123c6c",
+    "run_id": "b16052b5f7af6772b56dd2caec4fd9f8b80882e4f9de25f3017bd9f077899a02-r1",
+    "seed": 935378374,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 690,
+      "prompt_tokens": 1069,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1759
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 18.6811192890018,
+    "prediction": null,
+    "record_sha256": "b16052b5f7af6772b56dd2caec4fd9f8b80882e4f9de25f3017bd9f077899a02",
+    "repetition": 2,
+    "request_sha256": "2ad0dd75499abbeca7aa290d7e1c9cd2c627860fe29668ccb80f231beb35fcf1",
+    "run_id": "b16052b5f7af6772b56dd2caec4fd9f8b80882e4f9de25f3017bd9f077899a02-r2",
+    "seed": 484191920,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 1081,
+      "prompt_tokens": 1069,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2150
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 10.79358347300149,
+    "prediction": null,
+    "record_sha256": "b16052b5f7af6772b56dd2caec4fd9f8b80882e4f9de25f3017bd9f077899a02",
+    "repetition": 3,
+    "request_sha256": "ea65cc2331dda307f07b90cd9659af1e91b8098cd99cf019f0649bf2271f1004",
+    "run_id": "b16052b5f7af6772b56dd2caec4fd9f8b80882e4f9de25f3017bd9f077899a02-r3",
+    "seed": 1684020163,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 604,
+      "prompt_tokens": 1069,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1673
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 10.68462489200465,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401158",
+            "0x401160",
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "Allocates 11 bytes with malloc(0xb), writes 8 bytes at offset 0 and 4 bytes at offset 7 within the allocated space, fitting within the 11-byte allocation."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function allocates 11 bytes and writes exactly 12 bytes within the buffer, with writes not exceeding the allocated size. No overflow occurs.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "c39286c3e4b66b6dc53ae383012990de194ed5e8e51392fcaa42db25fbf7d6c9",
+    "repetition": 1,
+    "request_sha256": "09ad31c94c82361d306878074e33894984d911e792a1f2e8e6a0287474a6eb29",
+    "run_id": "c39286c3e4b66b6dc53ae383012990de194ed5e8e51392fcaa42db25fbf7d6c9-r1",
+    "seed": 154182216,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 633,
+      "prompt_tokens": 1212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1845
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 25.347352544005844,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401158",
+            "0x401160",
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "The function allocates 11 bytes (0xb) and writes 12 bytes (8 bytes at offset 0 and 4 bytes at offset 7), but the writes do not exceed the allocated buffer size as they overlap within the 11-byte allocation."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function does not exhibit a buffer overflow as the writes stay within the allocated heap memory bounds.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "c39286c3e4b66b6dc53ae383012990de194ed5e8e51392fcaa42db25fbf7d6c9",
+    "repetition": 2,
+    "request_sha256": "5248160fd550e0b0c473873984977d0d5d72d4441a2e8a8bc92bbe7505ee2739",
+    "run_id": "c39286c3e4b66b6dc53ae383012990de194ed5e8e51392fcaa42db25fbf7d6c9-r2",
+    "seed": 938776648,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1549,
+      "prompt_tokens": 1212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2761
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "'uncertainty_reason' is a required property",
+    "finish_reason": "stop",
+    "latency_seconds": 7.811514208005974,
+    "prediction": null,
+    "record_sha256": "c39286c3e4b66b6dc53ae383012990de194ed5e8e51392fcaa42db25fbf7d6c9",
+    "repetition": 3,
+    "request_sha256": "9475f968a43cf285c9cd61d2cf2ebecedb471e633306a3de2719f01f9b8236fd",
+    "run_id": "c39286c3e4b66b6dc53ae383012990de194ed5e8e51392fcaa42db25fbf7d6c9-r3",
+    "seed": 2021750636,
+    "status": "schema_invalid",
+    "usage": {
+      "completion_tokens": 453,
+      "prompt_tokens": 1212,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1665
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 8.816978561008,
+    "prediction": null,
+    "record_sha256": "ca341d5a70bff3a98b2c9a1638d83c30e0080c83eeeaa60c10e9a73db0744b17",
+    "repetition": 1,
+    "request_sha256": "e7792bd5bdf6790ab84c3d0051a2071cf4d299c59ab40a064daa12ff25e17adb",
+    "run_id": "ca341d5a70bff3a98b2c9a1638d83c30e0080c83eeeaa60c10e9a73db0744b17-r1",
+    "seed": 78796104,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 521,
+      "prompt_tokens": 996,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1517
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 10.722910380005487,
+    "prediction": null,
+    "record_sha256": "ca341d5a70bff3a98b2c9a1638d83c30e0080c83eeeaa60c10e9a73db0744b17",
+    "repetition": 2,
+    "request_sha256": "2c0272ccd34183b2005646a3f2cb42988703bb3ba84ca0e8ef109ec6e6ad42ef",
+    "run_id": "ca341d5a70bff3a98b2c9a1638d83c30e0080c83eeeaa60c10e9a73db0744b17-r2",
+    "seed": 2128393054,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 644,
+      "prompt_tokens": 996,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1640
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 20.95937935600523,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401050"
+          ],
+          "observation": "MOV qword ptr [RSP + 0x5], RAX writes 8 bytes to a 7-byte local_13 array, causing a stack-based buffer overflow."
+        },
+        {
+          "addresses": [
+            "0x40104b"
+          ],
+          "observation": "LEA RDI, [RSP + 0x5] sets up the address for the overflow write."
+        },
+        {
+          "addresses": [
+            "0x401040"
+          ],
+          "observation": "SUB RSP, 0x18 allocates 24 bytes, but local_13 is only 7 bytes, leading to an overflow when writing 8 bytes."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes 8 bytes into a 7-byte local array, causing a stack-based buffer overflow (CWE-121).",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "ca341d5a70bff3a98b2c9a1638d83c30e0080c83eeeaa60c10e9a73db0744b17",
+    "repetition": 3,
+    "request_sha256": "3f95ddff4551d8228d7b1da88cda537fcde69ca8974d33cfb3a9cc4c37ce28dd",
+    "run_id": "ca341d5a70bff3a98b2c9a1638d83c30e0080c83eeeaa60c10e9a73db0744b17-r3",
+    "seed": 334523818,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1286,
+      "prompt_tokens": 996,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2282
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 14.1624709579919,
+    "prediction": null,
+    "record_sha256": "cee0274ea33bf8a1209db17239a691a965a3b527ad0cf7a48ecb4be812692f09",
+    "repetition": 1,
+    "request_sha256": "6372e664d4c6a0895879bfc919e5df31a9a45a4714c067896d3d12770eacae08",
+    "run_id": "cee0274ea33bf8a1209db17239a691a965a3b527ad0cf7a48ecb4be812692f09-r1",
+    "seed": 743013788,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 848,
+      "prompt_tokens": 1033,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1881
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 10.146649213987985,
+    "prediction": null,
+    "record_sha256": "cee0274ea33bf8a1209db17239a691a965a3b527ad0cf7a48ecb4be812692f09",
+    "repetition": 2,
+    "request_sha256": "c28b3fee68512afdd0b1c4b3c4978f177a24e7dffada00b94943a99b01fc97d7",
+    "run_id": "cee0274ea33bf8a1209db17239a691a965a3b527ad0cf7a48ecb4be812692f09-r2",
+    "seed": 1124738803,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 602,
+      "prompt_tokens": 1033,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1635
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 24.028969115999644,
+    "prediction": null,
+    "record_sha256": "cee0274ea33bf8a1209db17239a691a965a3b527ad0cf7a48ecb4be812692f09",
+    "repetition": 3,
+    "request_sha256": "3f1b64deeffa5d05f07583fa0c7a060b3b7008db569efcca7019448328fa9090",
+    "run_id": "cee0274ea33bf8a1209db17239a691a965a3b527ad0cf7a48ecb4be812692f09-r3",
+    "seed": 814330527,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 1474,
+      "prompt_tokens": 1033,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2507
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 43.62826818499889,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401153",
+            "0x401158"
+          ],
+          "observation": "Writes 12 bytes into an 18-byte local array, within bounds."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function writes 12 bytes into an 18-byte stack array, which is within capacity, so no overflow occurs.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "d6d1ffc89a3f1b4a99eaadabd21515b70abbd9f66fcd5849b56bfbe93b72bef0",
+    "repetition": 1,
+    "request_sha256": "8443785dcf1a9e0ae7b810fe773609cb77d6383aeaa69c75e51ed892bfaf05ff",
+    "run_id": "d6d1ffc89a3f1b4a99eaadabd21515b70abbd9f66fcd5849b56bfbe93b72bef0-r1",
+    "seed": 755310768,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 2668,
+      "prompt_tokens": 959,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 3627
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 14.334658923995448,
+    "prediction": null,
+    "record_sha256": "d6d1ffc89a3f1b4a99eaadabd21515b70abbd9f66fcd5849b56bfbe93b72bef0",
+    "repetition": 2,
+    "request_sha256": "f2dab98b2d63fa2fd3cc1fedae79c790df4555a34c50ef19addc5e848deef3f5",
+    "run_id": "d6d1ffc89a3f1b4a99eaadabd21515b70abbd9f66fcd5849b56bfbe93b72bef0-r2",
+    "seed": 94927073,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 866,
+      "prompt_tokens": 959,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1825
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 19.041177381994203,
+    "prediction": {
+      "classification": "not_vulnerable",
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401140",
+            "0x40114a",
+            "0x401153",
+            "0x401158",
+            "0x401160",
+            "0x401165",
+            "0x401169"
+          ],
+          "observation": "The function allocates 24 bytes on the stack, writes 11 bytes into a local array of size 11, and calls puts. No writes exceed the stack allocation, and the heap is not involved."
+        }
+      ],
+      "predicted_cwe": null,
+      "summary": "The function writes within the allocated stack space and does not perform any heap operations, thus it is not vulnerable to buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "d6d1ffc89a3f1b4a99eaadabd21515b70abbd9f66fcd5849b56bfbe93b72bef0",
+    "repetition": 3,
+    "request_sha256": "1f3e0f77c8f56e7ca190487cf99afb8c16571b04327ee8120d894f32f6375bc7",
+    "run_id": "d6d1ffc89a3f1b4a99eaadabd21515b70abbd9f66fcd5849b56bfbe93b72bef0-r3",
+    "seed": 913188265,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 1173,
+      "prompt_tokens": 959,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2132
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 8.94167151900183,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "Writes beyond the 10-byte buffer allocated by malloc(10), with writes at offsets 0 and 7, exceeding the buffer's capacity."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "The function writes beyond the 10-byte buffer, causing a heap-based buffer overflow. The writes extend beyond the allocated memory, leading to potential data corruption or memory exposure. High confidence due to clear evidence of out-of-bounds writes.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "d9156910d274b42695a069662707269dbd05128e269a3448980a53299ca02cfa",
+    "repetition": 1,
+    "request_sha256": "5c4683e1b936515266fb014240df02280f74d1db80a82f81e5ad306549875966",
+    "run_id": "d9156910d274b42695a069662707269dbd05128e269a3448980a53299ca02cfa-r1",
+    "seed": 1283035448,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 525,
+      "prompt_tokens": 1264,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1789
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 11.565511030989,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401160",
+            "0x401167",
+            "0x401170"
+          ],
+          "observation": "Heap allocation of 10 bytes followed by writes exceeding the buffer size. Writes at RAX (start) and RAX+7 (offset 7) with 8 and 4 bytes respectively, totaling 12 bytes written beyond the 10-byte allocation."
+        }
+      ],
+      "predicted_cwe": "CWE-122",
+      "summary": "The function allocates 10 bytes but writes 12 bytes, causing a heap-based buffer overflow.",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "d9156910d274b42695a069662707269dbd05128e269a3448980a53299ca02cfa",
+    "repetition": 2,
+    "request_sha256": "2a52ae3d33e72d1cdad1a1b46764c70fe1bfb08b762c9334d323f4d3a6d52d2f",
+    "run_id": "d9156910d274b42695a069662707269dbd05128e269a3448980a53299ca02cfa-r2",
+    "seed": 1989533722,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 694,
+      "prompt_tokens": 1264,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1958
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 8.76616740800091,
+    "prediction": null,
+    "record_sha256": "d9156910d274b42695a069662707269dbd05128e269a3448980a53299ca02cfa",
+    "repetition": 3,
+    "request_sha256": "e45ce4c5e1d2b7a47615dc7cff87b819194832e7457ddc932af8cde0327624d7",
+    "run_id": "d9156910d274b42695a069662707269dbd05128e269a3448980a53299ca02cfa-r3",
+    "seed": 1572281356,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 506,
+      "prompt_tokens": 1264,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1770
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 17.839552296005422,
+    "prediction": null,
+    "record_sha256": "dcf063f899f8f768f1ead4d5e6d17edd1b52afaacc882976c9d63cc2253a3941",
+    "repetition": 1,
+    "request_sha256": "b07caafe2ef09b0557416b0f5fd8d0ac6e793bb23d8983b4ae4eff41e07be16a",
+    "run_id": "dcf063f899f8f768f1ead4d5e6d17edd1b52afaacc882976c9d63cc2253a3941-r1",
+    "seed": 2133256044,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 1099,
+      "prompt_tokens": 975,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 2074
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": null,
+    "finish_reason": "stop",
+    "latency_seconds": 13.465816803000052,
+    "prediction": {
+      "classification": "vulnerable",
+      "confidence": 1.0,
+      "evidence": [
+        {
+          "addresses": [
+            "0x401140",
+            "0x40114e",
+            "0x401153",
+            "0x401158",
+            "0x401160",
+            "0x401165",
+            "0x401169"
+          ],
+          "observation": "The function writes 12 bytes into a stack buffer 'local_12' of size 11, causing a stack-based buffer overflow."
+        }
+      ],
+      "predicted_cwe": "CWE-121",
+      "summary": "The function writes more bytes than the buffer's capacity, leading to a stack-based buffer overflow (CWE-121).",
+      "uncertainty_reason": null
+    },
+    "record_sha256": "dcf063f899f8f768f1ead4d5e6d17edd1b52afaacc882976c9d63cc2253a3941",
+    "repetition": 2,
+    "request_sha256": "ea51a21e4bea896eee62a856c0097eb0bb1420e76128d4052cc992418243ddea",
+    "run_id": "dcf063f899f8f768f1ead4d5e6d17edd1b52afaacc882976c9d63cc2253a3941-r2",
+    "seed": 75486384,
+    "status": "valid",
+    "usage": {
+      "completion_tokens": 816,
+      "prompt_tokens": 975,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1791
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 15.779445164997014,
+    "prediction": null,
+    "record_sha256": "dcf063f899f8f768f1ead4d5e6d17edd1b52afaacc882976c9d63cc2253a3941",
+    "repetition": 3,
+    "request_sha256": "448b4e17a958b8fa0ab49e34c278ecea632ad9c2cebb72feea5a11aa9b3e34a3",
+    "run_id": "dcf063f899f8f768f1ead4d5e6d17edd1b52afaacc882976c9d63cc2253a3941-r3",
+    "seed": 2003446385,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 962,
+      "prompt_tokens": 975,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1937
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 11.568801514004008,
+    "prediction": null,
+    "record_sha256": "e01fcaf4e88d48e9e44936535c4d79509fd9fa1f37cc372febe9145e55dff88a",
+    "repetition": 1,
+    "request_sha256": "e662fae819372822b976dfbc6793ea4ab7e0a848315560acad1139c14a49db4b",
+    "run_id": "e01fcaf4e88d48e9e44936535c4d79509fd9fa1f37cc372febe9145e55dff88a-r1",
+    "seed": 2049032535,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 697,
+      "prompt_tokens": 1017,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1714
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 8.76912676099164,
+    "prediction": null,
+    "record_sha256": "e01fcaf4e88d48e9e44936535c4d79509fd9fa1f37cc372febe9145e55dff88a",
+    "repetition": 2,
+    "request_sha256": "9c5f197cb56fce09f531e0b518bf400330f804ca19316fb07fef3770bd6b9dde",
+    "run_id": "e01fcaf4e88d48e9e44936535c4d79509fd9fa1f37cc372febe9145e55dff88a-r2",
+    "seed": 179248264,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 519,
+      "prompt_tokens": 1017,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1536
+    }
+  },
+  {
+    "attempts": 1,
+    "detail": "Expecting value: line 3 column 1 (char 2)",
+    "finish_reason": "stop",
+    "latency_seconds": 11.22921416600002,
+    "prediction": null,
+    "record_sha256": "e01fcaf4e88d48e9e44936535c4d79509fd9fa1f37cc372febe9145e55dff88a",
+    "repetition": 3,
+    "request_sha256": "584ce06405282e09c7b7a63f647aa6e760edff47970dfb3ad306e90895e2add6",
+    "run_id": "e01fcaf4e88d48e9e44936535c4d79509fd9fa1f37cc372febe9145e55dff88a-r3",
+    "seed": 998163709,
+    "status": "invalid_json",
+    "usage": {
+      "completion_tokens": 679,
+      "prompt_tokens": 1017,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "total_tokens": 1696
+    }
+  }
+]

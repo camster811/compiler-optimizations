@@ -15,7 +15,7 @@ def run_id(h, repetition):
     return f"{h}-r{repetition}"
 
 
-def prepare(inputs, runtime_path, output, c):
+def prepare(inputs, runtime_path, output, c, *, development_data=True, experiment_sha256=None):
     records = {}
     for p in inputs:
         for path in sorted(p.glob("*.json")) if p.is_dir() else [p]:
@@ -24,17 +24,30 @@ def prepare(inputs, runtime_path, output, c):
             records[digest(raw)] = raw
     if not records:
         raise ValueError("no records")
-    method = {"version": "1.0.0", "config": c, "files": method_files(), "runtime": load(runtime_path)}
+    if type(development_data) is not bool:
+        raise ValueError("development_data must be a boolean")
+    if experiment_sha256 is not None and (len(experiment_sha256) != 64 or any(x not in '0123456789abcdef' for x in experiment_sha256)):
+        raise ValueError("invalid experiment digest")
+    if not development_data and experiment_sha256 is None:
+        raise ValueError("final campaigns require a frozen experiment binding")
+    method = {"version": c["version"], "config": c, "files": method_files(), "runtime": load(runtime_path)}
     method_id = digest(encode(method))
+    if not development_data:
+        pointer = load(HERE / "frozen" / "current.json")
+        receipt_path = HERE.parent / pointer["receipt_path"]
+        receipt = load(receipt_path)
+        if file_hash(receipt_path) != pointer["receipt_sha256"] or pointer["method_id"] != method_id or receipt["method"] != method:
+            raise ValueError("final campaigns require the selected frozen method without changes")
     input_id = digest(encode(sorted(records)))
-    campaign_id = digest(encode({"method_id": method_id, "input_set_sha256": input_id}))
+    metadata = {"development_data": development_data, "experiment_sha256": experiment_sha256}
+    campaign_id = digest(encode({"method_id": method_id, "input_set_sha256": input_id, "metadata": metadata}))
     directory = output / campaign_id
     schedule = [{"record_sha256": h, "repetition": r, "run_id": run_id(h, r)}
                 for h in sorted(records) for r in range(1, c["repetitions"] + 1)]
     random.Random(c["master_seed"]).shuffle(schedule)
     manifest = {"campaign_id": campaign_id, "method_id": method_id, "input_set_sha256": input_id,
                 "method": method, "record_hashes": sorted(records), "schedule": schedule,
-                "development_data": True}
+                "development_data": development_data, "metadata": metadata}
     if directory.exists():
         if load(directory / "manifest.json") != manifest:
             raise ValueError("campaign manifest mismatch")
@@ -58,7 +71,12 @@ def verify(directory, check_runtime=False):
         raise ValueError("duplicate or unordered record hashes")
     if digest(encode(hashes)) != m["input_set_sha256"]:
         raise ValueError("input fingerprint mismatch")
-    expected_id = digest(encode({"method_id": m["method_id"], "input_set_sha256": m["input_set_sha256"]}))
+    identity = {"method_id": m["method_id"], "input_set_sha256": m["input_set_sha256"], "metadata": m["metadata"]}
+    if m["development_data"] != m["metadata"]["development_data"] or type(m["development_data"]) is not bool:
+        raise ValueError("campaign data-split mismatch")
+    if not m["development_data"] and m["metadata"]["experiment_sha256"] is None:
+        raise ValueError("final campaign is not bound to an experiment")
+    expected_id = digest(encode(identity))
     if m["campaign_id"] != expected_id or directory.name != expected_id:
         raise ValueError("campaign identity mismatch")
     actual = {p.stem for p in (directory / "records").glob("*.json")}
@@ -278,9 +296,22 @@ def main():
     ap.add_argument("--config", type=Path)
     ap.add_argument("--runtime", type=Path, default=HERE / "output" / "runtime.json")
     ap.add_argument("--output", type=Path, default=HERE / "output" / "campaigns")
+    ap.add_argument("--input-manifest", type=Path, help="blinded input manifest, never the private experiment")
+    ap.add_argument("--data-split", choices=["development", "final"], default="development")
+    ap.add_argument("--experiment-sha256")
     args = ap.parse_args()
     if args.command == "prepare":
-        print(prepare(args.inputs, args.runtime, args.output, config(args.config)))
+        if args.input_manifest:
+            if args.inputs or args.experiment_sha256 or args.data_split != "development":
+                ap.error("input-manifest supplies records, split, and experiment binding")
+            public = load(args.input_manifest)
+            if set(public) != {"record_paths", "experiment_sha256", "development_data"}:
+                ap.error("input manifest contains unexpected fields")
+            inputs = [args.input_manifest.parent / p for p in public["record_paths"]]
+            split, binding = public["development_data"], public["experiment_sha256"]
+        else:
+            inputs, split, binding = args.inputs, args.data_split == "development", args.experiment_sha256
+        print(prepare(inputs, args.runtime, args.output, config(args.config), development_data=split, experiment_sha256=binding))
         return
     if args.campaign is None:
         ap.error("--campaign is required")

@@ -81,11 +81,15 @@ def config(path=None):
     c = load(path or HERE / "config.json")
     if c["repetitions"] != 3 or c["max_attempts"] != 2:
         raise ValueError("this method requires three repetitions and at most two attempts")
+    if c["version"] != "1.1.0" or c["structured_output"] != "json_schema" or c["seed_policy"] != "shared_repetition":
+        raise ValueError("v1.1 requires schema constraints and shared repetition seeds")
+    if not 0.98 <= c["minimum_schema_valid_rate"] <= 1:
+        raise ValueError("final-method schema-adherence threshold must be at least 98%")
     return c
 
 
-def seed_for(c, record_hash, repetition):
-    raw = f"generation:{c['master_seed']}:{record_hash}:{repetition}".encode()
+def seed_for(c, repetition):
+    raw = f"generation:{c['master_seed']}:{repetition}".encode()
     return int(digest(raw)[:8], 16) & 0x7fffffff
 
 

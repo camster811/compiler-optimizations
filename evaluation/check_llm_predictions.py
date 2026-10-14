@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """PRIVATE: verify persisted inference evidence and join it to ground truth."""
 import argparse
-import csv
 import gzip
 import os
 import sys
@@ -14,7 +13,9 @@ from statistics import median
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from llm_analysis.common import digest, file_hash, load, now, save, write
-from llm_analysis.run_llm import replay, verify
+from llm_analysis.history import replay_campaign
+from llm_analysis.run_llm import verify
+from evaluation.prepare_llm_experiment import load_experiment
 
 
 def ratio(a, b):
@@ -34,15 +35,23 @@ def metrics(rows):
             "selective_accuracy": ratio(decisions["correct"], decided),
             "failure_affected_observations": sum(r["failure_count"] > 0 for r in rows),
             "binary_alert": {"TP": tp, "TN": tn, "FP": fp, "FN": fn,
+                             "TN_from_abstention": sum(not r["positive"] and r["classification"] == "uncertain" for r in rows),
+                             "FN_from_abstention": sum(r["positive"] and r["classification"] == "uncertain" for r in rows),
+                             "TN_from_not_vulnerable": sum(not r["positive"] and r["classification"] == "not_vulnerable" for r in rows),
+                             "FN_from_not_vulnerable": sum(r["positive"] and r["classification"] == "not_vulnerable" for r in rows),
                              "accuracy": ratio(tp + tn, len(rows)),
                              "balanced_accuracy": (sensitivity + specificity) / 2 if sensitivity is not None and specificity is not None else None,
                              "precision": ratio(tp, tp + fp), "recall": sensitivity,
                              "F1": ratio(2 * tp, 2 * tp + fp + fn), "FPR": ratio(fp, fp + tn), "FNR": ratio(fn, fn + tp)}}
 
 
-def check(campaign):
-    m = verify(campaign)
-    runs, predictions = replay(campaign)
+def check(campaign, experiment_path):
+    m, runs, predictions = replay_campaign(campaign)
+    experiment, experiment_hash = load_experiment(experiment_path)
+    if m["development_data"] != experiment["development_data"]:
+        raise ValueError("experiment and campaign data splits differ")
+    if m["method"]["version"] != "1.0.0" and m["metadata"]["experiment_sha256"] != experiment_hash:
+        raise ValueError("campaign is not bound to this frozen private experiment")
     if load(campaign / "run_results.json") != runs or load(campaign / "predictions.json") != predictions:
         raise ValueError("exported predictions differ from offline replay")
     listed = {}
@@ -58,26 +67,22 @@ def check(campaign):
                       if p.is_file() and p.name not in {"checksums.sha256", ".lock"}}
     if set(listed) != expected_files:
         raise ValueError("checksum manifest does not cover every campaign artifact")
-    observations = []
-    for condition in ("retained", "stripped"):
-        for p in sorted((ROOT / "ghidra" / "output" / condition).glob("*.json")):
-            sid, optimization = p.stem.rsplit("_", 1)
-            observations.append((condition, sid, optimization, digest(p.read_bytes())))
-    if len(observations) != 16 or set(m["record_hashes"]) != {o[3] for o in observations}:
-        raise ValueError("pilot observation join differs from the expected sixteen records")
-    with (ROOT / "build" / "artifacts" / "private" / "build_manifest.tsv").open(newline="") as f:
-        truth = {(r["sample_id"], r["optimization"]): r for r in csv.DictReader(f, delimiter="\t")}
+    observations = experiment["observations"]
+    if set(m["record_hashes"]) != {o["record_sha256"] for o in observations}:
+        raise ValueError("campaign record set differs from the private experiment")
     by_hash = {p["record_sha256"]: p for p in predictions}
     rows, run_rows = [], []
-    for condition, sid, optimization, h in observations:
-        t = truth[(sid, optimization)]
+    for o in observations:
+        condition, sid, optimization, h = o["condition"], o["sample_id"], o["optimization"], o["record_sha256"]
+        t = o
         def scored(pred, failures):
             cls, cwe = pred["classification"], pred["predicted_cwe"]
             positive = t["ground_truth"] == "vulnerable"
             decision = "abstain" if cls == "uncertain" else (
                 "correct" if (positive and cls == "vulnerable" and cwe == t["cwe"])
                 or (not positive and cls == "not_vulnerable") else "incorrect")
-            return {"sample_id": sid, "optimization": optimization, "condition": condition,
+            return {"observation_id": o["observation_id"], "pair_id": o["pair_id"],
+                    "sample_id": sid, "optimization": optimization, "condition": condition,
                     "cwe": t["cwe"], "record_sha256": h, "positive": positive,
                     "classification": cls, "predicted_cwe": cwe, "decision": decision, "failure_count": failures}
         p = by_hash[h]
@@ -100,6 +105,8 @@ def check(campaign):
     comparisons = []
     for sid, opt in sorted({(r["sample_id"], r["optimization"]) for r in rows}):
         pair = {r["condition"]: r for r in rows if r["sample_id"] == sid and r["optimization"] == opt}
+        if not {"retained", "stripped"} <= set(pair):
+            continue
         a, b = pair["retained"], pair["stripped"]
         comparisons.append({"sample_id": sid, "optimization": opt,
                             "same_classification_and_cwe": (a["classification"], a["predicted_cwe"]) == (b["classification"], b["predicted_cwe"]),
@@ -107,7 +114,8 @@ def check(campaign):
                             if a["median_confidence"] is not None and b["median_confidence"] is not None else None})
     # Confidence is descriptive; this threshold does not change predictions.
     high_confidence = [r for r in run_rows if r["decision"] == "incorrect" and (r["confidence"] or 0) >= 0.8]
-    report = {"development_data": True, "campaign_id": m["campaign_id"], "method_id": m["method_id"],
+    report = {"development_data": m["development_data"], "campaign_id": m["campaign_id"], "method_id": m["method_id"],
+              "experiment_sha256": experiment_hash, "dataset_id": experiment["dataset_id"],
               "distinct_records": len(predictions), "scheduled_runs": len(runs), "http_attempts": attempt_count,
               "run_statuses": dict(sorted(statuses.items())), "schema_valid_response_rate": ratio(statuses["valid"], len(runs)),
               "operational_failure_rate": ratio(sum(statuses[s] for s in ("timeout", "transport_error", "interrupted", "http_error")), len(runs)),
@@ -129,48 +137,94 @@ def check(campaign):
     return report
 
 
-def freeze(campaign, report):
-    """PRIVATE: archive verified evidence and publish the development method receipt."""
-    m = verify(campaign, check_runtime=True)
-    frozen = ROOT / "llm_analysis" / "frozen" / "method.json"
+def preserve(path, raw):
+    if path.exists():
+        if path.read_bytes() != raw:
+            raise ValueError(f"immutable frozen artifact differs: {path}")
+    else:
+        write(path, raw, immutable=True)
+
+
+def select_final(receipt, report):
+    from llm_analysis.common import encode
+    if (report["campaign_id"] != receipt["campaign_id"] or report["method_id"] != receipt["method_id"]
+            or digest(encode(report)) != receipt["report_sha256"]):
+        raise ValueError("selection report differs from frozen evidence")
+    c = receipt["method"]["config"]
+    threshold = c.get("minimum_schema_valid_rate", 0.98)
+    if not receipt["development_data"] or c.get("structured_output") != "json_schema":
+        raise ValueError("select a constrained-output development campaign before final evaluation")
+    if (report["schema_valid_response_rate"] < threshold
+            or report["run_statuses"].get("invalid_json", 0)
+            or report["run_statuses"].get("schema_invalid", 0)):
+        raise ValueError(f"final-method gate failed: schema adherence must be >= {threshold:.1%} without formatting/schema failures")
+    receipt_path = ROOT / "llm_analysis" / "frozen" / receipt["campaign_id"] / "method.json"
+    save(ROOT / "llm_analysis" / "frozen" / "current.json", {
+        "campaign_id": receipt["campaign_id"], "method_id": receipt["method_id"],
+        "receipt_path": str(receipt_path.relative_to(ROOT)), "receipt_sha256": file_hash(receipt_path),
+        "selection_criterion": "schema adherence only; prediction accuracy is not a selection criterion",
+        "minimum_schema_valid_rate": threshold, "schema_valid_response_rate": report["schema_valid_response_rate"]})
+
+
+def freeze(campaign, report, experiment_path):
+    """PRIVATE: preserve a campaign-specific method, results, and evidence archive."""
+    m, _, _ = replay_campaign(campaign)
+    experiment, experiment_hash = load_experiment(experiment_path)
+    cid = m["campaign_id"]
+    frozen_dir = ROOT / "llm_analysis" / "frozen" / cid
+    frozen = frozen_dir / "method.json"
+    results = ROOT / "llm_analysis" / "results" / cid
     if frozen.exists():
         existing = load(frozen)
-        if existing["campaign_id"] != m["campaign_id"] or existing["method"] != m["method"]:
-            raise ValueError("a different method is already frozen; no automatic replacement")
+        if existing["method"] != m["method"]:
+            raise ValueError("frozen method differs from campaign")
         if file_hash(ROOT / existing["archive_path"]) != existing["archive_sha256"]:
             raise ValueError("existing frozen archive is corrupted")
-        if file_hash(ROOT / "evaluation" / "llm_pilot_report.json") != existing["report_sha256"]:
-            raise ValueError("frozen scored report is corrupted")
+        report_path = ROOT / existing.get("report_path", str((results / "report.json").relative_to(ROOT)))
+        if file_hash(report_path) != existing["report_sha256"]:
+            raise ValueError("frozen report is corrupted")
         for name, h in existing["results"].items():
-            if file_hash(ROOT / "llm_analysis" / "results" / name) != h:
+            if file_hash(results / name) != h:
                 raise ValueError("frozen prediction export is corrupted")
-        for name, h in existing.get("supplements", {}).items():
-            if file_hash(ROOT / name) != h:
-                raise ValueError("frozen reproducibility supplement is corrupted")
         return existing
-    diagnostics = ROOT / "llm_analysis" / "output" / "runtime_evidence" / m["campaign_id"]
+    verify(campaign, check_runtime=True)
+    for name, h in m["method"]["files"].items():
+        source = Path(__file__).resolve().parent.parent / name
+        if file_hash(source) != h:
+            raise ValueError("method source changed before freeze")
+        preserve(frozen_dir / "method_source" / name, source.read_bytes())
+    for name in ("check_llm_predictions.py", "prepare_llm_experiment.py", "experiment_schema.json"):
+        source = Path(__file__).with_name(name)
+        preserve(frozen_dir / "method_source" / "evaluation" / name, source.read_bytes())
+    for name in ("predictions.json", "run_results.json"):
+        preserve(results / name, (campaign / name).read_bytes())
+    from llm_analysis.common import encode
+    preserve(results / "report.json", encode(report))
+    diagnostics = ROOT / "llm_analysis" / "output" / "runtime_evidence" / cid
     diagnostic_files = []
     for name in ("server.log", "gpu_memory.jsonl", "server_process.json"):
         source = ROOT / "llm_analysis" / "output" / name
         if source.exists():
             target = diagnostics / name
             if not target.exists():
-                write(target, source.read_bytes(), immutable=True)
+                preserve(target, source.read_bytes())
             diagnostic_files.append(target)
-    archive = ROOT / "llm_analysis" / "output" / "releases" / f"{m['campaign_id']}.tar.gz"
+    archive = ROOT / "llm_analysis" / "output" / "releases" / f"{cid}.tar.gz"
     archive.parent.mkdir(parents=True, exist_ok=True)
+    if archive.exists():
+        raise ValueError("unreceipted archive already exists; preserve it and investigate")
     fd, temporary = tempfile.mkstemp(prefix=".archive-", dir=archive.parent)
     try:
         with os.fdopen(fd, "wb") as raw:
             with gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0) as zipped:
                 with tarfile.open(fileobj=zipped, mode="w") as tar:
-                    entries = [(p, f"{campaign.name}/{p.relative_to(campaign)}")
+                    entries = [(p, f"{cid}/{p.relative_to(campaign)}")
                                for p in sorted(p for p in campaign.rglob("*") if p.is_file() and p.name != ".lock")]
-                    # Preserve the exact method code as well as its hashes for future replay.
-                    method_root = Path(__file__).resolve().parent.parent
-                    entries += [(method_root / name, f"method/{name}") for name in m["method"]["files"]]
-                    entries.append((Path(__file__), "method/evaluation/check_llm_predictions.py"))
+                    entries += [(p, f"method/{p.relative_to(frozen_dir / 'method_source')}")
+                                for p in sorted((frozen_dir / "method_source").rglob("*")) if p.is_file()]
                     entries += [(p, f"runtime/{p.name}") for p in diagnostic_files]
+                    entries.append((Path(experiment_path), "evaluation/experiment.json"))
+                    entries.append((results / "report.json", "evaluation/report.json"))
                     for path, name in entries:
                         info = tar.gettarinfo(str(path), arcname=name)
                         info.mtime, info.uid, info.gid, info.uname, info.gname = 0, 0, 0, "", ""
@@ -182,13 +236,7 @@ def freeze(campaign, report):
         os.replace(temporary, archive)
     finally:
         Path(temporary).unlink(missing_ok=True)
-    results = ROOT / "llm_analysis" / "results"
-    results.mkdir(parents=True, exist_ok=True)
-    for name in ("predictions.json", "run_results.json"):
-        write(results / name, (campaign / name).read_bytes())
-    save(ROOT / "evaluation" / "llm_pilot_report.json", report)
-    supplements = {}
-    supplements.update({str(p.relative_to(ROOT)): file_hash(p) for p in diagnostic_files})
+    supplements = {str(p.relative_to(ROOT)): file_hash(p) for p in diagnostic_files}
     provenance = ROOT / "llm_analysis" / "frozen" / "model_provenance.json"
     if provenance.exists():
         source = load(provenance)
@@ -196,12 +244,13 @@ def freeze(campaign, report):
         if source["sha256"] != actual:
             raise ValueError("provenance addendum does not identify the model used")
         supplements[str(provenance.relative_to(ROOT))] = file_hash(provenance)
-    receipt = {"version": "1.0.0", "frozen_at": now(), "development_data": True,
-               "campaign_id": m["campaign_id"], "method_id": m["method_id"], "method": m["method"],
+    receipt = {"version": "1.1.0", "frozen_at": now(), "development_data": m["development_data"],
+               "campaign_id": cid, "method_id": m["method_id"], "method": m["method"],
                "input_set_sha256": m["input_set_sha256"], "archive_path": str(archive.relative_to(ROOT)),
                "archive_sha256": file_hash(archive), "campaign_checksums_sha256": file_hash(campaign / "checksums.sha256"),
-               "checker_sha256": file_hash(Path(__file__)),
-               "report_sha256": file_hash(ROOT / "evaluation" / "llm_pilot_report.json"),
+               "checker_sha256": file_hash(Path(__file__)), "report_path": str((results / "report.json").relative_to(ROOT)),
+               "report_sha256": file_hash(results / "report.json"), "experiment_sha256": experiment_hash,
+               "experiment_path": str(Path(experiment_path).resolve().relative_to(ROOT)),
                "supplements": supplements,
                "results": {name: file_hash(results / name) for name in ("predictions.json", "run_results.json")}}
     save(frozen, receipt, immutable=True)
@@ -212,10 +261,12 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--campaign", required=True, type=Path)
     ap.add_argument("--report", type=Path)
+    ap.add_argument("--experiment", required=True, type=Path, help="frozen private experiment manifest")
     ap.add_argument("--freeze", action="store_true", help="archive verified pilot evidence and freeze the method")
+    ap.add_argument("--select-final", action="store_true", help="select a frozen method only after schema-adherence gate passes")
     args = ap.parse_args()
     try:
-        report = check(args.campaign.resolve())
+        report = check(args.campaign.resolve(), args.experiment.resolve())
     except (ValueError, OSError, KeyError) as e:
         print(f"FAIL: {e}")
         raise SystemExit(1)
@@ -224,13 +275,17 @@ def main():
             raise ValueError("private report must be outside the blinded campaign")
         save(args.report, report)
     if args.freeze:
-        receipt = freeze(args.campaign.resolve(), report)
+        receipt = freeze(args.campaign.resolve(), report, args.experiment.resolve())
         print(f"Frozen method {receipt['method_id']}; archive {receipt['archive_path']}")
-    print(f"OK: {report['scheduled_runs']} terminal runs, {report['distinct_records']} distinct records, 16 observations")
+    if args.select_final:
+        receipt = freeze(args.campaign.resolve(), report, args.experiment.resolve())
+        select_final(receipt, report)
+        print("Selected final method after schema-adherence gate passed")
+    print(f"OK: {report['scheduled_runs']} terminal runs, {report['distinct_records']} distinct records, {report['overall']['observations']} observations")
     print("Run statuses:", report["run_statuses"])
     print("Three-way:", {k: v for k, v in report["overall"].items() if k != "binary_alert"})
     print("Binary alert:", report["overall"]["binary_alert"])
-    print("Development-set results; confidence is descriptive and observations are related.")
+    print(f"{'Development' if report['development_data'] else 'Final-corpus'} results; confidence is descriptive and observations are related.")
 
 
 if __name__ == "__main__":

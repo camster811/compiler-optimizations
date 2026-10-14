@@ -7,8 +7,9 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 from llm_analysis.aggregate import aggregate
-from llm_analysis.build_prompt import build_prompt, project, request
-from llm_analysis.common import HERE, config, digest, encode, load, save, write
+from llm_analysis.build_prompt import build_prompt, generation_schema, project, request
+from llm_analysis.common import HERE, config, digest, encode, load, save, seed_for, write
+from jsonschema import Draft202012Validator
 from llm_analysis.parse_response import parse_response
 from llm_analysis.run_llm import execute_run, export, preflight, prepare, replay, verify
 from llm_analysis.transport import exchange
@@ -128,6 +129,32 @@ class CampaignTests(unittest.TestCase):
         changed = record(); changed["function"]["name"] = "CWE121_bad"
         with self.assertRaises(ValueError):
             project(encode(changed))
+
+    def test_shared_seeds_and_generation_schema(self):
+        raw = encode(record())
+        for repetition in (1, 2, 3):
+            a = request(self.c, raw, "a" * 64, repetition)
+            b = request(self.c, raw, "b" * 64, repetition)
+            self.assertEqual(a["seed"], b["seed"])
+            self.assertEqual(a["seed"], seed_for(self.c, repetition))
+            schema = a["response_format"]["json_schema"]["schema"]
+            validator = Draft202012Validator(schema)
+            for cls, cwe in [("uncertain", None), ("not_vulnerable", None), ("vulnerable", "CWE-121"), ("vulnerable", "CWE-122")]:
+                validator.validate(prediction(cls, cwe))
+            p = prediction(); p["predicted_cwe"] = "CWE-121"
+            self.assertFalse(validator.is_valid(p))
+            p = prediction(); p["evidence"][0]["addresses"] = ["0x99"]
+            self.assertFalse(validator.is_valid(p))
+        self.assertEqual(len({seed_for(self.c, r) for r in (1, 2, 3)}), 3)
+
+    def test_campaign_metadata_changes_identity_without_changing_method(self):
+        binding = "a" * 64
+        other = prepare([self.root / "input.json"], self.root / "runtime.json", self.root / "campaigns", self.c, experiment_sha256=binding)
+        self.assertNotEqual(other, self.directory)
+        self.assertEqual(verify(other)["method_id"], self.m["method_id"])
+        m = load(other / "manifest.json"); m["development_data"] = False; save(other / "manifest.json", m)
+        with self.assertRaises(ValueError):
+            verify(other)
 
     def test_complete_resume_and_replay(self):
         for job in self.m["schedule"]:

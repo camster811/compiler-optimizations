@@ -1,5 +1,6 @@
 """Allowlisted public-record projection and stateless request construction."""
 import re
+from copy import deepcopy
 from jsonschema import Draft202012Validator
 from .common import HERE, decode, encode, load, seed_for
 
@@ -33,6 +34,31 @@ def request(c, raw, record_hash, repetition):
             "messages": [{"role": "user", "content": build_prompt(raw)}],
             "temperature": c["temperature"], "top_p": c["top_p"],
             "top_k": c["top_k"], "min_p": c["min_p"], "samplers": c["samplers"],
-            "max_tokens": c["max_tokens"], "seed": seed_for(c, record_hash, repetition),
+            "max_tokens": c["max_tokens"], "seed": seed_for(c, repetition),
             "stream": False, "n": 1, "cache_prompt": False, "stop": c["stop"],
-            "reasoning_format": "deepseek", "reasoning_budget_tokens": -1}
+            "reasoning_format": "deepseek", "reasoning_budget_tokens": -1,
+            "response_format": {"type": "json_schema", "json_schema": {
+                "name": "buffer_overflow_prediction", "strict": True,
+                "schema": generation_schema(project(raw))}}}
+
+
+def generation_schema(record):
+    """Express conditional output rules as a grammar-compatible union of objects."""
+    strict = load(HERE / "output_schema.json")
+    branches = []
+    for classification in ("vulnerable", "not_vulnerable", "uncertain"):
+        properties = deepcopy(strict["properties"])
+        properties["classification"] = {"const": classification}
+        properties["predicted_cwe"] = ({"enum": ["CWE-121", "CWE-122"]}
+                                        if classification == "vulnerable" else {"type": "null"})
+        properties["uncertainty_reason"] = ({"type": "string", "minLength": 1, "maxLength": 600}
+                                            if classification == "uncertain" else {"type": "null"})
+        addresses = sorted({line.split(":", 1)[0] for line in record["instructions"]})
+        items = properties["evidence"]["items"]["properties"]["addresses"]
+        if addresses:
+            items["items"] = {"enum": addresses}
+        else:
+            items["maxItems"] = 0
+        branches.append({"type": "object", "additionalProperties": False,
+                         "required": strict["required"], "properties": properties})
+    return {"oneOf": branches}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0002",
+  "status": "ok",
+  "function": {
+    "name": "copy_message",
+    "entry": "0x401126",
+    "size_bytes": 43,
+    "instruction_count": 13,
+    "basic_block_count": 1,
+    "body_ranges": [
+      [
+        "0x401126",
+        "0x401151"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid copy_message(void)\n\n{\n  char local_13 [7];\n  char acStack_c [4];\n  \n  local_13 = (char  [7])src._0_7_;\n  acStack_c = (char  [4])src._7_4_;\n  puts(local_13);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401126: PUSH RBP",
+    "0x401127: MOV RBP,RSP",
+    "0x40112a: SUB RSP,0x10",
+    "0x40112e: MOV RAX,qword ptr [0x00402008]",
+    "0x401135: MOV qword ptr [RBP + -0xb],RAX",
+    "0x401139: MOV EAX,dword ptr [0x0040200f]",
+    "0x40113f: MOV dword ptr [RBP + -0x4],EAX",
+    "0x401142: LEA RAX,[RBP + -0xb]",
+    "0x401146: MOV RDI,RAX",
+    "0x401149: CALL 0x00401030",
+    "0x40114e: NOP",
+    "0x40114f: LEAVE",
+    "0x401150: RET"
+  ],
+  "calls": [
+    "puts"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "16"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_13",
+      "stack_offset": -19,
+      "size_bytes": 11,
+      "data_type": "undefined1[11]"
+    }
+  ],
+  "imports": [
+    "puts"
+  ]
+}

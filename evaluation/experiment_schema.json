@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "dataset_id", "development_data", "expected_matrix", "observations"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "dataset_id": {"type": "string", "minLength": 1},
+    "development_data": {"type": "boolean"},
+    "expected_matrix": {
+      "type": "object", "additionalProperties": false, "required": ["conditions", "cases"],
+      "properties": {
+        "conditions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "cases": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {
+          "type": "object", "additionalProperties": false, "required": ["sample_id", "optimization"],
+          "properties": {"sample_id": {"type": "string", "minLength": 1}, "optimization": {"type": "string", "minLength": 1}}
+        }}
+      }
+    },
+    "observations": {"type": "array", "minItems": 1, "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["observation_id", "sample_id", "pair_id", "optimization", "condition", "cwe", "ground_truth", "record_path", "record_sha256"],
+      "properties": {
+        "observation_id": {"type": "string", "minLength": 1},
+        "sample_id": {"type": "string", "minLength": 1}, "pair_id": {"type": "string", "minLength": 1},
+        "optimization": {"type": "string", "minLength": 1}, "condition": {"type": "string", "minLength": 1},
+        "cwe": {"enum": ["CWE-121", "CWE-122"]}, "ground_truth": {"enum": ["vulnerable", "not_vulnerable"]},
+        "record_path": {"type": "string", "minLength": 1}, "record_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }}
+  }
+}

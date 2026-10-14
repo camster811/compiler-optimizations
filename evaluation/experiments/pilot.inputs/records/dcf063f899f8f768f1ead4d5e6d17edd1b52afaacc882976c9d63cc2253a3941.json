@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0001",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401140",
+    "entry": "0x401140",
+    "size_bytes": 42,
+    "instruction_count": 8,
+    "basic_block_count": 1,
+    "body_ranges": [
+      [
+        "0x401140",
+        "0x40116a"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid FUN_00401140(void)\n\n{\n  char local_12 [18];\n  \n  builtin_strncpy(local_12,\"AAAAAAAAAA\",0xb);\n  puts(local_12);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401140: MOV RAX,0x4141414141414141",
+    "0x40114a: SUB RSP,0x18",
+    "0x40114e: LEA RDI,[RSP + 0x6]",
+    "0x401153: MOV qword ptr [RSP + 0x6],RAX",
+    "0x401158: MOV dword ptr [RSP + 0xd],0x414141",
+    "0x401160: CALL 0x00401030",
+    "0x401165: ADD RSP,0x18",
+    "0x401169: RET"
+  ],
+  "calls": [
+    "puts"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "4702111234474983745",
+    "24",
+    "4276545"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_12",
+      "stack_offset": -18,
+      "size_bytes": 11,
+      "data_type": "undefined1[11]"
+    }
+  ],
+  "imports": [
+    "puts"
+  ]
+}

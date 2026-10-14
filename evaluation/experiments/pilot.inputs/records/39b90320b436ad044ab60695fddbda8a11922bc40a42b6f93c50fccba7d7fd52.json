@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0002",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401040",
+    "entry": "0x401040",
+    "size_bytes": 43,
+    "instruction_count": 10,
+    "basic_block_count": 1,
+    "body_ranges": [
+      [
+        "0x401040",
+        "0x40106b"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nundefined8 FUN_00401040(void)\n\n{\n  char local_13 [7];\n  char acStack_c [12];\n  \n  local_13 = (char  [7])s_AAAAAAAAAA_00402008._0_7_;\n  acStack_c._0_4_ = s_AAAAAAAAAA_00402008._7_4_;\n  puts(local_13);\n  return 0;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401040: SUB RSP,0x18",
+    "0x401044: MOV RAX,qword ptr [0x00402008]",
+    "0x40104b: LEA RDI,[RSP + 0x5]",
+    "0x401050: MOV qword ptr [RSP + 0x5],RAX",
+    "0x401055: MOV EAX,dword ptr [0x0040200f]",
+    "0x40105b: MOV dword ptr [RSP + 0xc],EAX",
+    "0x40105f: CALL 0x00401030",
+    "0x401064: XOR EAX,EAX",
+    "0x401066: ADD RSP,0x18",
+    "0x40106a: RET"
+  ],
+  "calls": [
+    "puts"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "24"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_13",
+      "stack_offset": -19,
+      "size_bytes": 11,
+      "data_type": "undefined1[11]"
+    }
+  ],
+  "imports": [
+    "puts"
+  ]
+}

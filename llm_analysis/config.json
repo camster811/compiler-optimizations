@@ -1,5 +1,8 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "structured_output": "json_schema",
+  "seed_policy": "shared_repetition",
+  "minimum_schema_valid_rate": 0.98,
   "endpoint": "http://127.0.0.1:8080",
   "executable": "/home/camst/downloads/llama.cpp-0.6.0/build/bin/llama-server",
   "source_archive": "/home/camst/downloads/llama.cpp-0.6.0.zip",
