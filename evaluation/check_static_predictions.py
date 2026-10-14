@@ -208,4 +208,15 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if "--experiment" in sys.argv:
+        import argparse
+        sys.path.insert(0, str(ROOT))
+        from evaluation.validate_static_dataset import validate
+        ap = argparse.ArgumentParser(description="Manifest-driven validation without scoring")
+        ap.add_argument("--experiment", required=True, type=Path)
+        ap.add_argument("--predictions", required=True, type=Path)
+        ap.add_argument("--validate-only", action="store_true", required=True)
+        args = ap.parse_args()
+        validate(args.experiment.resolve(), args.predictions.resolve())
+    else:
+        main()

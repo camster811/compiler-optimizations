@@ -1,0 +1,239 @@
+{
+  "classification_outputs_used": false,
+  "conflicting_groups": {
+    "0d582f829f7f9e1d6a111daa35ff8f0a8804624dd99ee80cee9b131b0decb316": [
+      {
+        "condition": "stripped",
+        "optimization": "O1",
+        "pair_id": "pair_0031",
+        "record_sha256": "6afab668883c4881ca973ba1fdab1d08ec5f1caaf76ddc94410bfce1b43558b7",
+        "sample_id": "sample_0261",
+        "source_ground_truth": "vulnerable",
+        "target_effect_ground_truth": "vulnerable"
+      },
+      {
+        "condition": "stripped",
+        "optimization": "O1",
+        "pair_id": "pair_0031",
+        "record_sha256": "a15f5ca75482b5aeba1ab0840db9474f71f02e929a6dbe151f4307e9ea8e1d9b",
+        "sample_id": "sample_0142",
+        "source_ground_truth": "not_vulnerable",
+        "target_effect_ground_truth": "not_vulnerable"
+      }
+    ],
+    "3488d17bc8c1b9a7f486fae7a48af50723642fe0a466284dfe4fe597bbe2e3e6": [
+      {
+        "condition": "stripped",
+        "optimization": "O2",
+        "pair_id": "pair_0022",
+        "record_sha256": "fba9f978103ca3afe1e036c10f796d270c8492c24ffa06431e92022f97f92ce6",
+        "sample_id": "sample_0315",
+        "source_ground_truth": "vulnerable",
+        "target_effect_ground_truth": "vulnerable"
+      },
+      {
+        "condition": "stripped",
+        "optimization": "O3",
+        "pair_id": "pair_0022",
+        "record_sha256": "fba9f978103ca3afe1e036c10f796d270c8492c24ffa06431e92022f97f92ce6",
+        "sample_id": "sample_0315",
+        "source_ground_truth": "vulnerable",
+        "target_effect_ground_truth": "vulnerable"
+      },
+      {
+        "condition": "stripped",
+        "optimization": "O2",
+        "pair_id": "pair_0022",
+        "record_sha256": "42fc7ff4e214f3e9426d64389570efa73dfc49732fc246f6221d60e241768266",
+        "sample_id": "sample_0263",
+        "source_ground_truth": "not_vulnerable",
+        "target_effect_ground_truth": "not_vulnerable"
+      },
+      {
+        "condition": "stripped",
+        "optimization": "O3",
+        "pair_id": "pair_0022",
+        "record_sha256": "42fc7ff4e214f3e9426d64389570efa73dfc49732fc246f6221d60e241768266",
+        "sample_id": "sample_0263",
+        "source_ground_truth": "not_vulnerable",
+        "target_effect_ground_truth": "not_vulnerable"
+      }
+    ],
+    "66b96d79136b168f0489cdb3b66f691b561710f187a2549a7c5a0220bbee9a02": [
+      {
+        "condition": "retained",
+        "optimization": "O2",
+        "pair_id": "pair_0031",
+        "record_sha256": "68c5a418ac843b390d11391fb350025846559454b52a78ad2c67acc2f99927bc",
+        "sample_id": "sample_0261",
+        "source_ground_truth": "vulnerable",
+        "target_effect_ground_truth": "vulnerable"
+      },
+      {
+        "condition": "retained",
+        "optimization": "O3",
+        "pair_id": "pair_0031",
+        "record_sha256": "68c5a418ac843b390d11391fb350025846559454b52a78ad2c67acc2f99927bc",
+        "sample_id": "sample_0261",
+        "source_ground_truth": "vulnerable",
+        "target_effect_ground_truth": "vulnerable"
+      },
+      {
+        "condition": "retained",
+        "optimization": "O2",
+        "pair_id": "pair_0031",
+        "record_sha256": "98a5586f21dcee08aa2478fa91388f31a6fea7ee51ae424a644d8b34b94c570e",
+        "sample_id": "sample_0142",
+        "source_ground_truth": "not_vulnerable",
+        "target_effect_ground_truth": "not_vulnerable"
+      },
+      {
+        "condition": "retained",
+        "optimization": "O3",
+        "pair_id": "pair_0031",
+        "record_sha256": "98a5586f21dcee08aa2478fa91388f31a6fea7ee51ae424a644d8b34b94c570e",
+        "sample_id": "sample_0142",
+        "source_ground_truth": "not_vulnerable",
+        "target_effect_ground_truth": "not_vulnerable"
+      }
+    ],
+    "693224cc64e335d482339cc13e28624751c39469fd387385139e7c85769acba5": [
+      {
+        "condition": "stripped",
+        "optimization": "O2",
+        "pair_id": "pair_0031",
+        "record_sha256": "908ea5fde7ef06940f3c3b110c2a7a1ce3a9e7113bf06115a4dfed724e85838a",
+        "sample_id": "sample_0261",
+        "source_ground_truth": "vulnerable",
+        "target_effect_ground_truth": "vulnerable"
+      },
+      {
+        "condition": "stripped",
+        "optimization": "O3",
+        "pair_id": "pair_0031",
+        "record_sha256": "908ea5fde7ef06940f3c3b110c2a7a1ce3a9e7113bf06115a4dfed724e85838a",
+        "sample_id": "sample_0261",
+        "source_ground_truth": "vulnerable",
+        "target_effect_ground_truth": "vulnerable"
+      },
+      {
+        "condition": "stripped",
+        "optimization": "O2",
+        "pair_id": "pair_0031",
+        "record_sha256": "7e1f4bcd4016bd53a14863af5fb7bde0be5370dd39f91f29b5dd643089656815",
+        "sample_id": "sample_0142",
+        "source_ground_truth": "not_vulnerable",
+        "target_effect_ground_truth": "not_vulnerable"
+      },
+      {
+        "condition": "stripped",
+        "optimization": "O3",
+        "pair_id": "pair_0031",
+        "record_sha256": "7e1f4bcd4016bd53a14863af5fb7bde0be5370dd39f91f29b5dd643089656815",
+        "sample_id": "sample_0142",
+        "source_ground_truth": "not_vulnerable",
+        "target_effect_ground_truth": "not_vulnerable"
+      }
+    ],
+    "98892a0496adf98066229e93610f9f65d2cfb06bc0158d2410f4a56e7609a75d": [
+      {
+        "condition": "retained",
+        "optimization": "O2",
+        "pair_id": "pair_0022",
+        "record_sha256": "95f176403605a12ed6cd1a460a8be33f5f8c15665e2fef800e2fdb59e9949747",
+        "sample_id": "sample_0315",
+        "source_ground_truth": "vulnerable",
+        "target_effect_ground_truth": "vulnerable"
+      },
+      {
+        "condition": "retained",
+        "optimization": "O3",
+        "pair_id": "pair_0022",
+        "record_sha256": "95f176403605a12ed6cd1a460a8be33f5f8c15665e2fef800e2fdb59e9949747",
+        "sample_id": "sample_0315",
+        "source_ground_truth": "vulnerable",
+        "target_effect_ground_truth": "vulnerable"
+      },
+      {
+        "condition": "retained",
+        "optimization": "O2",
+        "pair_id": "pair_0022",
+        "record_sha256": "8e526b9ce3b0e4cf054f9d580a1a909235dcec17fde52f92285819e18840a05d",
+        "sample_id": "sample_0263",
+        "source_ground_truth": "not_vulnerable",
+        "target_effect_ground_truth": "not_vulnerable"
+      },
+      {
+        "condition": "retained",
+        "optimization": "O3",
+        "pair_id": "pair_0022",
+        "record_sha256": "8e526b9ce3b0e4cf054f9d580a1a909235dcec17fde52f92285819e18840a05d",
+        "sample_id": "sample_0263",
+        "source_ground_truth": "not_vulnerable",
+        "target_effect_ground_truth": "not_vulnerable"
+      }
+    ],
+    "9f6d1afcea48a40ea264aa98c254cbb2c6598cd6531ecc8878f3d4297fbc8d7a": [
+      {
+        "condition": "retained",
+        "optimization": "O1",
+        "pair_id": "pair_0022",
+        "record_sha256": "e5f0ad160befde2ab18048c7159484780c6e486c72baea6c6ce266ded4a5329e",
+        "sample_id": "sample_0315",
+        "source_ground_truth": "vulnerable",
+        "target_effect_ground_truth": "vulnerable"
+      },
+      {
+        "condition": "retained",
+        "optimization": "O1",
+        "pair_id": "pair_0022",
+        "record_sha256": "0dbed8b4224edb46fd28d14ce7b7930626cc66802749f4f5d637f1b59bb2c99f",
+        "sample_id": "sample_0263",
+        "source_ground_truth": "not_vulnerable",
+        "target_effect_ground_truth": "not_vulnerable"
+      }
+    ],
+    "cbe7e86d038979ac6e8a6af01c5f876369b07750ba9f2e60b169cf9321dc2486": [
+      {
+        "condition": "stripped",
+        "optimization": "O1",
+        "pair_id": "pair_0022",
+        "record_sha256": "4df95c168bf256632d999cec0ca3194474851344287778f033c55979ef0e9706",
+        "sample_id": "sample_0315",
+        "source_ground_truth": "vulnerable",
+        "target_effect_ground_truth": "vulnerable"
+      },
+      {
+        "condition": "stripped",
+        "optimization": "O1",
+        "pair_id": "pair_0022",
+        "record_sha256": "df1b96618455c9f16d52c03edb1c8de808e8fa686edd609ad8e73bd24b7cd888",
+        "sample_id": "sample_0263",
+        "source_ground_truth": "not_vulnerable",
+        "target_effect_ground_truth": "not_vulnerable"
+      }
+    ],
+    "cfcca9a879987084bbedc050961372856d0231abc8fc77891533bfd0c19ddfe9": [
+      {
+        "condition": "retained",
+        "optimization": "O1",
+        "pair_id": "pair_0031",
+        "record_sha256": "89e9156b7d98632dc6a1fd0bfc0f4942173878df78a1d492a3080f6bd665c407",
+        "sample_id": "sample_0261",
+        "source_ground_truth": "vulnerable",
+        "target_effect_ground_truth": "vulnerable"
+      },
+      {
+        "condition": "retained",
+        "optimization": "O1",
+        "pair_id": "pair_0031",
+        "record_sha256": "c08e82aa2908588bb27f22b035ba445e64beea80bf18d04b7862adb62e1aa3b6",
+        "sample_id": "sample_0142",
+        "source_ground_truth": "not_vulnerable",
+        "target_effect_ground_truth": "not_vulnerable"
+      }
+    ]
+  },
+  "policy": "retain under declared latent-stack-capacity exception; do not describe these labels as recoverable pure binary-safety facts",
+  "projection": "exact frozen record projection with sample_id removed"
+}

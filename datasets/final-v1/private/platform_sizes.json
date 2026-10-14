@@ -1,0 +1,9 @@
+{
+  "compiler": "gcc-15",
+  "measured_sizeof": {
+    "char": 1,
+    "int": 4,
+    "int64_t": 8,
+    "wchar_t": 4
+  }
+}

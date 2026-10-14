@@ -1,0 +1,236 @@
+{
+  "checked_at": "2026-10-14T18:52:20.255170+00:00",
+  "completion_requests": 0,
+  "context_tokens": 8192,
+  "endpoints_used": [
+    "/props",
+    "/apply-template",
+    "/tokenize"
+  ],
+  "generation_allowance": 4096,
+  "method_id": "6a18617e0ef4b1985060a76db93755018bc1e99190f0d652ca6d51dff78c1c1d",
+  "records": {
+    "098ee0e474bd71c5d09a37d73ce3d97d6e22ac2d8802a9a65aa40e12d2601f5e": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1663,
+      "rendered_prompt_sha256": "7bdc6b88e68d9c04f7d05f0a1a8e7c76a04cb0a7b209137bc0353b96b655dc6a"
+    },
+    "0a1d052744481c222e49b2610a5e92b184e8189940e933801075270fc302f4a4": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 2629,
+      "rendered_prompt_sha256": "05d7e3e34f5a96779dd720991bad3fec4236d3926f7f073facb84b27128e4b80"
+    },
+    "17fc0410002a677f96c2e903add2eb6627022eeeb7ae728bc5e348931a66800d": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1619,
+      "rendered_prompt_sha256": "c9aa35c01df04ddcd13e08c783aeddada0dbf7b301bf1529cbec3cf464846635"
+    },
+    "1f66060f28e077477acfe4ce9465137d8db2ab64fcc46f9eed713dc02f61c2ee": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1885,
+      "rendered_prompt_sha256": "df40c5ce989c62fc54742427251f3422a4e79e0763e27aed5d51d18a6f1a6da9"
+    },
+    "2212ab5ac8b51be498f2458947324ef3427055a353797357849d91d787bae1b7": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 3325,
+      "rendered_prompt_sha256": "51b00fba5e3d1126cc5a573747331dba8a79bd66674047eea92f7faf16ae2825"
+    },
+    "2301a1e73a0794a1c9697283166e3fa8c119a237c6ccc3dfa7d1654db1b55361": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1891,
+      "rendered_prompt_sha256": "fc526847ff411c45b9b65d50df369c4dc7bbf333ed80ef944a4879c739aaef3a"
+    },
+    "2736905add7fff087402f02d42e0ae59dd428c181a94c3bbe914edec6bffafe5": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 2192,
+      "rendered_prompt_sha256": "88a7f7c0a94d8b23751f5e84ccb5c054ca20d52093c47974b064afa00623624d"
+    },
+    "3c415c93c625a763b22a55f478a98de617bbd9c3fc7356ec645a21dd6251917a": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 3310,
+      "rendered_prompt_sha256": "d0faa5e3b089205434115a7b41859217fc4cc66e028c562a0ec56a703716de0e"
+    },
+    "41bf554f9bf97944c22a958ac68f75e2270761f450e709741a8cef9dd6f14ab3": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1663,
+      "rendered_prompt_sha256": "d791bba152bc2da5c34248f207279d8bef9ba44c3727fbe154587239dd99f4e9"
+    },
+    "631f3725faef5a3aed611ac25bf14457898dc102b73166d3d6c8027e57df71fb": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1679,
+      "rendered_prompt_sha256": "40739f9b1490e69690ed863f4197d33e7bbb8d6e455e2b1f91d7c386d016f3c0"
+    },
+    "694cad5231a1763d452279e498ad5baff6e1e8f5809a61e594d21a07896f63a1": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1750,
+      "rendered_prompt_sha256": "9ef33830941f51fae7e5e566e91ae8c0b6fe7395943c54aa1068458fdfde5776"
+    },
+    "747cb56074c8368c61bb1b43e191d7be084c16ca273493fb8506a324e1d44ef9": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 2629,
+      "rendered_prompt_sha256": "0e0c5c81df0f11c2aba374acc561aa6aaa8d6d152b4516ce3ec73605a84b8e09"
+    },
+    "7806f44e4eb5e2f9a53749e3f52303c704492904058c565ecc6bac54b357ef4a": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1702,
+      "rendered_prompt_sha256": "03685c0d22865b1b728db84652dac0fda0e7a919a87d8255e0f6eb8a4441ea15"
+    },
+    "7a87c74ce45df7b644ceb9d37639e6c263b9067e09e6057aabc8de45e0a56a4c": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 2192,
+      "rendered_prompt_sha256": "b21c64e42704986e25150536f97426e47845baed0a287d880ca441ffe5fa4888"
+    },
+    "7be36d844c29f2d43897145e92271103e61162440c250b776a9a03dd08768235": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 3309,
+      "rendered_prompt_sha256": "e848a1e666cc68d387f2c06ba406a37c4f75dc4d1aa027d7ec8ad859426498b1"
+    },
+    "7ee4fbeb41f5ee7ebdd3ccdfa569c2f048aec85dd834ff1055cb33ea31ca95a4": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1686,
+      "rendered_prompt_sha256": "d5e506ed5e665140d969c4725b6a94db5b89d47cbbc05a9fbc4af13227404a5a"
+    },
+    "92ff21d256c137ec485a6d06270866aa787a00f4722f67f01243e759d1b4c04c": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 2645,
+      "rendered_prompt_sha256": "fc9de9afe48e1b6aa5bb3d2095837d3b604f917668e93913f9419ba500f91b4d"
+    },
+    "9d3f61e30c75e7763c3d79ecdf25910b60cc012781bdc22c8c040b22de3df026": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1740,
+      "rendered_prompt_sha256": "0844ba0e86a7a0a20ae06ceb1fa078440f150bf6fb2735c1139645c2cba4875e"
+    },
+    "9db4ba447e84ab2fae38ae852347e5e0495a6003333d7ff3774c4215852e4cab": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1679,
+      "rendered_prompt_sha256": "3d36aff24d56e4486de123a1fdd46aa39f0ea7f3eadc3f454789d8f629c4a0bd"
+    },
+    "a00e5a9860352f3ad42e797fa2d20cb89de7718b27e250a9c52346509a95a6fa": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1884,
+      "rendered_prompt_sha256": "6cba77ac6cacdad2866020703abcb506879454745c588567deb29889eb6e3316"
+    },
+    "a73d74638d8f2a54e170019912e127c20de1c4f8a0a247f6662c4fb2db5db520": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1900,
+      "rendered_prompt_sha256": "7c328a763c252034b44b054ac97ce01c70b60e831551b8546d60e41c0f9f9ace"
+    },
+    "a75541d12a1fd872f96658e33e087fb1ad26359e4555c09ca1e15013c53de89c": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 2176,
+      "rendered_prompt_sha256": "0e41f8bdd4100dddfa3c89b713b73586da7e1a603379372dc20da948733efaa9"
+    },
+    "a9c1995a4c0f8aa797b6c486d157a94d15c5370209fb5b0805e2a14f9c80e5dd": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1702,
+      "rendered_prompt_sha256": "33bcc0e6d02b444cfbfdef914a60da59ba426688ee979f1a5b6b7920dea4b0a4"
+    },
+    "aad21eb25699678e6f4f7a049311a11ed5d67b2a2ea0e2aa5033cd183b16a679": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1635,
+      "rendered_prompt_sha256": "1d0cf0f9cf5eeae019ffa942443669c998d351a910e8fd2f7a5b177f719f4158"
+    },
+    "aadfd82ac2c5f3e4c20aa38051e850abbc973f07b0a5716405bb44965fa409df": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1756,
+      "rendered_prompt_sha256": "ea67020232f950612c4609be89c47a6692af5db3058fffc0d207c5be6090d3fb"
+    },
+    "acb47b3ed57f870db4d703b72ea68be21d9e252df95fc05ff04fda486d499dbb": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1901,
+      "rendered_prompt_sha256": "e2b0a5f68e2ceb66af406c307252f6be7d9cb75955bcd9d0c0036ca79b066d77"
+    },
+    "bb70388759b8037de22d9cd9e4fd44c04446f8176f60aa174926a08c7d484ebc": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1907,
+      "rendered_prompt_sha256": "7b82e58edbd748b4971e04a5d776cd8d54a850ec11a8032b5de91bd918983283"
+    },
+    "bbe09180b853f2fe13a1906a52d6b7c604585996186b2955e0e4c3c4ed9a5908": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1686,
+      "rendered_prompt_sha256": "f3194f7178095224b484de7fa7bfa871f5eadb9f0e53a89e134957ee94364e41"
+    },
+    "bd3ea8f3815f0e7d8e07de4b7950bc5c01394340fa673daa1c16690cb7316383": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1582,
+      "rendered_prompt_sha256": "edb947bc699417392fa50de6322291830df35dd9557e2c3bead6f49e468091c1"
+    },
+    "d1907b00752571eeeb8913c7b11e84e1b517c0109cd6730bf642ba1d731d75a4": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 2176,
+      "rendered_prompt_sha256": "0dba562c9242ea56dfb596a77d132da9064b48df5990dec41650f53048d55895"
+    },
+    "d3c0fa16e2ed081627cacf1dfabf56315b1ec7eddac1f47d10d1cf060efd58b8": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1598,
+      "rendered_prompt_sha256": "3c58a6e5c35e9a625e7017acb293366d85f7f7f64e0e9dcb9bf23bfbb5028bb7"
+    },
+    "eac4db83c050522cd21687ef345e37f70a8b2c3366d03b648a17b39cb430e111": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 3326,
+      "rendered_prompt_sha256": "ea7fe299bb652641fcd1a1d36950d8ef28a39a3705b97f04369594e5c9c01065"
+    },
+    "f081a7a6d42eaf1da2251be6edae01b44a7e47166052a05c0a815bc538464c48": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 2645,
+      "rendered_prompt_sha256": "51a7737c63bc4f63a95d9c29905da3b56b00f90fabb4b3c845e77de71b840dbf"
+    },
+    "f396db464deddac1adc6f2902608bece24879fad8711765ea218b98d7360d0c2": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1734,
+      "rendered_prompt_sha256": "3b9399f6e3771aca0b205ba1b84d975b13c9692952a058df1723a0812bd57950"
+    },
+    "fcf6d2a1de39cc0117d2a50b28bca5cb53c06f4bb58940e03c49fff62229cf5e": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1906,
+      "rendered_prompt_sha256": "e250f3ff960c3a7ac7e783b9c8738443eec5117e444ced032c98fd080243e25a"
+    },
+    "ffe9a1b4b669ca0a81f5ebf8b1c84579f2fda871de34c8895033037ee15bc7ae": {
+      "context_rejection_reason": null,
+      "fits_context": true,
+      "prompt_tokens": 1890,
+      "rendered_prompt_sha256": "4971d049936b78814098e0f79c610eae12f420b181e2a2ee1d7b2c6e218da634"
+    }
+  },
+  "reserve": 128,
+  "tokenization_options": {
+    "add_generation_prompt": true,
+    "add_special": false,
+    "parse_special": true
+  }
+}

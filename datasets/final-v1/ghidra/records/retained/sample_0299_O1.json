@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0299",
+  "status": "ok",
+  "function": {
+    "name": "copy_payload",
+    "entry": "0x401146",
+    "size_bytes": 145,
+    "instruction_count": 32,
+    "basic_block_count": 4,
+    "body_ranges": [
+      [
+        "0x401146",
+        "0x4011d7"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid copy_payload(void)\n\n{\n  wchar_t *__dest;\n  wchar_t *pwVar1;\n  wchar_t local_1a8 [99];\n  undefined4 local_1c;\n  \n  for (pwVar1 = local_1a8; pwVar1 != local_1a8; pwVar1 = (wchar_t *)((long)pwVar1 + -0x1000)) {\n    *(undefined8 *)((long)pwVar1 + -8) = *(undefined8 *)((long)pwVar1 + -8);\n  }\n  *(undefined8 *)((long)pwVar1 + -8) = *(undefined8 *)((long)pwVar1 + -8);\n  __dest = (wchar_t *)((ulong)((long)pwVar1 + -0xc1) & 0xfffffffffffffff0);\n  *__dest = L'\\0';\n  *(undefined8 *)((long)pwVar1 + -0xd8) = 0x4011a4;\n  wmemset(local_1a8,L'C',99);\n  local_1c = 0;\n  *(undefined8 *)((long)pwVar1 + -0xd8) = 0x4011bf;\n  wcsncat(__dest,local_1a8,100);\n  *(undefined8 *)((long)pwVar1 + -0xd8) = 0x4011d1;\n  wprintf(L\"%ls\\n\",__dest);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401146: PUSH RBP",
+    "0x401147: MOV RBP,RSP",
+    "0x40114a: PUSH RBX",
+    "0x40114b: SUB RSP,0x198",
+    "0x401152: MOV RAX,RSP",
+    "0x401155: CMP RSP,RAX",
+    "0x401158: JZ 0x0040116c",
+    "0x40115a: SUB RSP,0x1000",
+    "0x401161: OR qword ptr [RSP + 0xff8],0x0",
+    "0x40116a: JMP 0x00401155",
+    "0x40116c: SUB RSP,0xd0",
+    "0x401173: OR qword ptr [RSP + 0xc8],0x0",
+    "0x40117c: LEA RAX,[RSP + 0xf]",
+    "0x401181: AND RAX,-0x10",
+    "0x401185: MOV RBX,RAX",
+    "0x401188: MOV dword ptr [RAX],0x0",
+    "0x40118e: MOV EDX,0x63",
+    "0x401193: MOV ESI,0x43",
+    "0x401198: LEA RDI,[RBP + -0x1a0]",
+    "0x40119f: CALL 0x00401040",
+    "0x4011a4: MOV dword ptr [RBP + -0x14],0x0",
+    "0x4011ab: MOV EDX,0x64",
+    "0x4011b0: LEA RSI,[RBP + -0x1a0]",
+    "0x4011b7: MOV RDI,RBX",
+    "0x4011ba: CALL 0x00401030",
+    "0x4011bf: MOV RSI,RBX",
+    "0x4011c2: MOV EDI,0x402004",
+    "0x4011c7: MOV EAX,0x0",
+    "0x4011cc: CALL 0x00401050",
+    "0x4011d1: MOV RBX,qword ptr [RBP + -0x8]",
+    "0x4011d5: LEAVE",
+    "0x4011d6: RET"
+  ],
+  "calls": [
+    "wmemset",
+    "wcsncat",
+    "wprintf"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "408",
+    "4096",
+    "0",
+    "208",
+    "-16",
+    "99",
+    "67",
+    "100"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_270",
+      "stack_offset": -624,
+      "size_bytes": 4,
+      "data_type": "undefined4"
+    },
+    {
+      "name": "local_269",
+      "stack_offset": -617,
+      "size_bytes": 1,
+      "data_type": "undefined"
+    },
+    {
+      "name": "local_1b0",
+      "stack_offset": -432,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    },
+    {
+      "name": "local_1a8",
+      "stack_offset": -424,
+      "size_bytes": 1,
+      "data_type": "undefined"
+    },
+    {
+      "name": "local_1c",
+      "stack_offset": -28,
+      "size_bytes": 4,
+      "data_type": "undefined4"
+    },
+    {
+      "name": "local_10",
+      "stack_offset": -16,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    }
+  ],
+  "imports": [
+    "wmemset",
+    "wcsncat",
+    "wprintf"
+  ]
+}

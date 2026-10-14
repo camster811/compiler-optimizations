@@ -1,0 +1,78 @@
+{
+  "rejections": [
+    {
+      "candidate_id": "candidate_0044",
+      "failed_conditions": [
+        "O2:retained",
+        "O2:stripped",
+        "O3:retained",
+        "O3:stripped"
+      ],
+      "reason": "context_insufficient: optimized string extent depends on readonly values omitted by the frozen public schema",
+      "recorded_at": "2026-10-14T19:31:00.532074+00:00",
+      "replacement": "candidate_0014",
+      "whole_pair": true
+    },
+    {
+      "candidate_id": "candidate_0051",
+      "failed_conditions": [
+        "O2:retained",
+        "O2:stripped",
+        "O3:retained",
+        "O3:stripped"
+      ],
+      "reason": "context_insufficient: optimized string extent depends on readonly values omitted by the frozen public schema",
+      "recorded_at": "2026-10-14T19:31:00.543129+00:00",
+      "replacement": "candidate_0015",
+      "whole_pair": true
+    },
+    {
+      "candidate_id": "candidate_0262",
+      "failed_conditions": [
+        "O2:retained",
+        "O2:stripped",
+        "O3:retained",
+        "O3:stripped"
+      ],
+      "reason": "context_insufficient: optimized string extent depends on readonly values omitted by the frozen public schema",
+      "recorded_at": "2026-10-14T19:31:00.550728+00:00",
+      "replacement": "candidate_0232",
+      "whole_pair": true
+    },
+    {
+      "candidate_id": "candidate_0269",
+      "failed_conditions": [
+        "O2:retained",
+        "O2:stripped",
+        "O3:retained",
+        "O3:stripped"
+      ],
+      "reason": "context_insufficient: optimized string extent depends on readonly values omitted by the frozen public schema",
+      "recorded_at": "2026-10-14T19:31:00.558317+00:00",
+      "replacement": "candidate_0233",
+      "whole_pair": true
+    }
+  ],
+  "selected": [
+    "candidate_0013",
+    "candidate_0014",
+    "candidate_0089",
+    "candidate_0022",
+    "candidate_0017",
+    "candidate_0031",
+    "candidate_0015",
+    "candidate_0069",
+    "candidate_0129",
+    "candidate_0195",
+    "candidate_0231",
+    "candidate_0232",
+    "candidate_0285",
+    "candidate_0252",
+    "candidate_0235",
+    "candidate_0259",
+    "candidate_0233",
+    "candidate_0277",
+    "candidate_0307",
+    "candidate_0337"
+  ]
+}

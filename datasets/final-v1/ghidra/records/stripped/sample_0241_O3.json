@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0241",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401170",
+    "entry": "0x401170",
+    "size_bytes": 92,
+    "instruction_count": 21,
+    "basic_block_count": 3,
+    "body_ranges": [
+      [
+        "0x401170",
+        "0x4011cc"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid FUN_00401170(void)\n\n{\n  char *__s;\n  \n  __s = malloc(0xb);\n  if (__s != (char *)0x0) {\n    builtin_strncpy(__s,\"AAAAAAAAAA\",0xb);\n    puts(__s);\n    free(__s);\n    return;\n  }\n                    /* WARNING: Subroutine does not return */\n  exit(-1);\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401170: PUSH RBX",
+    "0x401171: MOV EDI,0xb",
+    "0x401176: SUB RSP,0x10",
+    "0x40117a: CALL 0x00401050",
+    "0x40117f: TEST RAX,RAX",
+    "0x401182: JZ 0x004011c2",
+    "0x401184: MOV RBX,RAX",
+    "0x401187: MOV RAX,0x4141414141414141",
+    "0x401191: MOV qword ptr [RSP + 0x5],RAX",
+    "0x401196: MOV RDI,RBX",
+    "0x401199: MOV dword ptr [RSP + 0xc],0x414141",
+    "0x4011a1: MOV RAX,qword ptr [RSP + 0x5]",
+    "0x4011a6: MOV qword ptr [RBX],RAX",
+    "0x4011a9: MOV dword ptr [RBX + 0x7],0x414141",
+    "0x4011b0: CALL 0x00401040",
+    "0x4011b5: ADD RSP,0x10",
+    "0x4011b9: MOV RDI,RBX",
+    "0x4011bc: POP RBX",
+    "0x4011bd: JMP 0x00401030",
+    "0x4011c2: MOV EDI,0xffffffff",
+    "0x4011c7: CALL 0x00401060"
+  ],
+  "calls": [
+    "malloc",
+    "puts",
+    "exit"
+  ],
+  "tail_jumps": [
+    "free"
+  ],
+  "constants": [
+    "11",
+    "16",
+    "4702111234474983745",
+    "4276545",
+    "-1"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_13",
+      "stack_offset": -19,
+      "size_bytes": 11,
+      "data_type": "undefined1[11]"
+    }
+  ],
+  "imports": [
+    "malloc",
+    "puts",
+    "free",
+    "exit"
+  ]
+}

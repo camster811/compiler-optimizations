@@ -1,0 +1,122 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0322",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401166",
+    "entry": "0x401166",
+    "size_bytes": 125,
+    "instruction_count": 31,
+    "basic_block_count": 3,
+    "body_ranges": [
+      [
+        "0x401166",
+        "0x4011e3"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid FUN_00401166(void)\n\n{\n  char *__dest;\n  char local_78 [112];\n  \n  __dest = malloc(0x32);\n  if (__dest != (char *)0x0) {\n    *__dest = '\\0';\n    builtin_strncpy(local_78,\n                    \"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC\"\n                    ,100);\n    strcat(__dest,local_78);\n    puts(__dest);\n    free(__dest);\n    return;\n  }\n                    /* WARNING: Subroutine does not return */\n  exit(-1);\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401166: PUSH RBX",
+    "0x401167: SUB RSP,0x70",
+    "0x40116b: MOV EDI,0x32",
+    "0x401170: CALL 0x00401050",
+    "0x401175: TEST RAX,RAX",
+    "0x401178: JZ 0x004011d9",
+    "0x40117a: MOV RBX,RAX",
+    "0x40117d: MOV byte ptr [RAX],0x0",
+    "0x401180: MOV RSI,RSP",
+    "0x401183: MOV EAX,0x43434343",
+    "0x401188: MOVD XMM0,EAX",
+    "0x40118c: PSHUFD XMM0,XMM0,0x0",
+    "0x401191: MOVAPS xmmword ptr [RSP],XMM0",
+    "0x401195: MOVAPS xmmword ptr [RSP + 0x10],XMM0",
+    "0x40119a: MOVAPS xmmword ptr [RSP + 0x20],XMM0",
+    "0x40119f: MOVAPS xmmword ptr [RSP + 0x30],XMM0",
+    "0x4011a4: MOVAPS xmmword ptr [RSP + 0x40],XMM0",
+    "0x4011a9: MOVAPS xmmword ptr [RSP + 0x50],XMM0",
+    "0x4011ae: MOV dword ptr [RSP + 0x5f],0x43434343",
+    "0x4011b6: MOV byte ptr [RSP + 0x63],0x0",
+    "0x4011bb: MOV RDI,RBX",
+    "0x4011be: CALL 0x00401060",
+    "0x4011c3: MOV RDI,RBX",
+    "0x4011c6: CALL 0x00401040",
+    "0x4011cb: MOV RDI,RBX",
+    "0x4011ce: CALL 0x00401030",
+    "0x4011d3: ADD RSP,0x70",
+    "0x4011d7: POP RBX",
+    "0x4011d8: RET",
+    "0x4011d9: MOV EDI,0xffffffff",
+    "0x4011de: CALL 0x00401070"
+  ],
+  "calls": [
+    "malloc",
+    "strcat",
+    "puts",
+    "free",
+    "exit"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "112",
+    "50",
+    "0",
+    "1128481603",
+    "-1"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_78",
+      "stack_offset": -120,
+      "size_bytes": 16,
+      "data_type": "undefined1[16]"
+    },
+    {
+      "name": "local_68",
+      "stack_offset": -104,
+      "size_bytes": 16,
+      "data_type": "undefined1[16]"
+    },
+    {
+      "name": "local_58",
+      "stack_offset": -88,
+      "size_bytes": 16,
+      "data_type": "undefined1[16]"
+    },
+    {
+      "name": "local_48",
+      "stack_offset": -72,
+      "size_bytes": 16,
+      "data_type": "undefined1[16]"
+    },
+    {
+      "name": "local_38",
+      "stack_offset": -56,
+      "size_bytes": 16,
+      "data_type": "undefined1[16]"
+    },
+    {
+      "name": "local_28",
+      "stack_offset": -40,
+      "size_bytes": 19,
+      "data_type": "undefined1[19]"
+    },
+    {
+      "name": "local_15",
+      "stack_offset": -21,
+      "size_bytes": 1,
+      "data_type": "undefined1"
+    }
+  ],
+  "imports": [
+    "malloc",
+    "strcat",
+    "puts",
+    "free",
+    "exit"
+  ]
+}

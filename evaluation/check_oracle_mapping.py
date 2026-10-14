@@ -494,4 +494,13 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if "--dataset-root" in sys.argv:
+        import argparse
+        sys.path.insert(0, str(ROOT))
+        from evaluation.oracle_v2 import check
+        ap = argparse.ArgumentParser(description="Private final oracle v2 acceptance")
+        ap.add_argument("--dataset-root", required=True, type=Path)
+        ap.add_argument("--records", action="store_true")
+        args = ap.parse_args(); check(args.dataset_root.resolve(), args.records)
+    else:
+        main()

@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0202",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401176",
+    "entry": "0x401176",
+    "size_bytes": 108,
+    "instruction_count": 28,
+    "basic_block_count": 3,
+    "body_ranges": [
+      [
+        "0x401176",
+        "0x4011e2"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid FUN_00401176(void)\n\n{\n  char *__dest;\n  size_t sVar1;\n  char local_23 [19];\n  \n  __dest = malloc(10);\n  if (__dest != (char *)0x0) {\n    builtin_strncpy(local_23,\"AAAAAAAAAA\",0xb);\n    sVar1 = strlen(local_23);\n    strncpy(__dest,local_23,sVar1 + 1);\n    puts(__dest);\n    free(__dest);\n    return;\n  }\n                    /* WARNING: Subroutine does not return */\n  exit(-1);\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401176: PUSH RBP",
+    "0x401177: PUSH RBX",
+    "0x401178: SUB RSP,0x18",
+    "0x40117c: MOV EDI,0xa",
+    "0x401181: CALL 0x00401070",
+    "0x401186: TEST RAX,RAX",
+    "0x401189: JZ 0x004011d8",
+    "0x40118b: MOV RBX,RAX",
+    "0x40118e: MOV RAX,0x4141414141414141",
+    "0x401198: MOV qword ptr [RSP + 0x5],RAX",
+    "0x40119d: MOV dword ptr [RSP + 0xc],0x414141",
+    "0x4011a5: LEA RBP,[RSP + 0x5]",
+    "0x4011aa: MOV RDI,RBP",
+    "0x4011ad: CALL 0x00401060",
+    "0x4011b2: LEA RDX,[RAX + 0x1]",
+    "0x4011b6: MOV RSI,RBP",
+    "0x4011b9: MOV RDI,RBX",
+    "0x4011bc: CALL 0x00401040",
+    "0x4011c1: MOV RDI,RBX",
+    "0x4011c4: CALL 0x00401050",
+    "0x4011c9: MOV RDI,RBX",
+    "0x4011cc: CALL 0x00401030",
+    "0x4011d1: ADD RSP,0x18",
+    "0x4011d5: POP RBX",
+    "0x4011d6: POP RBP",
+    "0x4011d7: RET",
+    "0x4011d8: MOV EDI,0xffffffff",
+    "0x4011dd: CALL 0x00401080"
+  ],
+  "calls": [
+    "malloc",
+    "strlen",
+    "strncpy",
+    "puts",
+    "free",
+    "exit"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "24",
+    "10",
+    "4702111234474983745",
+    "4276545",
+    "-1"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_23",
+      "stack_offset": -35,
+      "size_bytes": 11,
+      "data_type": "undefined1[11]"
+    }
+  ],
+  "imports": [
+    "malloc",
+    "strlen",
+    "strncpy",
+    "puts",
+    "free",
+    "exit"
+  ]
+}

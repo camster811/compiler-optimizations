@@ -1,0 +1,7 @@
+{
+  "archive_bytes": 1992324,
+  "archive_path": "datasets/releases/final-v1.tar.gz",
+  "archive_sha256": "b561cd0485ab10402dfe9a92ae940fa0349ad3734d4eb8b3322285373dfb4049",
+  "corpus_receipt_sha256": "99d4dc74a94236d613829c12ad13fb4dd4f19727b3bc947bb364deb3f20646bf",
+  "input_receipt_sha256": "9f10fa1312834910a06f2614e18d4db3579931d370b4aa98efd27b52f8a6f3d4"
+}

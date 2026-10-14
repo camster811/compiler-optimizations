@@ -1,0 +1,398 @@
+[
+  {
+    "record_sha256": "1f66060f28e077477acfe4ce9465137d8db2ab64fcc46f9eed713dc02f61c2ee",
+    "sample_id": "sample_0190",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to strncat at 0x4011c3 whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "694cad5231a1763d452279e498ad5baff6e1e8f5809a61e594d21a07896f63a1",
+    "sample_id": "sample_0190",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to strncat at 0x4011d9 whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "a00e5a9860352f3ad42e797fa2d20cb89de7718b27e250a9c52346509a95a6fa",
+    "sample_id": "sample_0190",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to strncat at 0x4011dd whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "a73d74638d8f2a54e170019912e127c20de1c4f8a0a247f6662c4fb2db5db520",
+    "sample_id": "sample_0190",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to strncat at 0x4011dd whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "acb47b3ed57f870db4d703b72ea68be21d9e252df95fc05ff04fda486d499dbb",
+    "sample_id": "sample_0190",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to strncat at 0x4011c3 whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "f396db464deddac1adc6f2902608bece24879fad8711765ea218b98d7360d0c2",
+    "sample_id": "sample_0190",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to strncat at 0x4011d9 whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "43e0dab0e6cf250d9e9cc29d8d0c658e63f1ad2f63ab0e948bcd9dfe94f1d9d8",
+    "sample_id": "sample_0232",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "malloc(10) at 0x40116b has no visible write through its pointer",
+      "40-byte write over [rbp-0x50, rbp-0x28) stays inside the frame, but the destination buffer size is not recoverable",
+      "16-byte write over [rbp-0x10, rbp+0x0) stays inside the frame, but the destination buffer size is not recoverable"
+    ],
+    "triggered_rules": [
+      "insufficient_evidence"
+    ]
+  },
+  {
+    "record_sha256": "799d32d54111f9a4540e28851ab75a459a2c36408a09326874caca12260441c3",
+    "sample_id": "sample_0232",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "malloc(10) at 0x40116b has no visible write through its pointer",
+      "40-byte write over [rbp-0x50, rbp-0x28) stays inside the frame, but the destination buffer size is not recoverable",
+      "16-byte write over [rbp-0x10, rbp+0x0) stays inside the frame, but the destination buffer size is not recoverable"
+    ],
+    "triggered_rules": [
+      "insufficient_evidence"
+    ]
+  },
+  {
+    "record_sha256": "8cc6224d4135b21acb74b9a9d561a29d218a7b37670ab4fcbb3a3bad221ed408",
+    "sample_id": "sample_0232",
+    "classification": "not_vulnerable",
+    "predicted_cwe": null,
+    "evidence": [
+      "malloc(10) is followed by a write of 4 bytes over [ptr+0, ptr+4) that lies inside the allocation"
+    ],
+    "triggered_rules": [
+      "heap_write_within_allocation"
+    ]
+  },
+  {
+    "record_sha256": "d9febe1168c67691d70e3bd22afa49eab03f6033a5897048d960f3cb71f1cdf5",
+    "sample_id": "sample_0232",
+    "classification": "not_vulnerable",
+    "predicted_cwe": null,
+    "evidence": [
+      "malloc(10) is followed by a write of 4 bytes over [ptr+0, ptr+4) that lies inside the allocation"
+    ],
+    "triggered_rules": [
+      "heap_write_within_allocation"
+    ]
+  },
+  {
+    "record_sha256": "2301a1e73a0794a1c9697283166e3fa8c119a237c6ccc3dfa7d1654db1b55361",
+    "sample_id": "sample_0247",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to strncat at 0x4011c3 whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "9d3f61e30c75e7763c3d79ecdf25910b60cc012781bdc22c8c040b22de3df026",
+    "sample_id": "sample_0247",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to strncat at 0x4011d9 whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "aadfd82ac2c5f3e4c20aa38051e850abbc973f07b0a5716405bb44965fa409df",
+    "sample_id": "sample_0247",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to strncat at 0x4011d9 whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "bb70388759b8037de22d9cd9e4fd44c04446f8176f60aa174926a08c7d484ebc",
+    "sample_id": "sample_0247",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to strncat at 0x4011c3 whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "fcf6d2a1de39cc0117d2a50b28bca5cb53c06f4bb58940e03c49fff62229cf5e",
+    "sample_id": "sample_0247",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to strncat at 0x4011dd whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "ffe9a1b4b669ca0a81f5ebf8b1c84579f2fda871de34c8895033037ee15bc7ae",
+    "sample_id": "sample_0247",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to strncat at 0x4011dd whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "0a1d052744481c222e49b2610a5e92b184e8189940e933801075270fc302f4a4",
+    "sample_id": "sample_0279",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "40-byte write over [rbp-0x40, rbp-0x18) stays inside the frame, but the destination buffer size is not recoverable",
+      "16-byte write over [rbp-0x10, rbp+0x0) stays inside the frame, but the destination buffer size is not recoverable"
+    ],
+    "triggered_rules": [
+      "insufficient_evidence"
+    ]
+  },
+  {
+    "record_sha256": "92ff21d256c137ec485a6d06270866aa787a00f4722f67f01243e759d1b4c04c",
+    "sample_id": "sample_0279",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "40-byte write over [rbp-0x40, rbp-0x18) stays inside the frame, but the destination buffer size is not recoverable",
+      "16-byte write over [rbp-0x10, rbp+0x0) stays inside the frame, but the destination buffer size is not recoverable"
+    ],
+    "triggered_rules": [
+      "insufficient_evidence"
+    ]
+  },
+  {
+    "record_sha256": "bd3ea8f3815f0e7d8e07de4b7950bc5c01394340fa673daa1c16690cb7316383",
+    "sample_id": "sample_0279",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "no recognized allocation or buffer write"
+    ],
+    "triggered_rules": [
+      "insufficient_evidence"
+    ]
+  },
+  {
+    "record_sha256": "d3c0fa16e2ed081627cacf1dfabf56315b1ec7eddac1f47d10d1cf060efd58b8",
+    "sample_id": "sample_0279",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "no recognized allocation or buffer write"
+    ],
+    "triggered_rules": [
+      "insufficient_evidence"
+    ]
+  },
+  {
+    "record_sha256": "2212ab5ac8b51be498f2458947324ef3427055a353797357849d91d787bae1b7",
+    "sample_id": "sample_0282",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to memcpy at 0x40127e whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "7be36d844c29f2d43897145e92271103e61162440c250b776a9a03dd08768235",
+    "sample_id": "sample_0282",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to memcpy at 0x40127e whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "021d4425dad200e4d3a1c2fc3f414e5f050c86ce4e1e5277868ea4a7387ead09",
+    "sample_id": "sample_0311",
+    "classification": "not_vulnerable",
+    "predicted_cwe": null,
+    "evidence": [
+      "malloc(40) is followed by a write of 4 bytes over [ptr+0, ptr+4) that lies inside the allocation"
+    ],
+    "triggered_rules": [
+      "heap_write_within_allocation"
+    ]
+  },
+  {
+    "record_sha256": "0dc10e9f59e76340a77949e3aa198717561590104d94c13372272bb90cf3254e",
+    "sample_id": "sample_0311",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "malloc(40) at 0x40116b has no visible write through its pointer",
+      "40-byte write over [rbp-0x50, rbp-0x28) stays inside the frame, but the destination buffer size is not recoverable",
+      "16-byte write over [rbp-0x10, rbp+0x0) stays inside the frame, but the destination buffer size is not recoverable"
+    ],
+    "triggered_rules": [
+      "insufficient_evidence"
+    ]
+  },
+  {
+    "record_sha256": "71ef30803513b346873420e40e8c955b9a5c102921ba3929116098578e0454a1",
+    "sample_id": "sample_0311",
+    "classification": "not_vulnerable",
+    "predicted_cwe": null,
+    "evidence": [
+      "malloc(40) is followed by a write of 4 bytes over [ptr+0, ptr+4) that lies inside the allocation"
+    ],
+    "triggered_rules": [
+      "heap_write_within_allocation"
+    ]
+  },
+  {
+    "record_sha256": "9a7bf54b46e69f19376462135f7b2559bbee62bd2a5208c72814391098e8c3c9",
+    "sample_id": "sample_0311",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "malloc(40) at 0x40116b has no visible write through its pointer",
+      "40-byte write over [rbp-0x50, rbp-0x28) stays inside the frame, but the destination buffer size is not recoverable",
+      "16-byte write over [rbp-0x10, rbp+0x0) stays inside the frame, but the destination buffer size is not recoverable"
+    ],
+    "triggered_rules": [
+      "insufficient_evidence"
+    ]
+  },
+  {
+    "record_sha256": "17fc0410002a677f96c2e903add2eb6627022eeeb7ae728bc5e348931a66800d",
+    "sample_id": "sample_0326",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "no recognized allocation or buffer write"
+    ],
+    "triggered_rules": [
+      "insufficient_evidence"
+    ]
+  },
+  {
+    "record_sha256": "747cb56074c8368c61bb1b43e191d7be084c16ca273493fb8506a324e1d44ef9",
+    "sample_id": "sample_0326",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "40-byte write over [rbp-0x40, rbp-0x18) stays inside the frame, but the destination buffer size is not recoverable",
+      "16-byte write over [rbp-0x10, rbp+0x0) stays inside the frame, but the destination buffer size is not recoverable"
+    ],
+    "triggered_rules": [
+      "insufficient_evidence"
+    ]
+  },
+  {
+    "record_sha256": "aad21eb25699678e6f4f7a049311a11ed5d67b2a2ea0e2aa5033cd183b16a679",
+    "sample_id": "sample_0326",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "no recognized allocation or buffer write"
+    ],
+    "triggered_rules": [
+      "insufficient_evidence"
+    ]
+  },
+  {
+    "record_sha256": "f081a7a6d42eaf1da2251be6edae01b44a7e47166052a05c0a815bc538464c48",
+    "sample_id": "sample_0326",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "40-byte write over [rbp-0x40, rbp-0x18) stays inside the frame, but the destination buffer size is not recoverable",
+      "16-byte write over [rbp-0x10, rbp+0x0) stays inside the frame, but the destination buffer size is not recoverable"
+    ],
+    "triggered_rules": [
+      "insufficient_evidence"
+    ]
+  },
+  {
+    "record_sha256": "3c415c93c625a763b22a55f478a98de617bbd9c3fc7356ec645a21dd6251917a",
+    "sample_id": "sample_0369",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to memcpy at 0x40127e whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  },
+  {
+    "record_sha256": "eac4db83c050522cd21687ef345e37f70a8b2c3366d03b648a17b39cb430e111",
+    "sample_id": "sample_0369",
+    "classification": "uncertain",
+    "predicted_cwe": null,
+    "evidence": [
+      "call to memcpy at 0x40127e whose destination capacity is not provable"
+    ],
+    "triggered_rules": [
+      "unresolved_copy_call"
+    ]
+  }
+]

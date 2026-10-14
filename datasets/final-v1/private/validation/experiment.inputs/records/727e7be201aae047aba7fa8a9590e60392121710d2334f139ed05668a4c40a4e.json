@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0340",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401160",
+    "entry": "0x401160",
+    "size_bytes": 84,
+    "instruction_count": 22,
+    "basic_block_count": 5,
+    "body_ranges": [
+      [
+        "0x401160",
+        "0x4011b4"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid FUN_00401160(void)\n\n{\n  uint *__ptr;\n  uint *puVar1;\n  \n  __ptr = malloc(10);\n  if (__ptr != (uint *)0x0) {\n    puVar1 = __ptr;\n    do {\n      *puVar1 = 0;\n      puVar1 = puVar1 + 1;\n    } while (puVar1 != __ptr + 10);\n    printf(\"%d\\n\",(ulong)*__ptr);\n    free(__ptr);\n    return;\n  }\n                    /* WARNING: Subroutine does not return */\n  exit(-1);\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401160: PUSH RBX",
+    "0x401161: MOV EDI,0xa",
+    "0x401166: CALL 0x00401050",
+    "0x40116b: TEST RAX,RAX",
+    "0x40116e: JZ 0x004011aa",
+    "0x401170: MOV RBX,RAX",
+    "0x401173: LEA RDX,[RAX + 0x28]",
+    "0x401177: NOP word ptr [RAX + RAX*0x1]",
+    "0x401180: MOV dword ptr [RAX],0x0",
+    "0x401186: ADD RAX,0x4",
+    "0x40118a: CMP RAX,RDX",
+    "0x40118d: JNZ 0x00401180",
+    "0x40118f: MOV ESI,dword ptr [RBX]",
+    "0x401191: MOV EDI,0x402004",
+    "0x401196: MOV EAX,0x0",
+    "0x40119b: CALL 0x00401040",
+    "0x4011a0: MOV RDI,RBX",
+    "0x4011a3: CALL 0x00401030",
+    "0x4011a8: POP RBX",
+    "0x4011a9: RET",
+    "0x4011aa: MOV EDI,0xffffffff",
+    "0x4011af: CALL 0x00401060"
+  ],
+  "calls": [
+    "malloc",
+    "printf",
+    "free",
+    "exit"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "10",
+    "0",
+    "4",
+    "-1"
+  ],
+  "stack_variables": [],
+  "imports": [
+    "malloc",
+    "printf",
+    "free",
+    "exit"
+  ]
+}

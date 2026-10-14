@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0263",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401136",
+    "entry": "0x401136",
+    "size_bytes": 107,
+    "instruction_count": 27,
+    "basic_block_count": 4,
+    "body_ranges": [
+      [
+        "0x401136",
+        "0x4011a1"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid FUN_00401136(void)\n\n{\n  char *__dest;\n  undefined1 *puVar1;\n  undefined1 auStack_28 [5];\n  char local_23 [19];\n  \n  for (puVar1 = auStack_28; puVar1 != auStack_28; puVar1 = puVar1 + -0x1000) {\n    *(undefined8 *)(puVar1 + -8) = *(undefined8 *)(puVar1 + -8);\n  }\n  *(undefined8 *)(puVar1 + -8) = *(undefined8 *)(puVar1 + -8);\n  __dest = (char *)((ulong)(puVar1 + -0x11) & 0xfffffffffffffff0);\n  *__dest = '\\0';\n  builtin_strncpy(local_23,\"AAAAAAAAAA\",0xb);\n  *(undefined8 *)(puVar1 + -0x28) = 0x401193;\n  strcpy(__dest,local_23);\n  *(undefined8 *)(puVar1 + -0x28) = 0x40119b;\n  puts(__dest);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401136: PUSH RBP",
+    "0x401137: MOV RBP,RSP",
+    "0x40113a: PUSH RBX",
+    "0x40113b: SUB RSP,0x18",
+    "0x40113f: MOV RAX,RSP",
+    "0x401142: CMP RSP,RAX",
+    "0x401145: JZ 0x00401159",
+    "0x401147: SUB RSP,0x1000",
+    "0x40114e: OR qword ptr [RSP + 0xff8],0x0",
+    "0x401157: JMP 0x00401142",
+    "0x401159: SUB RSP,0x20",
+    "0x40115d: OR qword ptr [RSP + 0x18],0x0",
+    "0x401163: LEA RAX,[RSP + 0xf]",
+    "0x401168: AND RAX,-0x10",
+    "0x40116c: MOV RBX,RAX",
+    "0x40116f: MOV byte ptr [RAX],0x0",
+    "0x401172: MOV RDX,0x4141414141414141",
+    "0x40117c: MOV qword ptr [RBP + -0x1b],RDX",
+    "0x401180: MOV dword ptr [RBP + -0x14],0x414141",
+    "0x401187: LEA RSI,[RBP + -0x1b]",
+    "0x40118b: MOV RDI,RAX",
+    "0x40118e: CALL 0x00401030",
+    "0x401193: MOV RDI,RBX",
+    "0x401196: CALL 0x00401040",
+    "0x40119b: MOV RBX,qword ptr [RBP + -0x8]",
+    "0x40119f: LEAVE",
+    "0x4011a0: RET"
+  ],
+  "calls": [
+    "strcpy",
+    "puts"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "24",
+    "4096",
+    "0",
+    "32",
+    "-16",
+    "4702111234474983745",
+    "4276545"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_40",
+      "stack_offset": -64,
+      "size_bytes": 1,
+      "data_type": "undefined1"
+    },
+    {
+      "name": "local_39",
+      "stack_offset": -57,
+      "size_bytes": 1,
+      "data_type": "undefined"
+    },
+    {
+      "name": "local_30",
+      "stack_offset": -48,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    },
+    {
+      "name": "local_23",
+      "stack_offset": -35,
+      "size_bytes": 11,
+      "data_type": "undefined1[11]"
+    },
+    {
+      "name": "local_10",
+      "stack_offset": -16,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    }
+  ],
+  "imports": [
+    "strcpy",
+    "puts"
+  ]
+}

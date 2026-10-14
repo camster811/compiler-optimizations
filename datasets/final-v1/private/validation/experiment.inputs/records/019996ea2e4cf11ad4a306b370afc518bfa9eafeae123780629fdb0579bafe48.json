@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0373",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401166",
+    "entry": "0x401166",
+    "size_bytes": 126,
+    "instruction_count": 33,
+    "basic_block_count": 3,
+    "body_ranges": [
+      [
+        "0x401166",
+        "0x4011e4"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid FUN_00401166(void)\n\n{\n  undefined1 local_38 [16];\n  undefined1 local_28 [16];\n  undefined8 local_18;\n  uint *local_10;\n  \n  local_10 = (uint *)0x0;\n  local_10 = malloc(10);\n  if (local_10 == (uint *)0x0) {\n                    /* WARNING: Subroutine does not return */\n    exit(-1);\n  }\n  local_38 = (undefined1  [16])0x0;\n  local_28 = (undefined1  [16])0x0;\n  local_18 = 0;\n  memcpy(local_10,local_38,0x28);\n  printf(\"%d\\n\",(ulong)*local_10);\n  free(local_10);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401166: PUSH RBP",
+    "0x401167: MOV RBP,RSP",
+    "0x40116a: SUB RSP,0x30",
+    "0x40116e: MOV qword ptr [RBP + -0x8],0x0",
+    "0x401176: MOV EDI,0xa",
+    "0x40117b: CALL 0x00401060",
+    "0x401180: MOV qword ptr [RBP + -0x8],RAX",
+    "0x401184: CMP qword ptr [RBP + -0x8],0x0",
+    "0x401189: JNZ 0x00401195",
+    "0x40118b: MOV EDI,0xffffffff",
+    "0x401190: CALL 0x00401070",
+    "0x401195: PXOR XMM0,XMM0",
+    "0x401199: MOVAPS xmmword ptr [RBP + -0x30],XMM0",
+    "0x40119d: MOVAPS xmmword ptr [RBP + -0x20],XMM0",
+    "0x4011a1: MOVQ qword ptr [RBP + -0x10],XMM0",
+    "0x4011a6: LEA RCX,[RBP + -0x30]",
+    "0x4011aa: MOV RAX,qword ptr [RBP + -0x8]",
+    "0x4011ae: MOV EDX,0x28",
+    "0x4011b3: MOV RSI,RCX",
+    "0x4011b6: MOV RDI,RAX",
+    "0x4011b9: CALL 0x00401050",
+    "0x4011be: MOV RAX,qword ptr [RBP + -0x8]",
+    "0x4011c2: MOV EAX,dword ptr [RAX]",
+    "0x4011c4: MOV ESI,EAX",
+    "0x4011c6: MOV EDI,0x402004",
+    "0x4011cb: MOV EAX,0x0",
+    "0x4011d0: CALL 0x00401040",
+    "0x4011d5: MOV RAX,qword ptr [RBP + -0x8]",
+    "0x4011d9: MOV RDI,RAX",
+    "0x4011dc: CALL 0x00401030",
+    "0x4011e1: NOP",
+    "0x4011e2: LEAVE",
+    "0x4011e3: RET"
+  ],
+  "calls": [
+    "malloc",
+    "exit",
+    "memcpy",
+    "printf",
+    "free"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "48",
+    "0",
+    "10",
+    "-1",
+    "40"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_38",
+      "stack_offset": -56,
+      "size_bytes": 16,
+      "data_type": "undefined1[16]"
+    },
+    {
+      "name": "local_28",
+      "stack_offset": -40,
+      "size_bytes": 16,
+      "data_type": "undefined1[16]"
+    },
+    {
+      "name": "local_18",
+      "stack_offset": -24,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    },
+    {
+      "name": "local_10",
+      "stack_offset": -16,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    }
+  ],
+  "imports": [
+    "malloc",
+    "exit",
+    "memcpy",
+    "printf",
+    "free"
+  ]
+}

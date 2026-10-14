@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0322",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401176",
+    "entry": "0x401176",
+    "size_bytes": 126,
+    "instruction_count": 33,
+    "basic_block_count": 3,
+    "body_ranges": [
+      [
+        "0x401176",
+        "0x4011f4"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid FUN_00401176(void)\n\n{\n  char local_78 [99];\n  undefined1 local_15;\n  char *local_10;\n  \n  local_10 = (char *)0x0;\n  local_10 = malloc(0x32);\n  if (local_10 == (char *)0x0) {\n                    /* WARNING: Subroutine does not return */\n    exit(-1);\n  }\n  *local_10 = '\\0';\n  memset(local_78,0x43,99);\n  local_15 = 0;\n  strcat(local_10,local_78);\n  puts(local_10);\n  free(local_10);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401176: PUSH RBP",
+    "0x401177: MOV RBP,RSP",
+    "0x40117a: SUB RSP,0x70",
+    "0x40117e: MOV qword ptr [RBP + -0x8],0x0",
+    "0x401186: MOV EDI,0x32",
+    "0x40118b: CALL 0x00401060",
+    "0x401190: MOV qword ptr [RBP + -0x8],RAX",
+    "0x401194: CMP qword ptr [RBP + -0x8],0x0",
+    "0x401199: JNZ 0x004011a5",
+    "0x40119b: MOV EDI,0xffffffff",
+    "0x4011a0: CALL 0x00401080",
+    "0x4011a5: MOV RAX,qword ptr [RBP + -0x8]",
+    "0x4011a9: MOV byte ptr [RAX],0x0",
+    "0x4011ac: LEA RAX,[RBP + -0x70]",
+    "0x4011b0: MOV EDX,0x63",
+    "0x4011b5: MOV ESI,0x43",
+    "0x4011ba: MOV RDI,RAX",
+    "0x4011bd: CALL 0x00401050",
+    "0x4011c2: MOV byte ptr [RBP + -0xd],0x0",
+    "0x4011c6: LEA RDX,[RBP + -0x70]",
+    "0x4011ca: MOV RAX,qword ptr [RBP + -0x8]",
+    "0x4011ce: MOV RSI,RDX",
+    "0x4011d1: MOV RDI,RAX",
+    "0x4011d4: CALL 0x00401070",
+    "0x4011d9: MOV RAX,qword ptr [RBP + -0x8]",
+    "0x4011dd: MOV RDI,RAX",
+    "0x4011e0: CALL 0x00401040",
+    "0x4011e5: MOV RAX,qword ptr [RBP + -0x8]",
+    "0x4011e9: MOV RDI,RAX",
+    "0x4011ec: CALL 0x00401030",
+    "0x4011f1: NOP",
+    "0x4011f2: LEAVE",
+    "0x4011f3: RET"
+  ],
+  "calls": [
+    "malloc",
+    "exit",
+    "memset",
+    "strcat",
+    "puts",
+    "free"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "112",
+    "0",
+    "50",
+    "-1",
+    "99",
+    "67"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_78",
+      "stack_offset": -120,
+      "size_bytes": 1,
+      "data_type": "undefined"
+    },
+    {
+      "name": "local_15",
+      "stack_offset": -21,
+      "size_bytes": 1,
+      "data_type": "undefined1"
+    },
+    {
+      "name": "local_10",
+      "stack_offset": -16,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    }
+  ],
+  "imports": [
+    "malloc",
+    "exit",
+    "memset",
+    "strcat",
+    "puts",
+    "free"
+  ]
+}

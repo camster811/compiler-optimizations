@@ -171,4 +171,12 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if "--dataset-root" in sys.argv:
+        import argparse
+        sys.path.insert(0, str(ROOT))
+        from evaluation.oracle_v2 import check
+        ap = argparse.ArgumentParser(description="Manifest-driven extraction acceptance")
+        ap.add_argument("--dataset-root", required=True, type=Path)
+        args = ap.parse_args(); check(args.dataset_root.resolve(), require_records=True)
+    else:
+        main()

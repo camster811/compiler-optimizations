@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "sample_id", "pair_id", "optimization", "cwe", "source_ground_truth", "binary_manifestation", "operation_kind", "canonical_address", "selected_function_entry", "evidence_ranges", "target_effect_ground_truth", "verification", "source_proof"],
+  "properties": {
+    "schema_version": {"const": "2.0"}, "sample_id": {"type": "string", "pattern": "^sample_[0-9]{4}$"},
+    "pair_id": {"type": "string", "pattern": "^pair_[0-9]{4}$"}, "optimization": {"enum": ["O0", "O1", "O2", "O3"]},
+    "cwe": {"enum": ["CWE-121", "CWE-122"]}, "source_ground_truth": {"enum": ["vulnerable", "not_vulnerable"]},
+    "binary_manifestation": {"enum": ["present", "transformed", "relocated", "eliminated", "unresolved"]},
+    "operation_kind": {"enum": ["explicit_store_sequence", "library_copy_call", "string_instruction", "loop_write", "helper_call", "transformed", "eliminated", null]},
+    "canonical_address": {"anyOf": [{"$ref": "#/$defs/address"}, {"type": "null"}]},
+    "selected_function_entry": {"anyOf": [{"$ref": "#/$defs/address"}, {"type": "null"}]},
+    "target_effect_ground_truth": {"enum": ["vulnerable", "not_vulnerable", null]},
+    "verification": {"type": ["string", "null"]},
+    "evidence_ranges": {"type": "array", "items": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"$ref": "#/$defs/address"}}},
+    "source_proof": {"type": "object", "required": ["capacity_bytes", "write_extent_bytes", "operation"],
+      "properties": {"capacity_bytes": {"type": "integer", "minimum": 1}, "write_extent_bytes": {"type": "integer", "minimum": 1}, "operation": {"type": "string"}}}
+  },
+  "$defs": {"address": {"type": "string", "pattern": "^0x[0-9a-f]+$"}}
+}

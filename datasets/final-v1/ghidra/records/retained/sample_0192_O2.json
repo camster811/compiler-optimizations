@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0192",
+  "status": "ok",
+  "function": {
+    "name": "copy_payload",
+    "entry": "0x401190",
+    "size_bytes": 118,
+    "instruction_count": 27,
+    "basic_block_count": 3,
+    "body_ranges": [
+      [
+        "0x401190",
+        "0x401206"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid copy_payload(void)\n\n{\n  wchar_t *__dest;\n  wchar_t awStack_198 [99];\n  undefined4 local_c;\n  \n  __dest = malloc(400);\n  if (__dest != (wchar_t *)0x0) {\n    *__dest = L'\\0';\n    wmemset(awStack_198,L'C',99);\n    local_c = 0;\n    wcsncat(__dest,awStack_198,100);\n    wprintf(L\"%ls\\n\",__dest);\n    free(__dest);\n    return;\n  }\n                    /* WARNING: Subroutine does not return */\n  exit(-1);\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401190: PUSH RBX",
+    "0x401191: MOV EDI,0x190",
+    "0x401196: SUB RSP,0x190",
+    "0x40119d: CALL 0x00401060",
+    "0x4011a2: TEST RAX,RAX",
+    "0x4011a5: JZ 0x004011fc",
+    "0x4011a7: MOV RBX,RAX",
+    "0x4011aa: MOV RDI,RSP",
+    "0x4011ad: MOV EDX,0x63",
+    "0x4011b2: MOV ESI,0x43",
+    "0x4011b7: MOV dword ptr [RAX],0x0",
+    "0x4011bd: CALL 0x00401050",
+    "0x4011c2: MOV RSI,RSP",
+    "0x4011c5: MOV RDI,RBX",
+    "0x4011c8: MOV EDX,0x64",
+    "0x4011cd: MOV dword ptr [RSP + 0x18c],0x0",
+    "0x4011d8: CALL 0x00401040",
+    "0x4011dd: MOV RSI,RBX",
+    "0x4011e0: MOV EDI,0x402004",
+    "0x4011e5: XOR EAX,EAX",
+    "0x4011e7: CALL 0x00401070",
+    "0x4011ec: ADD RSP,0x190",
+    "0x4011f3: MOV RDI,RBX",
+    "0x4011f6: POP RBX",
+    "0x4011f7: JMP 0x00401030",
+    "0x4011fc: MOV EDI,0xffffffff",
+    "0x401201: CALL 0x00401080"
+  ],
+  "calls": [
+    "malloc",
+    "wmemset",
+    "wcsncat",
+    "wprintf",
+    "exit"
+  ],
+  "tail_jumps": [
+    "free"
+  ],
+  "constants": [
+    "400",
+    "99",
+    "67",
+    "0",
+    "100",
+    "-1"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_c",
+      "stack_offset": -12,
+      "size_bytes": 4,
+      "data_type": "undefined4"
+    }
+  ],
+  "imports": [
+    "malloc",
+    "wmemset",
+    "wcsncat",
+    "wprintf",
+    "free",
+    "exit"
+  ]
+}

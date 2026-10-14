@@ -1,0 +1,17 @@
+{
+  "candidates": [
+    "candidate_0013",
+    "candidate_0089",
+    "candidate_0232",
+    "candidate_0277"
+  ],
+  "context_completeness_check": "passed after four recorded whole-pair replacements",
+  "revalidation_manifest_sha256": "771188eb4e68f148d41dfec73f57390ac3bcc23564db45e1975c889c4d1e9eaf",
+  "scope_unchanged": [
+    "O0",
+    "O1",
+    "O2",
+    "O3"
+  ],
+  "scores_used": false
+}

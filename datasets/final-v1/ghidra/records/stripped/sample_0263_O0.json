@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0263",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401136",
+    "entry": "0x401136",
+    "size_bytes": 354,
+    "instruction_count": 89,
+    "basic_block_count": 11,
+    "body_ranges": [
+      [
+        "0x401136",
+        "0x401298"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid FUN_00401136(void)\n\n{\n  undefined1 *puVar1;\n  undefined1 *puVar2;\n  undefined1 auStack_48 [13];\n  char local_3b [11];\n  char *local_30;\n  char *local_28;\n  char *local_20;\n  char *local_18;\n  ulong local_10;\n  \n  for (puVar1 = auStack_48; puVar1 != auStack_48; puVar1 = puVar1 + -0x1000) {\n    *(undefined8 *)(puVar1 + -8) = *(undefined8 *)(puVar1 + -8);\n  }\n  *(undefined8 *)(puVar1 + -8) = *(undefined8 *)(puVar1 + -8);\n  local_10 = (ulong)(puVar1 + -0x11) & 0xfffffffffffffff0;\n  for (puVar2 = puVar1 + -0x20; puVar2 != puVar1 + -0x20; puVar2 = puVar2 + -0x1000) {\n    *(undefined8 *)(puVar2 + -8) = *(undefined8 *)(puVar2 + -8);\n  }\n  *(undefined8 *)(puVar2 + -8) = *(undefined8 *)(puVar2 + -8);\n  local_30 = (char *)((ulong)(puVar2 + -0x11) & 0xfffffffffffffff0);\n  *local_30 = '\\0';\n  builtin_strncpy(local_3b,\"AAAAAAAAAA\",0xb);\n  *(undefined8 *)(puVar2 + -0x28) = 0x401289;\n  local_28 = local_30;\n  local_20 = local_30;\n  local_18 = local_30;\n  strcpy(local_30,local_3b);\n  *(undefined8 *)(puVar2 + -0x28) = 0x401295;\n  puts(local_30);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401136: PUSH RBP",
+    "0x401137: MOV RBP,RSP",
+    "0x40113a: SUB RSP,0x40",
+    "0x40113e: MOV EAX,0x10",
+    "0x401143: SUB RAX,0x1",
+    "0x401147: ADD RAX,0x12",
+    "0x40114b: MOV ESI,0x10",
+    "0x401150: MOV EDX,0x0",
+    "0x401155: DIV RSI",
+    "0x401158: IMUL RAX,RAX,0x10",
+    "0x40115c: MOV RCX,RAX",
+    "0x40115f: AND RCX,-0x1000",
+    "0x401166: MOV RDX,RSP",
+    "0x401169: SUB RDX,RCX",
+    "0x40116c: CMP RSP,RDX",
+    "0x40116f: JZ 0x00401183",
+    "0x401171: SUB RSP,0x1000",
+    "0x401178: OR qword ptr [RSP + 0xff8],0x0",
+    "0x401181: JMP 0x0040116c",
+    "0x401183: MOV RDX,RAX",
+    "0x401186: AND EDX,0xfff",
+    "0x40118c: SUB RSP,RDX",
+    "0x40118f: MOV RDX,RAX",
+    "0x401192: AND EDX,0xfff",
+    "0x401198: TEST RDX,RDX",
+    "0x40119b: JZ 0x004011ad",
+    "0x40119d: AND EAX,0xfff",
+    "0x4011a2: SUB RAX,0x8",
+    "0x4011a6: ADD RAX,RSP",
+    "0x4011a9: OR qword ptr [RAX],0x0",
+    "0x4011ad: MOV RAX,RSP",
+    "0x4011b0: ADD RAX,0xf",
+    "0x4011b4: SHR RAX,0x4",
+    "0x4011b8: SHL RAX,0x4",
+    "0x4011bc: MOV qword ptr [RBP + -0x8],RAX",
+    "0x4011c0: MOV EAX,0x10",
+    "0x4011c5: SUB RAX,0x1",
+    "0x4011c9: ADD RAX,0x13",
+    "0x4011cd: MOV EDI,0x10",
+    "0x4011d2: MOV EDX,0x0",
+    "0x4011d7: DIV RDI",
+    "0x4011da: IMUL RAX,RAX,0x10",
+    "0x4011de: MOV RCX,RAX",
+    "0x4011e1: AND RCX,-0x1000",
+    "0x4011e8: MOV RDX,RSP",
+    "0x4011eb: SUB RDX,RCX",
+    "0x4011ee: CMP RSP,RDX",
+    "0x4011f1: JZ 0x00401205",
+    "0x4011f3: SUB RSP,0x1000",
+    "0x4011fa: OR qword ptr [RSP + 0xff8],0x0",
+    "0x401203: JMP 0x004011ee",
+    "0x401205: MOV RDX,RAX",
+    "0x401208: AND EDX,0xfff",
+    "0x40120e: SUB RSP,RDX",
+    "0x401211: MOV RDX,RAX",
+    "0x401214: AND EDX,0xfff",
+    "0x40121a: TEST RDX,RDX",
+    "0x40121d: JZ 0x0040122f",
+    "0x40121f: AND EAX,0xfff",
+    "0x401224: SUB RAX,0x8",
+    "0x401228: ADD RAX,RSP",
+    "0x40122b: OR qword ptr [RAX],0x0",
+    "0x40122f: MOV RAX,RSP",
+    "0x401232: ADD RAX,0xf",
+    "0x401236: SHR RAX,0x4",
+    "0x40123a: SHL RAX,0x4",
+    "0x40123e: MOV qword ptr [RBP + -0x10],RAX",
+    "0x401242: MOV RAX,qword ptr [RBP + -0x10]",
+    "0x401246: MOV qword ptr [RBP + -0x18],RAX",
+    "0x40124a: MOV RAX,qword ptr [RBP + -0x18]",
+    "0x40124e: MOV byte ptr [RAX],0x0",
+    "0x401251: MOV RAX,qword ptr [RBP + -0x18]",
+    "0x401255: MOV qword ptr [RBP + -0x20],RAX",
+    "0x401259: MOV RAX,qword ptr [RBP + -0x20]",
+    "0x40125d: MOV qword ptr [RBP + -0x28],RAX",
+    "0x401261: MOV RAX,0x4141414141414141",
+    "0x40126b: MOV qword ptr [RBP + -0x33],RAX",
+    "0x40126f: MOV dword ptr [RBP + -0x2c],0x414141",
+    "0x401276: LEA RDX,[RBP + -0x33]",
+    "0x40127a: MOV RAX,qword ptr [RBP + -0x28]",
+    "0x40127e: MOV RSI,RDX",
+    "0x401281: MOV RDI,RAX",
+    "0x401284: CALL 0x00401030",
+    "0x401289: MOV RAX,qword ptr [RBP + -0x28]",
+    "0x40128d: MOV RDI,RAX",
+    "0x401290: CALL 0x00401040",
+    "0x401295: NOP",
+    "0x401296: LEAVE",
+    "0x401297: RET"
+  ],
+  "calls": [
+    "strcpy",
+    "puts"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "64",
+    "16",
+    "1",
+    "18",
+    "0",
+    "-4096",
+    "4096",
+    "4095",
+    "8",
+    "15",
+    "4",
+    "19",
+    "4702111234474983745",
+    "4276545"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_70",
+      "stack_offset": -112,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    },
+    {
+      "name": "local_50",
+      "stack_offset": -80,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    },
+    {
+      "name": "local_3b",
+      "stack_offset": -59,
+      "size_bytes": 11,
+      "data_type": "undefined1[11]"
+    },
+    {
+      "name": "local_30",
+      "stack_offset": -48,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    },
+    {
+      "name": "local_28",
+      "stack_offset": -40,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    },
+    {
+      "name": "local_20",
+      "stack_offset": -32,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    },
+    {
+      "name": "local_18",
+      "stack_offset": -24,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    },
+    {
+      "name": "local_10",
+      "stack_offset": -16,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    }
+  ],
+  "imports": [
+    "strcpy",
+    "puts"
+  ]
+}

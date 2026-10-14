@@ -1,0 +1,32 @@
+{
+  "adaptation": "original bodies; equivalent common standalone harness",
+  "candidate_flows": [
+    "01",
+    "31"
+  ],
+  "context_scope": "all non-eliminated function records fit exact frozen context without truncation",
+  "dataset_id": "final-v1",
+  "duplicate_policy": "ignore identifiers/literals/comments; reject equal pair fingerprints; retain substantive type, allocation, repair, primitive or pointer-flow differences",
+  "eligibility": "CWE131, CWE193, CWE805 or destination-copy family; one target copy/loop to the declared allocation; initialized inputs",
+  "no_completion_requests": true,
+  "optimization_gate": "four-pair batch, one generic correction pass, then fixed O0/O1/O2/O3 or O0/O2",
+  "pairs_per_cwe": 10,
+  "required": {
+    "capacity_bands": [
+      "small",
+      "medium",
+      "large"
+    ],
+    "mechanisms_per_cwe": 4,
+    "pointer_flows_per_cwe": 2,
+    "repairs_per_cwe": 3,
+    "structures": [
+      "straight_line",
+      "loop",
+      "helper"
+    ]
+  },
+  "selection": "greedy unmet diversity gain; original path tie-break; deterministic reserve order",
+  "version": "1.0",
+  "whole_pair_replacement": true
+}

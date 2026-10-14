@@ -1,0 +1,11 @@
+{
+  "accuracy_computed": false,
+  "analyzer_sha256": "365a53ec0b80e65d158d99647e1b36446b70839a414fbdd3044c7d24d466151d",
+  "distinct_records": 176,
+  "eligible_observations": 216,
+  "experiment_sha256": "21319e5c1250b6533c3066e8f1f1ab3481505f0a26f559346f33683e991c313b",
+  "planned_observations": 320,
+  "predictions_sha256": "7d08b3d2a5847796f965d094826818caacc36dfa5afdaca4d67217e09be66e0c",
+  "rules_sha256": "67df39c854aeef694600306b60d4c37b59408ee635ebed790d899a64abef0a11",
+  "validation_only": true
+}

@@ -8,6 +8,13 @@
 #   artifacts/private/   source mapping, logs, hashes, and environment metadata
 
 set -Eeuo pipefail
+
+# Explicit arguments select the manifest-driven dataset builder. The no-argument
+# legacy pilot path remains byte-for-byte equivalent below.
+if (( $# )); then
+    cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
+    exec python3 -m evaluation.corpus_pipeline build "$@"
+fi
 umask 022
 
 readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"

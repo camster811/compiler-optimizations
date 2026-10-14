@@ -1,0 +1,2402 @@
+[
+  {
+    "candidate_id": "candidate_0013",
+    "cwe": "CWE-121",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "c14c09cf08f9dac9e7a5296a098d909eb73fb2f05947bccb4cc0def54176a84f",
+      "6313e1750944d5f4bab27f8a33f672808b22695277523415d603a1327120b898"
+    ],
+    "original_path": "corpus/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_loop_01.c",
+    "original_sha256": "8e587641cfc376fe356e5d5701bf8f8368582a3350410aee8bc1c3f39a87a24b",
+    "proofs": [
+      {
+        "body_target_span": [
+          187,
+          207
+        ],
+        "capacity_bytes": 10,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "loop",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "loop"
+        ],
+        "write_extent_bytes": 40
+      },
+      {
+        "body_target_span": [
+          199,
+          219
+        ],
+        "capacity_bytes": 40,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "loop",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "loop"
+        ],
+        "write_extent_bytes": 40
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "element_size",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            187,
+            207
+          ],
+          "capacity_bytes": 10,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "loop",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "loop"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0279",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0279.c",
+        "source_sha256": "8cc59d59bbeafb752f07a3de190fd3883564f2d884ffc5f22a13afb721e1a9b0",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          17,
+          17
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            199,
+            219
+          ],
+          "capacity_bytes": 40,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "loop",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "loop"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0326",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0326.c",
+        "source_sha256": "5d509f05c8d71889a8acebb19fc114976f515c11f010ea4cc5e0fb64a92b2f0f",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          17,
+          17
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -8,7 +8,7 @@",
+      " {",
+      "     int * data;",
+      "     data = NULL;",
+      "-    data = (int *)__builtin_alloca(10);",
+      "+    data = (int *)__builtin_alloca(10*sizeof(int));",
+      "     {",
+      "         int source[10] = {0};",
+      "         size_t i;"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0014",
+    "cwe": "CWE-121",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "a9467ba30bd5a9aa65cc3468a57521ca6c149883f672a473c159ba2393f26459",
+      "10245f69a6708afd3ad2c9ebfdfb7ff985eb4cb31dfa8f3b2422b60e67518cdf"
+    ],
+    "original_path": "corpus/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_loop_31.c",
+    "original_sha256": "71ace7ce77b2be95b8160492da5b369a32411496a8cfd6e78941d63048d15b81",
+    "proofs": [
+      {
+        "body_target_span": [
+          283,
+          303
+        ],
+        "capacity_bytes": 10,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "loop",
+        "pointer_flow": "alias",
+        "structures": [
+          "helper",
+          "loop"
+        ],
+        "write_extent_bytes": 40
+      },
+      {
+        "body_target_span": [
+          295,
+          315
+        ],
+        "capacity_bytes": 40,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "loop",
+        "pointer_flow": "alias",
+        "structures": [
+          "helper",
+          "loop"
+        ],
+        "write_extent_bytes": 40
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "element_size",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            283,
+            303
+          ],
+          "capacity_bytes": 10,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "loop",
+          "pointer_flow": "alias",
+          "structures": [
+            "helper",
+            "loop"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0203",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0203.c",
+        "source_sha256": "9846cae308e01a64f5ba03eab85bb10c24ce5383866fa2492dff31a5f6708280",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          20,
+          20
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            295,
+            315
+          ],
+          "capacity_bytes": 40,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "loop",
+          "pointer_flow": "alias",
+          "structures": [
+            "helper",
+            "loop"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0346",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0346.c",
+        "source_sha256": "f544be9f54bcb18c86ac7ed229e07c0933ae04500213976a6cdac480edd09c8b",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          20,
+          20
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -8,7 +8,7 @@",
+      " {",
+      "     int * data;",
+      "     data = NULL;",
+      "-    data = (int *)__builtin_alloca(10);",
+      "+    data = (int *)__builtin_alloca(10*sizeof(int));",
+      "     {",
+      "         int * alias = data;",
+      "         int * data = alias;"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0089",
+    "cwe": "CWE-121",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "be8a6ca281697f039b1fef7171b094a3e6bbcdb96b042cb4b07a9cebf469d37c",
+      "3e4709ebdc4edea2c8e9b46f8925a8fb45fd6bf1871608d4deee986ed35e8d1a"
+    ],
+    "original_path": "corpus/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_alloca_memcpy_01.c",
+    "original_sha256": "1cfce3dbacbde7c5420461e0f3fb3d92a7f6916fb3bfa19f54dd06454cf83c48",
+    "proofs": [
+      {
+        "body_target_span": [
+          251,
+          292
+        ],
+        "capacity_bytes": 400,
+        "data_type": "int64_t",
+        "destination_object": "dataBadBuffer",
+        "operation": "memcpy",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 800
+      },
+      {
+        "body_target_span": [
+          252,
+          293
+        ],
+        "capacity_bytes": 800,
+        "data_type": "int64_t",
+        "destination_object": "dataGoodBuffer",
+        "operation": "memcpy",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 800
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "destination_capacity",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            251,
+            292
+          ],
+          "capacity_bytes": 400,
+          "data_type": "int64_t",
+          "destination_object": "dataBadBuffer",
+          "operation": "memcpy",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 800
+        },
+        "sample_id": "sample_0282",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0282.c",
+        "source_sha256": "a0b900264c37a489876bc72c45f2d873469365f9b9513bfb1151a2adb8812f58",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          15,
+          15
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            252,
+            293
+          ],
+          "capacity_bytes": 800,
+          "data_type": "int64_t",
+          "destination_object": "dataGoodBuffer",
+          "operation": "memcpy",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 800
+        },
+        "sample_id": "sample_0369",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0369.c",
+        "source_sha256": "f691c1472ad5349c215b8ed6580ab8db6b5159cfda2957606486d8276d998e4d",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          15,
+          15
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -9,7 +9,7 @@",
+      "     int64_t * data;",
+      "     int64_t * region_a = (int64_t *)__builtin_alloca(50*sizeof(int64_t));",
+      "     int64_t * region_b = (int64_t *)__builtin_alloca(100*sizeof(int64_t));",
+      "-    data = region_a;",
+      "+    data = region_b;",
+      "     {",
+      "         int64_t source[100] = {0};",
+      "         memcpy(data, source, 100*sizeof(int64_t));"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0022",
+    "cwe": "CWE-121",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "c6a677fbc7ebc3a185abf034411cb6338d5fe38ac948d73f9cb9a8d825e2f893",
+      "8fdc7c24565e0a6acd4d63f4f8dd645efc6d563d1887819a65a91c188c9a0af9"
+    ],
+    "original_path": "corpus/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_cpy_31.c",
+    "original_sha256": "105858534b2fbf9987f52e955dcae98e4bac1236d42a269d6acb0909372128c5",
+    "proofs": [
+      {
+        "body_target_span": [
+          346,
+          366
+        ],
+        "capacity_bytes": 10,
+        "data_type": "char",
+        "destination_object": "dataBadBuffer",
+        "operation": "strcpy",
+        "pointer_flow": "alias",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 11
+      },
+      {
+        "body_target_span": [
+          347,
+          367
+        ],
+        "capacity_bytes": 11,
+        "data_type": "char",
+        "destination_object": "dataGoodBuffer",
+        "operation": "strcpy",
+        "pointer_flow": "alias",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 11
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "terminator_capacity",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            346,
+            366
+          ],
+          "capacity_bytes": 10,
+          "data_type": "char",
+          "destination_object": "dataBadBuffer",
+          "operation": "strcpy",
+          "pointer_flow": "alias",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 11
+        },
+        "sample_id": "sample_0315",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0315.c",
+        "source_sha256": "2db23652e4ec650c1bbc21a7fa2214a6b1b37e96f4fbd71a77378f467e570411",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          20,
+          20
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            347,
+            367
+          ],
+          "capacity_bytes": 11,
+          "data_type": "char",
+          "destination_object": "dataGoodBuffer",
+          "operation": "strcpy",
+          "pointer_flow": "alias",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 11
+        },
+        "sample_id": "sample_0263",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0263.c",
+        "source_sha256": "7242f6d29d6cd64939d021de810aa4ddd3a740679cb7f014debf06927b5cc323",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          20,
+          20
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -10,7 +10,7 @@",
+      "     char * data;",
+      "     char * region_a = (char *)__builtin_alloca((10)*sizeof(char));",
+      "     char * region_b = (char *)__builtin_alloca((10+1)*sizeof(char));",
+      "-    data = region_a;",
+      "+    data = region_b;",
+      "     data[0] = '\\0';",
+      "     {",
+      "         char * alias = data;"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0017",
+    "cwe": "CWE-121",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "143ffe3a8c657594ced691c9dc679c53f19bb0ef20a4e17ab190ccd0f569c83b",
+      "7918916708a5c65a0648a1aa1d31e5e9104827d0c4445ab41bfa732f65c26a49"
+    ],
+    "original_path": "corpus/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memmove_01.c",
+    "original_sha256": "3f2ffeb1217c494f9dd14721a79f00f0412891231d4fa25257f58bbbcb716692",
+    "proofs": [
+      {
+        "body_target_span": [
+          122,
+          159
+        ],
+        "capacity_bytes": 10,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "memmove",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 40
+      },
+      {
+        "body_target_span": [
+          134,
+          171
+        ],
+        "capacity_bytes": 40,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "memmove",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 40
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "element_size",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            122,
+            159
+          ],
+          "capacity_bytes": 10,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "memmove",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0337",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0337.c",
+        "source_sha256": "7da058f329a139f5294746adadf8e59af292d00990c9993fa0a51c0b2472f636",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          14,
+          14
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            134,
+            171
+          ],
+          "capacity_bytes": 40,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "memmove",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0314",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0314.c",
+        "source_sha256": "117bbb1f9a6ab9c52706248d6e75a4126fcd0b7d4f9a2c34bb74b1684b81c4e1",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          14,
+          14
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -8,7 +8,7 @@",
+      " {",
+      "     int * data;",
+      "     data = NULL;",
+      "-    data = (int *)__builtin_alloca(10);",
+      "+    data = (int *)__builtin_alloca(10*sizeof(int));",
+      "     {",
+      "         int source[10] = {0};",
+      "         memmove(data, source, 10*sizeof(int));"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0031",
+    "cwe": "CWE-121",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "9ff1c98f04960bcc5e58021ec28d77e38909d879ce3d029d9ca3e15f52c98af9",
+      "f9d32451a6884ec00c50df294b2bba0a1d42ac2c84ea5f06aac54b4a1758e2f4"
+    ],
+    "original_path": "corpus/CWE121_Stack_Based_Buffer_Overflow/s02/CWE121_Stack_Based_Buffer_Overflow__CWE193_char_alloca_ncpy_01.c",
+    "original_sha256": "a10233214ee3bbf769040d7be942db68aad0aa5fe64f3e64b1567db52c5e5742",
+    "proofs": [
+      {
+        "body_target_span": [
+          269,
+          310
+        ],
+        "capacity_bytes": 10,
+        "data_type": "char",
+        "destination_object": "dataBadBuffer",
+        "operation": "strncpy",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 11
+      },
+      {
+        "body_target_span": [
+          270,
+          311
+        ],
+        "capacity_bytes": 11,
+        "data_type": "char",
+        "destination_object": "dataGoodBuffer",
+        "operation": "strncpy",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 11
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "terminator_capacity",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            269,
+            310
+          ],
+          "capacity_bytes": 10,
+          "data_type": "char",
+          "destination_object": "dataBadBuffer",
+          "operation": "strncpy",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 11
+        },
+        "sample_id": "sample_0261",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0261.c",
+        "source_sha256": "d06151bcae8223774dc57321ec072138e254b5bdaa09e76f709b109ab6d96916",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          17,
+          17
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            270,
+            311
+          ],
+          "capacity_bytes": 11,
+          "data_type": "char",
+          "destination_object": "dataGoodBuffer",
+          "operation": "strncpy",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 11
+        },
+        "sample_id": "sample_0142",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0142.c",
+        "source_sha256": "fd3cfc8c0131cf58e8683906c590b5747afca17088f05a26b30ed58cb0e8511e",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          17,
+          17
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -10,7 +10,7 @@",
+      "     char * data;",
+      "     char * region_a = (char *)__builtin_alloca((10)*sizeof(char));",
+      "     char * region_b = (char *)__builtin_alloca((10+1)*sizeof(char));",
+      "-    data = region_a;",
+      "+    data = region_b;",
+      "     data[0] = '\\0';",
+      "     {",
+      "         char source[10+1] = PAYLOAD;"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0015",
+    "cwe": "CWE-121",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "9d595f77beff0880686b54a22fb6c09a499873c53e0a804bc62179bbad53ec90",
+      "ad060183d8e188a04f737fca7bf3abc0d2e7f3b4209d23747d59a30586923950"
+    ],
+    "original_path": "corpus/CWE121_Stack_Based_Buffer_Overflow/s01/CWE121_Stack_Based_Buffer_Overflow__CWE131_memcpy_01.c",
+    "original_sha256": "a16be2e49a81b417feb1ef2ed8bf1df9a94e8de9ffcbbf632749659434c9d91a",
+    "proofs": [
+      {
+        "body_target_span": [
+          122,
+          158
+        ],
+        "capacity_bytes": 10,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "memcpy",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 40
+      },
+      {
+        "body_target_span": [
+          134,
+          170
+        ],
+        "capacity_bytes": 40,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "memcpy",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 40
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "element_size",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            122,
+            158
+          ],
+          "capacity_bytes": 10,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "memcpy",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0250",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0250.c",
+        "source_sha256": "7f19afc479352a12112ee8d4f06a3bd91555ab273da9b3e8ba926efb09ddec08",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          14,
+          14
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            134,
+            170
+          ],
+          "capacity_bytes": 40,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "memcpy",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0140",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0140.c",
+        "source_sha256": "b1717d568e7b9336e82f2cb5498d8fe67515d187d8f2cb71017233ef65b01b0f",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          14,
+          14
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -8,7 +8,7 @@",
+      " {",
+      "     int * data;",
+      "     data = NULL;",
+      "-    data = (int *)__builtin_alloca(10);",
+      "+    data = (int *)__builtin_alloca(10*sizeof(int));",
+      "     {",
+      "         int source[10] = {0};",
+      "         memcpy(data, source, 10*sizeof(int));"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0069",
+    "cwe": "CWE-121",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "66221fa621b5f059504125a1e95d675f644b03e044d1ac4298e0809714eda755",
+      "c5ffe4f3f7d8eb50ee4aecdbe6b33494fc2bc491f3e588165236abe80451b7ec"
+    ],
+    "original_path": "corpus/CWE121_Stack_Based_Buffer_Overflow/s03/CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_ncat_01.c",
+    "original_sha256": "da38a131b6d131f859e4b14fdce820a9ea220a7bcf203a28f6acd268ebe3dfe8",
+    "proofs": [
+      {
+        "body_target_span": [
+          309,
+          335
+        ],
+        "capacity_bytes": 50,
+        "data_type": "char",
+        "destination_object": "dataBadBuffer",
+        "operation": "strncat",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 100
+      },
+      {
+        "body_target_span": [
+          310,
+          336
+        ],
+        "capacity_bytes": 100,
+        "data_type": "char",
+        "destination_object": "dataGoodBuffer",
+        "operation": "strncat",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 100
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "destination_capacity",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            309,
+            335
+          ],
+          "capacity_bytes": 50,
+          "data_type": "char",
+          "destination_object": "dataBadBuffer",
+          "operation": "strncat",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 100
+        },
+        "sample_id": "sample_0106",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0106.c",
+        "source_sha256": "0b75e78a8b09fff44fb961dabc7291c5f0dddd056fe3e33b2753699051a2b2ba",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            310,
+            336
+          ],
+          "capacity_bytes": 100,
+          "data_type": "char",
+          "destination_object": "dataGoodBuffer",
+          "operation": "strncat",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 100
+        },
+        "sample_id": "sample_0135",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0135.c",
+        "source_sha256": "ca5041c2a90f00262c8a4bd188ecabbc22426441e0b5070f169cc0d72a8fb0b6",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -9,7 +9,7 @@",
+      "     char * data;",
+      "     char * region_a = (char *)__builtin_alloca(50*sizeof(char));",
+      "     char * region_b = (char *)__builtin_alloca(100*sizeof(char));",
+      "-    data = region_a;",
+      "+    data = region_b;",
+      "     data[0] = '\\0';",
+      "     {",
+      "         char source[100];"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0129",
+    "cwe": "CWE-121",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "c5300ffc930e4ecd6eace51030733150b3e8c8cd369572916a76c92d62f84cad",
+      "1137392d22ef32c3851a47c00b3bd1bd0e4c1302c9a4ddbfadacffdd4176eff3"
+    ],
+    "original_path": "corpus/CWE121_Stack_Based_Buffer_Overflow/s05/CWE121_Stack_Based_Buffer_Overflow__CWE805_wchar_t_alloca_ncat_01.c",
+    "original_sha256": "d85f9ccebd08fa0d78c4b0b999f6c9f37340fa2884e4faeaf6dc0993c7307385",
+    "proofs": [
+      {
+        "body_target_span": [
+          337,
+          363
+        ],
+        "capacity_bytes": 200,
+        "data_type": "wchar_t",
+        "destination_object": "dataBadBuffer",
+        "operation": "wcsncat",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 400
+      },
+      {
+        "body_target_span": [
+          338,
+          364
+        ],
+        "capacity_bytes": 400,
+        "data_type": "wchar_t",
+        "destination_object": "dataGoodBuffer",
+        "operation": "wcsncat",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 400
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "destination_capacity",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            337,
+            363
+          ],
+          "capacity_bytes": 200,
+          "data_type": "wchar_t",
+          "destination_object": "dataBadBuffer",
+          "operation": "wcsncat",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 400
+        },
+        "sample_id": "sample_0299",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0299.c",
+        "source_sha256": "36f04fadfd63db8fff68d92d15abc080a63cef2140ee5622523740f78df6b47d",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            338,
+            364
+          ],
+          "capacity_bytes": 400,
+          "data_type": "wchar_t",
+          "destination_object": "dataGoodBuffer",
+          "operation": "wcsncat",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 400
+        },
+        "sample_id": "sample_0302",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0302.c",
+        "source_sha256": "bec60be21b294db50a6ab68432be073d33a9f60d9022ee22a2a5add05268d72c",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -9,7 +9,7 @@",
+      "     wchar_t * data;",
+      "     wchar_t * region_a = (wchar_t *)__builtin_alloca(50*sizeof(wchar_t));",
+      "     wchar_t * region_b = (wchar_t *)__builtin_alloca(100*sizeof(wchar_t));",
+      "-    data = region_a;",
+      "+    data = region_b;",
+      "     data[0] = L'\\0';",
+      "     {",
+      "         wchar_t source[100];"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0195",
+    "cwe": "CWE-121",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "1f5963740fc0ed7a4b25383270061318a8e8d534a1c5a23fa88397537db8cd28",
+      "4ca14fc04fe053a7f7e5ff8c9101ced4c1baad8a3f79e76072570af21c94ab97"
+    ],
+    "original_path": "corpus/CWE121_Stack_Based_Buffer_Overflow/s08/CWE121_Stack_Based_Buffer_Overflow__dest_char_alloca_cat_01.c",
+    "original_sha256": "4dc9e4b4968c30450b857b5664e1bee6a65641917aec003db39c79234026c712",
+    "proofs": [
+      {
+        "body_target_span": [
+          309,
+          329
+        ],
+        "capacity_bytes": 50,
+        "data_type": "char",
+        "destination_object": "dataBadBuffer",
+        "operation": "strcat",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 100
+      },
+      {
+        "body_target_span": [
+          310,
+          330
+        ],
+        "capacity_bytes": 100,
+        "data_type": "char",
+        "destination_object": "dataGoodBuffer",
+        "operation": "strcat",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 100
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "destination_capacity",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            309,
+            329
+          ],
+          "capacity_bytes": 50,
+          "data_type": "char",
+          "destination_object": "dataBadBuffer",
+          "operation": "strcat",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 100
+        },
+        "sample_id": "sample_0363",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0363.c",
+        "source_sha256": "754cb12eaf302f4ce9485d6f729a98e0c6d8d46500e42f93c15e4dfc10abee78",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            310,
+            330
+          ],
+          "capacity_bytes": 100,
+          "data_type": "char",
+          "destination_object": "dataGoodBuffer",
+          "operation": "strcat",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 100
+        },
+        "sample_id": "sample_0177",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0177.c",
+        "source_sha256": "7d2d1cb691b36a42ac65107dbff126b7b88a6c30cad74ff102ad87eda6fdbbb5",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -9,7 +9,7 @@",
+      "     char * data;",
+      "     char * region_a = (char *)__builtin_alloca(50*sizeof(char));",
+      "     char * region_b = (char *)__builtin_alloca(100*sizeof(char));",
+      "-    data = region_a;",
+      "+    data = region_b;",
+      "     data[0] = '\\0';",
+      "     {",
+      "         char source[100];"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0231",
+    "cwe": "CWE-122",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "c267d7f2c30799db088d493eca9fb071bfbecb2ee2a2160e8b1c3feb3b45c9a2",
+      "525a4b96f5bff0ce60c8586cff4e6255c8cd03b53b63163d13d8e2668256f963"
+    ],
+    "original_path": "corpus/CWE122_Heap_Based_Buffer_Overflow/s05/CWE122_Heap_Based_Buffer_Overflow__CWE131_loop_01.c",
+    "original_sha256": "6f51a562f1e7c1036d68ec10546acb969e23da47eb422bd822abb5cdd4d12ccd",
+    "proofs": [
+      {
+        "body_target_span": [
+          221,
+          241
+        ],
+        "capacity_bytes": 10,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "loop",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "loop"
+        ],
+        "write_extent_bytes": 40
+      },
+      {
+        "body_target_span": [
+          233,
+          253
+        ],
+        "capacity_bytes": 40,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "loop",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "loop"
+        ],
+        "write_extent_bytes": 40
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "element_size",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            221,
+            241
+          ],
+          "capacity_bytes": 10,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "loop",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "loop"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0340",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0340.c",
+        "source_sha256": "18553d4ef07ccdbaa22d7f709d7a070c91ac2f4b6e52fc5147abfcc0093846fa",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            233,
+            253
+          ],
+          "capacity_bytes": 40,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "loop",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "loop"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0255",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0255.c",
+        "source_sha256": "9ab6d08ed0cd363f6aab425a39533a60549c1e38fa778f3afa77acb86dc23f9d",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -8,7 +8,7 @@",
+      " {",
+      "     int * data;",
+      "     data = NULL;",
+      "-    data = (int *)malloc(10);",
+      "+    data = (int *)malloc(10*sizeof(int));",
+      "     if (data == NULL) {exit(-1);}",
+      "     {",
+      "         int source[10] = {0};"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0232",
+    "cwe": "CWE-122",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "cc1f5442b761a8a44e06e70f7605d40ccdd5ba401fdfae9d9331910332d6c011",
+      "a3a1228269975bfa0310f25398e7df421c03885793aa57282a3c8efcc52dd0bb"
+    ],
+    "original_path": "corpus/CWE122_Heap_Based_Buffer_Overflow/s05/CWE122_Heap_Based_Buffer_Overflow__CWE131_loop_31.c",
+    "original_sha256": "79edad3b7b0eca740702ec6095d1c000700e12fbd2134da0d725b9f8ebed01a5",
+    "proofs": [
+      {
+        "body_target_span": [
+          317,
+          337
+        ],
+        "capacity_bytes": 10,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "loop",
+        "pointer_flow": "alias",
+        "structures": [
+          "helper",
+          "loop"
+        ],
+        "write_extent_bytes": 40
+      },
+      {
+        "body_target_span": [
+          329,
+          349
+        ],
+        "capacity_bytes": 40,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "loop",
+        "pointer_flow": "alias",
+        "structures": [
+          "helper",
+          "loop"
+        ],
+        "write_extent_bytes": 40
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "element_size",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            317,
+            337
+          ],
+          "capacity_bytes": 10,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "loop",
+          "pointer_flow": "alias",
+          "structures": [
+            "helper",
+            "loop"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0232",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0232.c",
+        "source_sha256": "79ea8564e1f7af11eda5db8c2779d67b2824317a7d78020e3c3a8dd51f55944f",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          21,
+          21
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            329,
+            349
+          ],
+          "capacity_bytes": 40,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "loop",
+          "pointer_flow": "alias",
+          "structures": [
+            "helper",
+            "loop"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0311",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0311.c",
+        "source_sha256": "331c58f7ff37befcc00b2bc21d7cd05a91acd0f37c64d1abe71b069f6ab1d0f4",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          21,
+          21
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -8,7 +8,7 @@",
+      " {",
+      "     int * data;",
+      "     data = NULL;",
+      "-    data = (int *)malloc(10);",
+      "+    data = (int *)malloc(10*sizeof(int));",
+      "     if (data == NULL) {exit(-1);}",
+      "     {",
+      "         int * alias = data;"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0285",
+    "cwe": "CWE-122",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "c954c92c1593a86b21d296add7dc1a8552d661caab8c8f2e9d8eebfaf89f913c",
+      "c954c92c1593a86b21d296add7dc1a8552d661caab8c8f2e9d8eebfaf89f913c"
+    ],
+    "original_path": "corpus/CWE122_Heap_Based_Buffer_Overflow/s08/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_int64_t_memcpy_01.c",
+    "original_sha256": "97f641cefa1d7499954d49f649f62fd51649af649507c409d34e26f015b2a682",
+    "proofs": [
+      {
+        "body_target_span": [
+          186,
+          227
+        ],
+        "capacity_bytes": 400,
+        "data_type": "int64_t",
+        "destination_object": "data",
+        "operation": "memcpy",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 800
+      },
+      {
+        "body_target_span": [
+          187,
+          228
+        ],
+        "capacity_bytes": 800,
+        "data_type": "int64_t",
+        "destination_object": "data",
+        "operation": "memcpy",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 800
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "destination_capacity",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            186,
+            227
+          ],
+          "capacity_bytes": 400,
+          "data_type": "int64_t",
+          "destination_object": "data",
+          "operation": "memcpy",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 800
+        },
+        "sample_id": "sample_0276",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0276.c",
+        "source_sha256": "24d596b421cd2e0ec911d1dc1131e91412199662efcfcb132f0c442b68a5d9a1",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          15,
+          15
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            187,
+            228
+          ],
+          "capacity_bytes": 800,
+          "data_type": "int64_t",
+          "destination_object": "data",
+          "operation": "memcpy",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 800
+        },
+        "sample_id": "sample_0272",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0272.c",
+        "source_sha256": "8598498180a15079234a075e8d817a532960eb6e2870df744f72a5f2eae7ddf4",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          15,
+          15
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -8,7 +8,7 @@",
+      " {",
+      "     int64_t * data;",
+      "     data = NULL;",
+      "-    data = (int64_t *)malloc(50*sizeof(int64_t));",
+      "+    data = (int64_t *)malloc(100*sizeof(int64_t));",
+      "     if (data == NULL) {exit(-1);}",
+      "     {",
+      "         int64_t source[100] = {0};"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0252",
+    "cwe": "CWE-122",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "da53fac14bf059453adca924eb6095c13fe045af6b6da7d403fd3dfc2ed10de8",
+      "ed1ba7373f3321f7668d789d17315b89dc184479aaa15cebd466368a66cb2c44"
+    ],
+    "original_path": "corpus/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_cpy_31.c",
+    "original_sha256": "9edda5c9084b5c040f13e7cb63fe001d6b61e1b699e62b2fb376017b2869256e",
+    "proofs": [
+      {
+        "body_target_span": [
+          267,
+          287
+        ],
+        "capacity_bytes": 10,
+        "data_type": "char",
+        "destination_object": "data",
+        "operation": "strcpy",
+        "pointer_flow": "alias",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 11
+      },
+      {
+        "body_target_span": [
+          271,
+          291
+        ],
+        "capacity_bytes": 11,
+        "data_type": "char",
+        "destination_object": "data",
+        "operation": "strcpy",
+        "pointer_flow": "alias",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 11
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "terminator_capacity",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            267,
+            287
+          ],
+          "capacity_bytes": 10,
+          "data_type": "char",
+          "destination_object": "data",
+          "operation": "strcpy",
+          "pointer_flow": "alias",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 11
+        },
+        "sample_id": "sample_0130",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0130.c",
+        "source_sha256": "fb9b089f2af0c970552d0235a17272945257778ac1cf4009430a50bf1d36d4f7",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          19,
+          19
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            271,
+            291
+          ],
+          "capacity_bytes": 11,
+          "data_type": "char",
+          "destination_object": "data",
+          "operation": "strcpy",
+          "pointer_flow": "alias",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 11
+        },
+        "sample_id": "sample_0241",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0241.c",
+        "source_sha256": "0c02910f68ac8fe24c359af9ff8b983fb5f982723e8227b33d34ced43b7ff544",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          19,
+          19
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -9,7 +9,7 @@",
+      " {",
+      "     char * data;",
+      "     data = NULL;",
+      "-    data = (char *)malloc(10*sizeof(char));",
+      "+    data = (char *)malloc((10+1)*sizeof(char));",
+      "     if (data == NULL) {exit(-1);}",
+      "     {",
+      "         char * alias = data;"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0235",
+    "cwe": "CWE-122",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "9e3071213e2c1a443a5ef3819b406bb50b85d2dec49a4ef9874f328a2f6496d5",
+      "f0d34886f086a2f501065029a538a55a0df3448b4ec78f4f2c2292c0f980221f"
+    ],
+    "original_path": "corpus/CWE122_Heap_Based_Buffer_Overflow/s06/CWE122_Heap_Based_Buffer_Overflow__CWE131_memmove_01.c",
+    "original_sha256": "af1915b08d7a0e33f2922c07ace2fdcb52fbe6c1b3899288f38b10d74d2b5f9e",
+    "proofs": [
+      {
+        "body_target_span": [
+          156,
+          193
+        ],
+        "capacity_bytes": 10,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "memmove",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 40
+      },
+      {
+        "body_target_span": [
+          168,
+          205
+        ],
+        "capacity_bytes": 40,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "memmove",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 40
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "element_size",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            156,
+            193
+          ],
+          "capacity_bytes": 10,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "memmove",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0312",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0312.c",
+        "source_sha256": "bfe9d96a760eb6114d8cd35e3cb428e395837807b25d4ac29a7f13f4031e346e",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          15,
+          15
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            168,
+            205
+          ],
+          "capacity_bytes": 40,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "memmove",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0153",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0153.c",
+        "source_sha256": "8435692329402afe8d949afa023065c01f648e083d5152f016b9c1e61deced42",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          15,
+          15
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -8,7 +8,7 @@",
+      " {",
+      "     int * data;",
+      "     data = NULL;",
+      "-    data = (int *)malloc(10);",
+      "+    data = (int *)malloc(10*sizeof(int));",
+      "     if (data == NULL) {exit(-1);}",
+      "     {",
+      "         int source[10] = {0};"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0259",
+    "cwe": "CWE-122",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "df7a1085243d3e10adbd3a1c06bd953d5927d91097a5ad844a0d35a27d0c4c70",
+      "db270a8cc66bf0e7f0193e93bce17d4c821d45234eb8ec2d0df2a3c4058825bd"
+    ],
+    "original_path": "corpus/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_ncpy_01.c",
+    "original_sha256": "72832a8b625fcec5ebd187e6b1496f50f5deb44a0743b6b5b5a8651fbbf4f4df",
+    "proofs": [
+      {
+        "body_target_span": [
+          190,
+          231
+        ],
+        "capacity_bytes": 10,
+        "data_type": "char",
+        "destination_object": "data",
+        "operation": "strncpy",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 11
+      },
+      {
+        "body_target_span": [
+          194,
+          235
+        ],
+        "capacity_bytes": 11,
+        "data_type": "char",
+        "destination_object": "data",
+        "operation": "strncpy",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 11
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "terminator_capacity",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            190,
+            231
+          ],
+          "capacity_bytes": 10,
+          "data_type": "char",
+          "destination_object": "data",
+          "operation": "strncpy",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 11
+        },
+        "sample_id": "sample_0202",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0202.c",
+        "source_sha256": "21fd5f561fcb349a6e412eb7f341ed3c9c7ae79fc532cea369fe72d9272a6112",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          16,
+          16
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            194,
+            235
+          ],
+          "capacity_bytes": 11,
+          "data_type": "char",
+          "destination_object": "data",
+          "operation": "strncpy",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 11
+        },
+        "sample_id": "sample_0300",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0300.c",
+        "source_sha256": "f5238de767b3bd50b229ffda49ebef5dd14faf6daba3789453a0954020d97bd9",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          16,
+          16
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -9,7 +9,7 @@",
+      " {",
+      "     char * data;",
+      "     data = NULL;",
+      "-    data = (char *)malloc(10*sizeof(char));",
+      "+    data = (char *)malloc((10+1)*sizeof(char));",
+      "     if (data == NULL) {exit(-1);}",
+      "     {",
+      "         char source[10+1] = PAYLOAD;"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0233",
+    "cwe": "CWE-122",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "40b9b507da4e59f6d3d7686c46a389ce0bde7db7aeae44b7f730f44501386178",
+      "bdd85d04a24e4dc9fa94488b3bfe83d83495f074ca113d86c02b572811376b58"
+    ],
+    "original_path": "corpus/CWE122_Heap_Based_Buffer_Overflow/s05/CWE122_Heap_Based_Buffer_Overflow__CWE131_memcpy_01.c",
+    "original_sha256": "f2875c16478913075fd4b598a4bb7be5a1ae7356cee65efa512cce088c06cd62",
+    "proofs": [
+      {
+        "body_target_span": [
+          156,
+          192
+        ],
+        "capacity_bytes": 10,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "memcpy",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 40
+      },
+      {
+        "body_target_span": [
+          168,
+          204
+        ],
+        "capacity_bytes": 40,
+        "data_type": "int",
+        "destination_object": "data",
+        "operation": "memcpy",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 40
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "element_size",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            156,
+            192
+          ],
+          "capacity_bytes": 10,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "memcpy",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0373",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0373.c",
+        "source_sha256": "733f699637e83f1bb91c604d260280e3656af24e838084acf08ae545860cb340",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          15,
+          15
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            168,
+            204
+          ],
+          "capacity_bytes": 40,
+          "data_type": "int",
+          "destination_object": "data",
+          "operation": "memcpy",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 40
+        },
+        "sample_id": "sample_0193",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0193.c",
+        "source_sha256": "7527565c45f8cfbf924d734143207d06798b20297b85dc2662fb3580ac81600b",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          15,
+          15
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -8,7 +8,7 @@",
+      " {",
+      "     int * data;",
+      "     data = NULL;",
+      "-    data = (int *)malloc(10);",
+      "+    data = (int *)malloc(10*sizeof(int));",
+      "     if (data == NULL) {exit(-1);}",
+      "     {",
+      "         int source[10] = {0};"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0277",
+    "cwe": "CWE-122",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "ebd427c9381cb93903f49ba56ea6162e3579f65a92e48a35acb8511e836a6736",
+      "ebd427c9381cb93903f49ba56ea6162e3579f65a92e48a35acb8511e836a6736"
+    ],
+    "original_path": "corpus/CWE122_Heap_Based_Buffer_Overflow/s07/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_char_ncat_01.c",
+    "original_sha256": "caabbae7ac5ad407b95e13483bcc7fab1ef0042c3b14e867d009c5098ddcf220",
+    "proofs": [
+      {
+        "body_target_span": [
+          256,
+          282
+        ],
+        "capacity_bytes": 50,
+        "data_type": "char",
+        "destination_object": "data",
+        "operation": "strncat",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 100
+      },
+      {
+        "body_target_span": [
+          257,
+          283
+        ],
+        "capacity_bytes": 100,
+        "data_type": "char",
+        "destination_object": "data",
+        "operation": "strncat",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 100
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "destination_capacity",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            256,
+            282
+          ],
+          "capacity_bytes": 50,
+          "data_type": "char",
+          "destination_object": "data",
+          "operation": "strncat",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 100
+        },
+        "sample_id": "sample_0247",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0247.c",
+        "source_sha256": "794275c9b9507c613663630d57bc8baa0797f440a508fa371c3960272a7b6d80",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            257,
+            283
+          ],
+          "capacity_bytes": 100,
+          "data_type": "char",
+          "destination_object": "data",
+          "operation": "strncat",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 100
+        },
+        "sample_id": "sample_0190",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0190.c",
+        "source_sha256": "d8a113ad269e6fc90e09cc8ac808e9b9279d7cf77991fc880e497fa59119125e",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -8,7 +8,7 @@",
+      " {",
+      "     char * data;",
+      "     data = NULL;",
+      "-    data = (char *)malloc(50*sizeof(char));",
+      "+    data = (char *)malloc(100*sizeof(char));",
+      "     if (data == NULL) {exit(-1);}",
+      "     data[0] = '\\0';",
+      "     {"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0307",
+    "cwe": "CWE-122",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "cfabd6f1dfb2f310fc81953578055179f41c31356038d255b52b6d4b4859dbe3",
+      "cfabd6f1dfb2f310fc81953578055179f41c31356038d255b52b6d4b4859dbe3"
+    ],
+    "original_path": "corpus/CWE122_Heap_Based_Buffer_Overflow/s09/CWE122_Heap_Based_Buffer_Overflow__c_CWE805_wchar_t_ncat_01.c",
+    "original_sha256": "033acf77e8bb72177d993d29f046c7b2a2dbc3651f9fd7dba99b50f78188c96b",
+    "proofs": [
+      {
+        "body_target_span": [
+          272,
+          298
+        ],
+        "capacity_bytes": 200,
+        "data_type": "wchar_t",
+        "destination_object": "data",
+        "operation": "wcsncat",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 400
+      },
+      {
+        "body_target_span": [
+          273,
+          299
+        ],
+        "capacity_bytes": 400,
+        "data_type": "wchar_t",
+        "destination_object": "data",
+        "operation": "wcsncat",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 400
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "destination_capacity",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            272,
+            298
+          ],
+          "capacity_bytes": 200,
+          "data_type": "wchar_t",
+          "destination_object": "data",
+          "operation": "wcsncat",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 400
+        },
+        "sample_id": "sample_0264",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0264.c",
+        "source_sha256": "c34e6df4c7c09ef35823a804de45d4dc74052af7e8a220fa6f2fb79b3560db6d",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            273,
+            299
+          ],
+          "capacity_bytes": 400,
+          "data_type": "wchar_t",
+          "destination_object": "data",
+          "operation": "wcsncat",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 400
+        },
+        "sample_id": "sample_0192",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0192.c",
+        "source_sha256": "49ba5058740b149bb4cd68b31b7976da5cd168cf89380565f0baf66999d93217",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -8,7 +8,7 @@",
+      " {",
+      "     wchar_t * data;",
+      "     data = NULL;",
+      "-    data = (wchar_t *)malloc(50*sizeof(wchar_t));",
+      "+    data = (wchar_t *)malloc(100*sizeof(wchar_t));",
+      "     if (data == NULL) {exit(-1);}",
+      "     data[0] = L'\\0';",
+      "     {"
+    ],
+    "status": "qualified"
+  },
+  {
+    "candidate_id": "candidate_0337",
+    "cwe": "CWE-122",
+    "duplicate_status": "unique",
+    "final_disposition": "accepted",
+    "final_disposition_reason": "source proofs, fixed native/ASan runs, four-level build/oracle/Ghidra and complete-evidence/context checks passed",
+    "normalized_pair_fingerprints": [
+      "bb70e0e0163c9ad88388ee467205f11dc6762c82b1abafb00ba543cf9ec48a1d",
+      "bb70e0e0163c9ad88388ee467205f11dc6762c82b1abafb00ba543cf9ec48a1d"
+    ],
+    "original_path": "corpus/CWE122_Heap_Based_Buffer_Overflow/s10/CWE122_Heap_Based_Buffer_Overflow__c_dest_char_cat_01.c",
+    "original_sha256": "a5bd55a8a892db0e46cf59291c9cdb318a4e9703ec29fcddbd809c3c64bedbec",
+    "proofs": [
+      {
+        "body_target_span": [
+          256,
+          276
+        ],
+        "capacity_bytes": 50,
+        "data_type": "char",
+        "destination_object": "data",
+        "operation": "strcat",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 100
+      },
+      {
+        "body_target_span": [
+          257,
+          277
+        ],
+        "capacity_bytes": 100,
+        "data_type": "char",
+        "destination_object": "data",
+        "operation": "strcat",
+        "pointer_flow": "direct",
+        "structures": [
+          "helper",
+          "straight_line"
+        ],
+        "write_extent_bytes": 100
+      }
+    ],
+    "reason": "source arithmetic and equivalent neutral bodies verified",
+    "repair_pattern": "destination_capacity",
+    "samples": [
+      {
+        "proof": {
+          "body_target_span": [
+            256,
+            276
+          ],
+          "capacity_bytes": 50,
+          "data_type": "char",
+          "destination_object": "data",
+          "operation": "strcat",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 100
+        },
+        "sample_id": "sample_0322",
+        "source_ground_truth": "vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0322.c",
+        "source_sha256": "ba56d7caad86ab6b27f9dd1ea7d49f8d1c1dcd433067b1c08acf39b5ac92d585",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      },
+      {
+        "proof": {
+          "body_target_span": [
+            257,
+            277
+          ],
+          "capacity_bytes": 100,
+          "data_type": "char",
+          "destination_object": "data",
+          "operation": "strcat",
+          "pointer_flow": "direct",
+          "structures": [
+            "helper",
+            "straight_line"
+          ],
+          "write_extent_bytes": 100
+        },
+        "sample_id": "sample_0204",
+        "source_ground_truth": "not_vulnerable",
+        "source_path": "datasets/final-v1/source/sample_0204.c",
+        "source_sha256": "e16280605a9d62f29d473f1e3246fca9de273918a276a96f609e1fab400b213f",
+        "target_function": "copy_payload",
+        "target_source_span": [
+          18,
+          18
+        ]
+      }
+    ],
+    "sanitization_status": "reviewed",
+    "source_diff": [
+      "--- ",
+      "+++ ",
+      "@@ -8,7 +8,7 @@",
+      " {",
+      "     char * data;",
+      "     data = NULL;",
+      "-    data = (char *)malloc(50*sizeof(char));",
+      "+    data = (char *)malloc(100*sizeof(char));",
+      "     if (data == NULL) {exit(-1);}",
+      "     data[0] = '\\0';",
+      "     {"
+    ],
+    "status": "qualified"
+  }
+]

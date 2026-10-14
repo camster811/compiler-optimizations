@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0106",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401150",
+    "entry": "0x401150",
+    "size_bytes": 132,
+    "instruction_count": 33,
+    "basic_block_count": 3,
+    "body_ranges": [
+      [
+        "0x401150",
+        "0x4011d4"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\n/* WARNING: Removing unreachable block (ram,0x00401160) */\n\nvoid FUN_00401150(void)\n\n{\n  char *__s;\n  char local_b0 [56];\n  char local_78 [112];\n  \n  local_b0[0] = '\\0';\n  builtin_strncpy(local_78,\n                  \"CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC\"\n                  ,100);\n  __s = strncat(local_b0,local_78,100);\n  puts(__s);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401150: PUSH RBP",
+    "0x401151: MOV RBP,RSP",
+    "0x401154: SUB RSP,0x70",
+    "0x401158: MOV RAX,RSP",
+    "0x40115b: CMP RSP,RAX",
+    "0x40115e: JZ 0x00401175",
+    "0x401160: SUB RSP,0x1000",
+    "0x401167: OR qword ptr [RSP + 0xff8],0x0",
+    "0x401170: CMP RSP,RAX",
+    "0x401173: JNZ 0x00401160",
+    "0x401175: SUB RSP,0x40",
+    "0x401179: OR qword ptr [RSP + 0x38],0x0",
+    "0x40117f: MOV EAX,0x43434343",
+    "0x401184: MOV EDX,0x64",
+    "0x401189: MOVD XMM0,EAX",
+    "0x40118d: PSHUFD XMM0,XMM0,0x0",
+    "0x401192: LEA RDI,[RSP + 0xf]",
+    "0x401197: LEA RSI,[RBP + -0x70]",
+    "0x40119b: AND RDI,-0x10",
+    "0x40119f: MOV byte ptr [RDI],0x0",
+    "0x4011a2: MOVAPS xmmword ptr [RBP + -0x20],XMM0",
+    "0x4011a6: MOVAPS xmmword ptr [RBP + -0x70],XMM0",
+    "0x4011aa: MOVAPS xmmword ptr [RBP + -0x60],XMM0",
+    "0x4011ae: MOVAPS xmmword ptr [RBP + -0x50],XMM0",
+    "0x4011b2: MOVAPS xmmword ptr [RBP + -0x40],XMM0",
+    "0x4011b6: MOVAPS xmmword ptr [RBP + -0x30],XMM0",
+    "0x4011ba: MOV dword ptr [RBP + -0x11],0x43434343",
+    "0x4011c1: MOV byte ptr [RBP + -0xd],0x0",
+    "0x4011c5: CALL 0x00401040",
+    "0x4011ca: MOV RDI,RAX",
+    "0x4011cd: CALL 0x00401030",
+    "0x4011d2: LEAVE",
+    "0x4011d3: RET"
+  ],
+  "calls": [
+    "strncat",
+    "puts"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "112",
+    "4096",
+    "0",
+    "64",
+    "1128481603",
+    "100",
+    "-16"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_b0",
+      "stack_offset": -176,
+      "size_bytes": 1,
+      "data_type": "undefined1"
+    },
+    {
+      "name": "local_a9",
+      "stack_offset": -169,
+      "size_bytes": 1,
+      "data_type": "undefined"
+    },
+    {
+      "name": "local_80",
+      "stack_offset": -128,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    },
+    {
+      "name": "local_78",
+      "stack_offset": -120,
+      "size_bytes": 16,
+      "data_type": "undefined1[16]"
+    },
+    {
+      "name": "local_68",
+      "stack_offset": -104,
+      "size_bytes": 16,
+      "data_type": "undefined1[16]"
+    },
+    {
+      "name": "local_58",
+      "stack_offset": -88,
+      "size_bytes": 16,
+      "data_type": "undefined1[16]"
+    },
+    {
+      "name": "local_48",
+      "stack_offset": -72,
+      "size_bytes": 16,
+      "data_type": "undefined1[16]"
+    },
+    {
+      "name": "local_38",
+      "stack_offset": -56,
+      "size_bytes": 16,
+      "data_type": "undefined1[16]"
+    },
+    {
+      "name": "local_28",
+      "stack_offset": -40,
+      "size_bytes": 19,
+      "data_type": "undefined1[19]"
+    },
+    {
+      "name": "local_15",
+      "stack_offset": -21,
+      "size_bytes": 1,
+      "data_type": "undefined1"
+    }
+  ],
+  "imports": [
+    "strncat",
+    "puts"
+  ]
+}

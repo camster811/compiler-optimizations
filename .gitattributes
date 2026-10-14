@@ -1,0 +1,7 @@
+# Frozen data is hashed as raw bytes; do not convert line endings on checkout.
+datasets/final-v1/** -text
+evaluation/experiments/final.json -text
+evaluation/experiments/final.json.sha256 -text
+evaluation/experiments/final.inputs/** -text
+# Python CSV manifests intentionally use CRLF.
+datasets/**/*.tsv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

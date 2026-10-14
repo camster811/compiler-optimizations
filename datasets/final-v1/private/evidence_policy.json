@@ -1,0 +1,10 @@
+{
+  "bounded_copy_exception": "constant visible RDX count for strncpy/wcsncpy establishes padded write extent independent of source length",
+  "opaque_readonly_markers": [
+    "DAT",
+    "UNK"
+  ],
+  "primary_scope": "local setup and effect with numerical write extent established without unavailable external constant contents; non-explicit stack object capacity remains eligible",
+  "scores_used": false,
+  "version": "1.0"
+}

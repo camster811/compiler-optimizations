@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0279",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401130",
+    "entry": "0x401130",
+    "size_bytes": 98,
+    "instruction_count": 25,
+    "basic_block_count": 6,
+    "body_ranges": [
+      [
+        "0x401130",
+        "0x401192"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\nvoid FUN_00401130(void)\n\n{\n  uint uVar1;\n  uint *puVar2;\n  uint *puVar3;\n  undefined1 *puVar4;\n  \n  for (puVar4 = &stack0xfffffffffffffff8; puVar4 != &stack0xfffffffffffffff8;\n      puVar4 = puVar4 + -0x1000) {\n    *(undefined8 *)(puVar4 + -8) = *(undefined8 *)(puVar4 + -8);\n  }\n  *(undefined8 *)(puVar4 + -8) = *(undefined8 *)(puVar4 + -8);\n  puVar3 = (uint *)((ulong)(puVar4 + -0x11) & 0xfffffffffffffff0);\n  puVar2 = puVar3;\n  do {\n    *puVar2 = 0;\n    puVar2 = puVar2 + 1;\n  } while (puVar2 != puVar3 + 10);\n  uVar1 = *puVar3;\n  *(undefined8 *)(puVar4 + -0x28) = 0x401190;\n  printf(\"%d\\n\",(ulong)uVar1);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401130: PUSH RBP",
+    "0x401131: MOV RBP,RSP",
+    "0x401134: MOV RAX,RSP",
+    "0x401137: CMP RSP,RAX",
+    "0x40113a: JZ 0x0040114e",
+    "0x40113c: SUB RSP,0x1000",
+    "0x401143: OR qword ptr [RSP + 0xff8],0x0",
+    "0x40114c: JMP 0x00401137",
+    "0x40114e: SUB RSP,0x20",
+    "0x401152: OR qword ptr [RSP + 0x18],0x0",
+    "0x401158: LEA RCX,[RSP + 0xf]",
+    "0x40115d: AND RCX,-0x10",
+    "0x401161: MOV RAX,RCX",
+    "0x401164: LEA RDX,[RCX + 0x28]",
+    "0x401168: NOP dword ptr [RAX + RAX*0x1]",
+    "0x401170: MOV dword ptr [RAX],0x0",
+    "0x401176: ADD RAX,0x4",
+    "0x40117a: CMP RAX,RDX",
+    "0x40117d: JNZ 0x00401170",
+    "0x40117f: MOV ESI,dword ptr [RCX]",
+    "0x401181: MOV EDI,0x402004",
+    "0x401186: MOV EAX,0x0",
+    "0x40118b: CALL 0x00401030",
+    "0x401190: LEAVE",
+    "0x401191: RET"
+  ],
+  "calls": [
+    "printf"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "4096",
+    "0",
+    "32",
+    "-16",
+    "4"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_20",
+      "stack_offset": -32,
+      "size_bytes": 4,
+      "data_type": "undefined4"
+    },
+    {
+      "name": "local_19",
+      "stack_offset": -25,
+      "size_bytes": 1,
+      "data_type": "undefined"
+    },
+    {
+      "name": "local_10",
+      "stack_offset": -16,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    }
+  ],
+  "imports": [
+    "printf"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "batch_candidates": [
+    "candidate_0013",
+    "candidate_0089",
+    "candidate_0262",
+    "candidate_0277"
+  ],
+  "batch_manifest_sha256": "7e92c61caee7d4fed1bef55aef2448053c184d44ca5a8519f7e0de91ef76590f",
+  "checkpoint": "diversity acceptance before full processing",
+  "context_sha256": "4e3ab747e0f241d00d6007839b19b016739df543448edab8b9ae15c8d4c66212",
+  "optimizations": [
+    "O0",
+    "O1",
+    "O2",
+    "O3"
+  ],
+  "per_binary_patches": 0,
+  "selected_by": "pipeline readiness; no prediction scores inspected",
+  "source_modifications_after_analyzer_use": 0,
+  "static_validation_sha256": "7bfdeb79d57774a011d512f190b3eb064cae952ae42be6babaf403ebc520f1c9"
+}

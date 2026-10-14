@@ -115,7 +115,8 @@ def check(campaign, experiment_path):
                       if p.is_file() and p.name not in {"checksums.sha256", ".lock"}}
     if set(listed) != expected_files:
         raise ValueError("checksum manifest does not cover every campaign artifact")
-    observations = experiment["observations"]
+    planned_observations = experiment["observations"]
+    observations = [o for o in planned_observations if o.get("inference_eligible", True)]
     if set(m["record_hashes"]) != {o["record_sha256"] for o in observations}:
         raise ValueError("campaign record set differs from the private experiment")
     by_hash = {p["record_sha256"]: p for p in predictions}
@@ -125,13 +126,14 @@ def check(campaign, experiment_path):
         t = o
         def scored(pred, failures):
             cls, cwe = pred["classification"], pred["predicted_cwe"]
-            positive = t["ground_truth"] == "vulnerable"
+            ground_truth = t.get("target_effect_ground_truth", t.get("ground_truth"))
+            positive = ground_truth == "vulnerable"
             decision = "abstain" if cls == "uncertain" else (
                 "correct" if (positive and cls == "vulnerable" and cwe == t["cwe"])
                 or (not positive and cls == "not_vulnerable") else "incorrect")
             return {"observation_id": o["observation_id"], "pair_id": o["pair_id"],
                     "sample_id": sid, "optimization": optimization, "condition": condition,
-                    "cwe": t["cwe"], "ground_truth": t["ground_truth"], "record_sha256": h, "positive": positive,
+                    "cwe": t["cwe"], "ground_truth": ground_truth, "record_sha256": h, "positive": positive,
                     "classification": cls, "predicted_cwe": cwe, "decision": decision, "failure_count": failures}
         p = by_hash[h]
         rows.append({**scored(p, p["failure_count"]), "median_confidence": p["median_confidence"],
@@ -192,6 +194,32 @@ def check(campaign, experiment_path):
     for factor in ("cwe", "optimization", "condition", "ground_truth"):
         report["breakdowns"][factor] = {value: metrics([r for r in rows if r[factor] == value])
                                            for value in sorted({r[factor] for r in rows})}
+    if experiment["schema_version"] == "2.0":
+        by_observation = {o["observation_id"]: o for o in observations}
+        source_rows = []
+        for row in rows:
+            o = by_observation[row["observation_id"]]
+            for key in ("source_ground_truth", "binary_manifestation", "capacity_visibility"):
+                row[key] = o[key]
+            positive = o["source_ground_truth"] == "vulnerable"
+            cls = row["classification"]
+            decision = "abstain" if cls == "uncertain" else (
+                "correct" if (positive and cls == "vulnerable" and row["predicted_cwe"] == row["cwe"])
+                or (not positive and cls == "not_vulnerable") else "incorrect")
+            source_rows.append({**row, "positive": positive, "ground_truth": o["source_ground_truth"], "decision": decision})
+        for factor in ("binary_manifestation", "capacity_visibility", "source_ground_truth"):
+            report["breakdowns"][factor] = {value: metrics([r for r in rows if r[factor] == value])
+                                               for value in sorted({r[factor] for r in rows})}
+        excluded = [o for o in planned_observations if not o["inference_eligible"]]
+        report.update(planned_observations=len(planned_observations), inference_eligible_observations=len(observations),
+                      non_inference_observations=excluded,
+                      primary_estimand="Verified surviving target-object bounds classification; not whole-executable safety or exploitability",
+                      manifestation_counts=dict(sorted(Counter(o["binary_manifestation"] for o in planned_observations).items())),
+                      source_origin_view={"planned_observations": len(planned_observations),
+                          "source_ground_truth_counts": dict(sorted(Counter(o["source_ground_truth"] for o in planned_observations).items())),
+                          "metrics_among_inferred": metrics(source_rows), "non_analyzable_observations": len(excluded),
+                          "non_analyzable_source_ground_truth_counts": dict(sorted(Counter(o["source_ground_truth"] for o in excluded).items())),
+                          "note": "Proven-eliminated rows have no predictions and are never TN, FN, or model abstentions."})
     return report
 
 
@@ -251,7 +279,7 @@ def freeze(campaign, report, experiment_path):
         if file_hash(source) != h:
             raise ValueError("method source changed before freeze")
         preserve(frozen_dir / "method_source" / name, source.read_bytes())
-    for name in ("check_llm_predictions.py", "prepare_llm_experiment.py", "experiment_schema.json"):
+    for name in ("check_llm_predictions.py", "prepare_llm_experiment.py", "experiment_schema.json", "experiment_schema_v2.json"):
         source = Path(__file__).with_name(name)
         preserve(frozen_dir / "method_source" / "evaluation" / name, source.read_bytes())
     for name in ("predictions.json", "run_results.json"):

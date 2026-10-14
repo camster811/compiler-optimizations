@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "dataset_id", "development_data", "expected_matrix", "observations", "oracle_sha256", "context_evidence_sha256"],
+  "properties": {
+    "schema_version": {"const": "2.0"}, "dataset_id": {"type": "string", "minLength": 1},
+    "development_data": {"type": "boolean"},
+    "oracle_sha256": {"$ref": "#/$defs/hash"}, "context_evidence_sha256": {"$ref": "#/$defs/hash"},
+    "expected_matrix": {
+      "type": "object", "additionalProperties": false, "required": ["conditions", "cases"],
+      "properties": {
+        "conditions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["retained", "stripped"]}},
+        "cases": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {
+          "type": "object", "additionalProperties": false, "required": ["sample_id", "optimization"],
+          "properties": {"sample_id": {"type": "string"}, "optimization": {"enum": ["O0", "O1", "O2", "O3"]}}
+        }}
+      }
+    },
+    "observations": {"type": "array", "minItems": 1, "items": {
+      "type": "object", "additionalProperties": false,
+      "required": ["observation_id", "sample_id", "pair_id", "optimization", "condition", "cwe", "source_ground_truth", "binary_manifestation", "target_effect_ground_truth", "inference_eligible", "inference_disposition", "evidence_locality", "capacity_visibility", "record_path", "record_sha256", "prompt_tokens", "context_eligible", "context_rejection_reason", "rendered_prompt_sha256"],
+      "properties": {
+        "observation_id": {"type": "string"}, "sample_id": {"type": "string"}, "pair_id": {"type": "string"},
+        "optimization": {"enum": ["O0", "O1", "O2", "O3"]}, "condition": {"enum": ["retained", "stripped"]},
+        "cwe": {"enum": ["CWE-121", "CWE-122"]},
+        "source_ground_truth": {"enum": ["vulnerable", "not_vulnerable"]},
+        "binary_manifestation": {"enum": ["present", "transformed", "relocated", "eliminated"]},
+        "target_effect_ground_truth": {"enum": ["vulnerable", "not_vulnerable", null]},
+        "inference_eligible": {"type": "boolean"}, "inference_disposition": {"enum": ["eligible", "proven_eliminated"]},
+        "evidence_locality": {"enum": ["local", "not_applicable"]},
+        "capacity_visibility": {"enum": ["explicit", "not_explicit", "not_applicable"]},
+        "record_path": {"type": ["string", "null"]}, "record_sha256": {"anyOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]},
+        "prompt_tokens": {"type": ["integer", "null"], "minimum": 0}, "context_eligible": {"type": ["boolean", "null"]},
+        "context_rejection_reason": {"type": ["string", "null"]},
+        "rendered_prompt_sha256": {"anyOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]}
+      }
+    }}
+  },
+  "$defs": {"hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+}

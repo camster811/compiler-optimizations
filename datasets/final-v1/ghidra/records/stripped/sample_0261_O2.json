@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0261",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401150",
+    "entry": "0x401150",
+    "size_bytes": 101,
+    "instruction_count": 24,
+    "basic_block_count": 3,
+    "body_ranges": [
+      [
+        "0x401150",
+        "0x4011b5"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\n/* WARNING: Removing unreachable block (ram,0x00401160) */\n\nvoid FUN_00401150(void)\n\n{\n  char *__s;\n  char acStack_30 [29];\n  char local_13 [11];\n  \n  builtin_strncpy(local_13,\"AAAAAAAAAA\",0xb);\n  __s = strncpy(acStack_30,local_13,0xb);\n  puts(__s);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401150: PUSH RBP",
+    "0x401151: MOV RBP,RSP",
+    "0x401154: SUB RSP,0x10",
+    "0x401158: MOV RAX,RSP",
+    "0x40115b: CMP RSP,RAX",
+    "0x40115e: JZ 0x00401175",
+    "0x401160: SUB RSP,0x1000",
+    "0x401167: OR qword ptr [RSP + 0xff8],0x0",
+    "0x401170: CMP RSP,RAX",
+    "0x401173: JNZ 0x00401160",
+    "0x401175: SUB RSP,0x20",
+    "0x401179: OR qword ptr [RSP + 0x18],0x0",
+    "0x40117f: MOV EDX,0xb",
+    "0x401184: MOV RAX,0x4141414141414141",
+    "0x40118e: LEA RDI,[RSP + 0xf]",
+    "0x401193: LEA RSI,[RBP + -0xb]",
+    "0x401197: MOV qword ptr [RBP + -0xb],RAX",
+    "0x40119b: AND RDI,-0x10",
+    "0x40119f: MOV dword ptr [RBP + -0x4],0x414141",
+    "0x4011a6: CALL 0x00401030",
+    "0x4011ab: MOV RDI,RAX",
+    "0x4011ae: CALL 0x00401040",
+    "0x4011b3: LEAVE",
+    "0x4011b4: RET"
+  ],
+  "calls": [
+    "strncpy",
+    "puts"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "16",
+    "4096",
+    "0",
+    "32",
+    "11",
+    "4702111234474983745",
+    "-16",
+    "4276545"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_29",
+      "stack_offset": -41,
+      "size_bytes": 1,
+      "data_type": "undefined"
+    },
+    {
+      "name": "local_20",
+      "stack_offset": -32,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    },
+    {
+      "name": "local_13",
+      "stack_offset": -19,
+      "size_bytes": 11,
+      "data_type": "undefined1[11]"
+    }
+  ],
+  "imports": [
+    "strncpy",
+    "puts"
+  ]
+}

@@ -15,6 +15,11 @@
 # Usage: ghidra/run_headless.sh [GHIDRA_HOME override via env: GHIDRA_HOME=...]
 
 set -Eeuo pipefail
+
+if (( $# )); then
+    cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.."
+    exec python3 -m evaluation.corpus_pipeline extract "$@"
+fi
 umask 022
 
 readonly SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"

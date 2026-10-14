@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "sample_id": "sample_0299",
+  "status": "ok",
+  "function": {
+    "name": "FUN_00401160",
+    "entry": "0x401160",
+    "size_bytes": 145,
+    "instruction_count": 33,
+    "basic_block_count": 3,
+    "body_ranges": [
+      [
+        "0x401160",
+        "0x4011f1"
+      ]
+    ]
+  },
+  "decompilation": {
+    "status": "ok",
+    "text": "\n/* WARNING: Removing unreachable block (ram,0x00401174) */\n\nvoid FUN_00401160(void)\n\n{\n  wchar_t local_270 [50];\n  wchar_t local_1a8 [99];\n  undefined4 local_1c;\n  \n  local_270[0] = L'\\0';\n  wmemset(local_1a8,L'C',99);\n  local_1c = 0;\n  wcsncat(local_270,local_1a8,100);\n  wprintf(L\"%ls\\n\",local_270);\n  return;\n}\n\n",
+    "error": null
+  },
+  "instructions": [
+    "0x401160: PUSH RBP",
+    "0x401161: MOV RBP,RSP",
+    "0x401164: PUSH RBX",
+    "0x401165: SUB RSP,0x198",
+    "0x40116c: MOV RAX,RSP",
+    "0x40116f: CMP RSP,RAX",
+    "0x401172: JZ 0x00401189",
+    "0x401174: SUB RSP,0x1000",
+    "0x40117b: OR qword ptr [RSP + 0xff8],0x0",
+    "0x401184: CMP RSP,RAX",
+    "0x401187: JNZ 0x00401174",
+    "0x401189: SUB RSP,0xd0",
+    "0x401190: OR qword ptr [RSP + 0xc8],0x0",
+    "0x401199: MOV EDX,0x63",
+    "0x40119e: MOV ESI,0x43",
+    "0x4011a3: LEA RAX,[RSP + 0xf]",
+    "0x4011a8: LEA RDI,[RBP + -0x1a0]",
+    "0x4011af: AND RAX,-0x10",
+    "0x4011b3: MOV dword ptr [RAX],0x0",
+    "0x4011b9: MOV RBX,RAX",
+    "0x4011bc: CALL 0x00401040",
+    "0x4011c1: LEA RSI,[RBP + -0x1a0]",
+    "0x4011c8: MOV RDI,RBX",
+    "0x4011cb: MOV EDX,0x64",
+    "0x4011d0: MOV dword ptr [RBP + -0x14],0x0",
+    "0x4011d7: CALL 0x00401030",
+    "0x4011dc: MOV RSI,RBX",
+    "0x4011df: MOV EDI,0x402004",
+    "0x4011e4: XOR EAX,EAX",
+    "0x4011e6: CALL 0x00401050",
+    "0x4011eb: MOV RBX,qword ptr [RBP + -0x8]",
+    "0x4011ef: LEAVE",
+    "0x4011f0: RET"
+  ],
+  "calls": [
+    "wmemset",
+    "wcsncat",
+    "wprintf"
+  ],
+  "tail_jumps": [],
+  "constants": [
+    "408",
+    "4096",
+    "0",
+    "208",
+    "99",
+    "67",
+    "-16",
+    "100"
+  ],
+  "stack_variables": [
+    {
+      "name": "local_270",
+      "stack_offset": -624,
+      "size_bytes": 4,
+      "data_type": "undefined4"
+    },
+    {
+      "name": "local_269",
+      "stack_offset": -617,
+      "size_bytes": 1,
+      "data_type": "undefined"
+    },
+    {
+      "name": "local_1b0",
+      "stack_offset": -432,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    },
+    {
+      "name": "local_1a8",
+      "stack_offset": -424,
+      "size_bytes": 1,
+      "data_type": "undefined"
+    },
+    {
+      "name": "local_1c",
+      "stack_offset": -28,
+      "size_bytes": 4,
+      "data_type": "undefined4"
+    },
+    {
+      "name": "local_10",
+      "stack_offset": -16,
+      "size_bytes": 8,
+      "data_type": "undefined8"
+    }
+  ],
+  "imports": [
+    "wmemset",
+    "wcsncat",
+    "wprintf"
+  ]
+}
