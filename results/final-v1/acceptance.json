@@ -1,6 +1,6 @@
 {
   "campaign_id": "ad3bd1652d6a18461914be5cb0f12b8786f76e72807d1ae725b5fe4e60f2f478",
-  "checked_at": "2026-10-15T00:03:48.736750+00:00",
+  "checked_at": "2026-10-15T00:56:48.649568+00:00",
   "checks": [
     {
       "check": "eligible and eliminated observations cover the planned matrix",
@@ -197,7 +197,9 @@
       "check": "server log shows exactly one inference task per completed attempt, in order with matching prompt tokens",
       "detail": {
         "completed_http_200_attempts": 528,
-        "server_inference_tasks": 528
+        "server_inference_tasks": 528,
+        "source_path": "results/final-v1/llm/server_final_run.log",
+        "source_sha256": "2faca5430d815a57c63fce97fe25428b13074c3d7a618b88a01637227e6d9381"
       },
       "passed": true
     },
@@ -245,6 +247,8 @@
   },
   "server_log_cross_check": {
     "completed_http_200_attempts": 528,
-    "server_inference_tasks": 528
+    "server_inference_tasks": 528,
+    "source_path": "results/final-v1/llm/server_final_run.log",
+    "source_sha256": "2faca5430d815a57c63fce97fe25428b13074c3d7a618b88a01637227e6d9381"
   }
 }

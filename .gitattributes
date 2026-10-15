@@ -3,5 +3,7 @@ datasets/final-v1/** -text
 evaluation/experiments/final.json -text
 evaluation/experiments/final.json.sha256 -text
 evaluation/experiments/final.inputs/** -text
+# Preserve the hashed campaign log byte for byte and suppress generated log diffs.
+results/final-v1/llm/server_final_run.log -text -diff
 # Python CSV manifests intentionally use CRLF.
 datasets/**/*.tsv whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

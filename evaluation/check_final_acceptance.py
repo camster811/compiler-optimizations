@@ -180,22 +180,22 @@ def main():
     check("retry history", True, {"runs_with_retry": len(retried), "http_attempts": attempts})
 
     # server-side cross-check: one inference task per recorded HTTP attempt that reached the server
-    offsets = LLM / "pre_final_server_state" / "offsets.txt"
-    log_check = "not available"
-    if offsets.exists():
-        start = int(offsets.read_text().split()[0])
-        log = (ROOT / "llm_analysis/output/server.log").read_bytes()[start:].decode("utf-8", "replace")
-        server_prompts = [int(n) for n in re.findall(r"new prompt, n_ctx_slot = \d+, n_keep = \d+, task\.n_tokens = (\d+)", log)]
-        reached = sorted(((load(p)["started_at"], load(p)["http_status"], p.parent) for p in campaign.glob("runs/*/attempt-*/response.json")))
-        expected_tokens = []
-        for _, status, d in reached:
-            body = (d / "response.body").read_bytes()
-            if status == 200:
-                expected_tokens.append(decode(body)["usage"]["prompt_tokens"])
-        log_check = {"server_inference_tasks": len(server_prompts), "completed_http_200_attempts": len(expected_tokens)}
-        check("server log shows exactly one inference task per completed attempt, in order with matching prompt tokens",
-              len(server_prompts) >= len(expected_tokens) and server_prompts[:len(expected_tokens)] == expected_tokens
-              and len(server_prompts) == len(reached), log_check)
+    # The archived slice already starts at the campaign boundary. Neither a live
+    # server log nor its old byte offsets is required for offline acceptance.
+    log_path = LLM / "server_final_run.log"
+    log = log_path.read_bytes().decode("utf-8", "replace")
+    server_prompts = [int(n) for n in re.findall(r"new prompt, n_ctx_slot = \d+, n_keep = \d+, task\.n_tokens = (\d+)", log)]
+    reached = sorted(((load(p)["started_at"], load(p)["http_status"], p.parent) for p in campaign.glob("runs/*/attempt-*/response.json")))
+    expected_tokens = []
+    for _, status, d in reached:
+        body = (d / "response.body").read_bytes()
+        if status == 200:
+            expected_tokens.append(decode(body)["usage"]["prompt_tokens"])
+    log_check = {"server_inference_tasks": len(server_prompts), "completed_http_200_attempts": len(expected_tokens),
+                 "source_path": str(log_path.relative_to(ROOT)), "source_sha256": file_hash(log_path)}
+    check("server log shows exactly one inference task per completed attempt, in order with matching prompt tokens",
+          len(server_prompts) >= len(expected_tokens) and server_prompts[:len(expected_tokens)] == expected_tokens
+          and len(server_prompts) == len(reached), log_check)
 
     # ---------------- join ----------------
     agg_by_hash = {a["record_sha256"]: a for a in aggregates}

@@ -1,6 +1,6 @@
 {
-  "acceptance_sha256": "8b72eb82761c86beb3d7e9d2529682296bcb83fa9c8c2fd3293135b788c2550b",
-  "built_at": "2026-10-15T00:04:26.694666+00:00",
+  "acceptance_sha256": "24b5b93c63a1c417532a74490d969aaf9af1875c47721118bd5f67d3ffca0d54",
+  "built_at": "2026-10-15T00:57:05.586368+00:00",
   "campaign_checksums_sha256": "7ba232aaa351a99774d3b44afe3537e42e6fc50bb1e43e321ed38b03bf311c3b",
   "campaign_id": "ad3bd1652d6a18461914be5cb0f12b8786f76e72807d1ae725b5fe4e60f2f478",
   "cardinality": {
