@@ -1,0 +1,250 @@
+{
+  "campaign_id": "ad3bd1652d6a18461914be5cb0f12b8786f76e72807d1ae725b5fe4e60f2f478",
+  "checked_at": "2026-10-15T00:03:48.736750+00:00",
+  "checks": [
+    {
+      "check": "eligible and eliminated observations cover the planned matrix",
+      "detail": {
+        "distinct_records": 176,
+        "eligible": 216,
+        "eliminated": 104
+      },
+      "passed": true
+    },
+    {
+      "check": "static output hash matches execution log",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "static analyzer and rules match the corpus freeze",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "one static prediction per distinct record, none extra or duplicated",
+      "detail": {
+        "predictions": 176,
+        "records": 176
+      },
+      "passed": true
+    },
+    {
+      "check": "static input records are exactly the blinded records",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "static predictions satisfy the documented contract and rule names",
+      "detail": [],
+      "passed": true
+    },
+    {
+      "check": "static sample_id echoes each record",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "every uncertain static result carries a structured reason (rule name and evidence)",
+      "detail": {
+        "insufficient_evidence": 46,
+        "unresolved_copy_call": 112
+      },
+      "passed": true
+    },
+    {
+      "check": "static analyzer is import/string isolated from private data",
+      "detail": [],
+      "passed": true
+    },
+    {
+      "check": "static execution log lists no private file",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "static rerun is byte-identical (forward input order)",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "static rerun is byte-identical (reversed input order)",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "campaign uses the frozen selected method and unchanged method files",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "campaign is final-split and bound to this experiment",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "campaign record set equals the eligible distinct records",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "campaign directory holds no private experiment or label files",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "offline replay verified request isolation, raw hashes, parsing and attempts",
+      "detail": {
+        "runs": 528
+      },
+      "passed": true
+    },
+    {
+      "check": "exported run_results and predictions equal replay",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "campaign checksum manifest covers every artifact and matches",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "no temporary or partial files remain",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "no duplicate run identifiers",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "every distinct record has exactly three outcomes, repetitions 1-3",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "every run is valid or an explicit classified failure",
+      "detail": {
+        "schema_invalid": 4,
+        "valid": 524
+      },
+      "passed": true
+    },
+    {
+      "check": "every aggregate has three run references and one entry per record",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "every request hash and prompt content match the stored record",
+      "detail": [],
+      "passed": true
+    },
+    {
+      "check": "every request is one fresh user message with no history or cache",
+      "detail": [],
+      "passed": true
+    },
+    {
+      "check": "no request contains a private identifier or label",
+      "detail": [],
+      "passed": true
+    },
+    {
+      "check": "rendered prompt hash per record equals the frozen experiment value",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "every record fit the context at preflight",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "every (record, repetition) has exactly one run and one request",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "identical requests occur only across distinct, projection-equivalent records at the same repetition",
+      "detail": {
+        "identical_request_groups": 48,
+        "projection_equivalent_record_groups": 16
+      },
+      "passed": true
+    },
+    {
+      "check": "each repetition uses one shared seed across records",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "all attempt directories retained with raw bodies",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "retry history",
+      "detail": {
+        "http_attempts": 528,
+        "runs_with_retry": 0
+      },
+      "passed": true
+    },
+    {
+      "check": "server log shows exactly one inference task per completed attempt, in order with matching prompt tokens",
+      "detail": {
+        "completed_http_200_attempts": 528,
+        "server_inference_tasks": 528
+      },
+      "passed": true
+    },
+    {
+      "check": "every eligible observation joins to one static prediction and one LLM aggregate",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "repeated hashes map to multiple observations without loss",
+      "detail": {
+        "1": 136,
+        "2": 40
+      },
+      "passed": true
+    },
+    {
+      "check": "eliminated observations have no hash, prediction or run",
+      "detail": null,
+      "passed": true
+    },
+    {
+      "check": "expected row counts for later tables",
+      "detail": {
+        "condition_rows": 432,
+        "non_analyzable_rows": 104,
+        "raw_llm_rows": 648
+      },
+      "passed": true
+    }
+  ],
+  "experiment_sha256": "f967bf01d2ace0b64bb20e5701ea0c37b08bbe7939522284af2921b739265258",
+  "failed": [],
+  "limits": [
+    "LLM determinism is not claimed: GPU generation can differ across runs; replay of saved raw responses is deterministic.",
+    "The static analyzer's non-access to private data is shown by its import/string isolation check, its input list and its logged file set, not by an OS-level sandbox.",
+    "LLM non-access is shown by the blinded manifest, the stored requests and the campaign file set, not by tracing the runner process."
+  ],
+  "method_id": "6a18617e0ef4b1985060a76db93755018bc1e99190f0d652ca6d51dff78c1c1d",
+  "metrics_computed": false,
+  "phase": "F3",
+  "run_statuses": {
+    "schema_invalid": 4,
+    "valid": 524
+  },
+  "server_log_cross_check": {
+    "completed_http_200_attempts": 528,
+    "server_inference_tasks": 528
+  }
+}

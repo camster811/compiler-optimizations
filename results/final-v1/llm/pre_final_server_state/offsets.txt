@@ -1,0 +1,3 @@
+609785 llm_analysis/output/server.log
+ 46251 llm_analysis/output/gpu_memory.jsonl
+656036 total
