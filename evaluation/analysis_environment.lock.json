@@ -1,0 +1,368 @@
+{
+  "packages": [
+    {
+      "filename": "fonts-lyx_2.5.0-1_all.deb",
+      "name": "fonts-lyx",
+      "sha256": "9048eb0708004c3c04fd0fc7b0706e5666637594b7f168b48c7329cf754128cd",
+      "version": "2.5.0-1"
+    },
+    {
+      "filename": "libblas3_3.12.1-7ubuntu1_amd64.deb",
+      "name": "libblas3",
+      "sha256": "09cfdecf627a16e180938d81cb4208c519097f2434744ea6c93c919fa2049578",
+      "version": "3.12.1-7ubuntu1"
+    },
+    {
+      "filename": "libgfortran5_16-20260322-1ubuntu1_amd64.deb",
+      "name": "libgfortran5",
+      "sha256": "3f028ea56be008c74d197006d65faa320e29824837dd111c8f76b84f6bb578d2",
+      "version": "16-20260322-1ubuntu1"
+    },
+    {
+      "filename": "libimagequant0_4.4.1-1_amd64.deb",
+      "name": "libimagequant0",
+      "sha256": "da65f428985ce4cf9ee3cd4f845749812f006909ba6c130bd6c9fa7d1d491988",
+      "version": "4.4.1-1"
+    },
+    {
+      "filename": "liblapack3_3.12.1-7ubuntu1_amd64.deb",
+      "name": "liblapack3",
+      "sha256": "f0893023771313599c1fe132dcbbfefa2a1d0a5db77654400f369f2e73325ed1",
+      "version": "3.12.1-7ubuntu1"
+    },
+    {
+      "filename": "libnlopt0_2.7.1-7.1ubuntu1_amd64.deb",
+      "name": "libnlopt0",
+      "sha256": "7e06bcdc43b940ad7eb39da139b8af70f79de72af36b3fac877af71a1762f57d",
+      "version": "2.7.1-7.1ubuntu1"
+    },
+    {
+      "filename": "libqhull-r8.0_2020.2-8_amd64.deb",
+      "name": "libqhull-r8.0",
+      "sha256": "5942eb35006cf5218cb2eb1c20cb3573272f3c5f3881b63c80f1c9f44e4c5905",
+      "version": "2020.2-8"
+    },
+    {
+      "filename": "libraqm0_0.10.4-1_amd64.deb",
+      "name": "libraqm0",
+      "sha256": "85aefc091871221e4aa08d86615dd0e5140380928452418bd1e4e5226fee4628",
+      "version": "0.10.4-1"
+    },
+    {
+      "filename": "libtcl8.6_8.6.17+dfsg-1build1_amd64.deb",
+      "name": "libtcl8.6",
+      "sha256": "7e062e6b4c8e4c4c5122679c193c4567c1bf4dab3555a64ea2449a256cfd8043",
+      "version": "8.6.17+dfsg-1build1"
+    },
+    {
+      "filename": "libtk8.6_8.6.17-1build1_amd64.deb",
+      "name": "libtk8.6",
+      "sha256": "9956a0f9252ce0bc3be1a97fa06b53e2697d25c24f7dcff25fc17e7b52c3db6f",
+      "version": "8.6.17-1build1"
+    },
+    {
+      "filename": "libxslt1.1_1.1.45-0.1_amd64.deb",
+      "name": "libxslt1.1",
+      "sha256": "d2ad5edf215939cc0fe74ca6cb9910060915233032a7c7074d4f206702c802a1",
+      "version": "1.1.45-0.1"
+    },
+    {
+      "filename": "libxss1_1.2.3-1build4_amd64.deb",
+      "name": "libxss1",
+      "sha256": "04339441bb49c8b9c6d3297bb569b3b774de61e422f5e7334c34225b08709035",
+      "version": "1:1.2.3-1build4"
+    },
+    {
+      "filename": "libzopfli1_1.0.3-3build1_amd64.deb",
+      "name": "libzopfli1",
+      "sha256": "63e2599bd025b486b0c79351133e1f00758349da65a123ae2943cde8e5ef9715",
+      "version": "1.0.3-3build1"
+    },
+    {
+      "filename": "python-matplotlib-data_3.10.7+dfsg1-2build1_all.deb",
+      "name": "python-matplotlib-data",
+      "sha256": "199982a39d243767f28f789c2eb78748b5a83f3e87b86b5962f2c647a319384d",
+      "version": "3.10.7+dfsg1-2build1"
+    },
+    {
+      "filename": "python3-brotli_1.2.0-3build1_amd64.deb",
+      "name": "python3-brotli",
+      "sha256": "8477455240705476e31a998f059c4188ba0638d5a5ce84b7874460fc8643280f",
+      "version": "1.2.0-3build1"
+    },
+    {
+      "filename": "python3-contourpy_1.3.3-1build1_amd64.deb",
+      "name": "python3-contourpy",
+      "sha256": "8189562ed409c7679ab20d48e5be538c759062f16b45f5279c83115a6b46a3fe",
+      "version": "1.3.3-1build1"
+    },
+    {
+      "filename": "python3-cycler_0.12.1-2_all.deb",
+      "name": "python3-cycler",
+      "sha256": "e2d6cb1bed8bc6eda06e2b824ad48c9373d6fd435ec3a751b4cd29f93bd30159",
+      "version": "0.12.1-2"
+    },
+    {
+      "filename": "python3-dateutil_2.9.0-4build1_all.deb",
+      "name": "python3-dateutil",
+      "sha256": "4db0a65cdd41a370e33beb8db63adcbb277b750077c20e54882b55fba82ac592",
+      "version": "2.9.0-4build1"
+    },
+    {
+      "filename": "python3-decorator_5.2.1-2_all.deb",
+      "name": "python3-decorator",
+      "sha256": "45cb8bbd3cf5f012caf2ae4fcd5c68bd3a32480bf1911d0bfaa26f075d3b61c0",
+      "version": "5.2.1-2"
+    },
+    {
+      "filename": "python3-fonttools_4.61.1-3build1_amd64.deb",
+      "name": "python3-fonttools",
+      "sha256": "bac7dfe8dd0e28b89e43a8ab73cd65c4eccfbbc33de2501474148dd96e5bd4aa",
+      "version": "4.61.1-3build1"
+    },
+    {
+      "filename": "python3-kiwisolver_1.4.10~rc0-1build1_amd64.deb",
+      "name": "python3-kiwisolver",
+      "sha256": "949f3e2d33560630325036bae16f506c930eadd8f38927c8292770a3c252db8e",
+      "version": "1.4.10~rc0-1build1"
+    },
+    {
+      "filename": "python3-lxml_6.0.2-1ubuntu0.1_amd64.deb",
+      "name": "python3-lxml",
+      "sha256": "99b26accb1b6c9cdf70e306a350b322d58fba6e5724e6602d49b178370d3923b",
+      "version": "6.0.2-1ubuntu0.1"
+    },
+    {
+      "filename": "python3-lz4_4.4.5+dfsg-1build1_amd64.deb",
+      "name": "python3-lz4",
+      "sha256": "9a93ff0f33a167bbbcf02ad068de25189f680f3b899f215a9bdecc316d0666e7",
+      "version": "4.4.5+dfsg-1build1"
+    },
+    {
+      "filename": "python3-matplotlib_3.10.7+dfsg1-2build1_amd64.deb",
+      "name": "python3-matplotlib",
+      "sha256": "75295ce3042835633d9f5533b0e42ce2022fd700841115f1610ff71bfb967e3f",
+      "version": "3.10.7+dfsg1-2build1"
+    },
+    {
+      "filename": "python3-mpmath_1.3.0-2_all.deb",
+      "name": "python3-mpmath",
+      "sha256": "03eebbb83fa18ff961e47203f9f2f770ecf9bb7dbc123f04a3253b59e006e0c1",
+      "version": "1.3.0-2"
+    },
+    {
+      "filename": "python3-numpy_2.3.5+ds-3ubuntu1_amd64.deb",
+      "name": "python3-numpy",
+      "sha256": "5114004bbe7b36c35037f674b58c02962f71080108acb09235d989d3bea4504d",
+      "version": "1:2.3.5+ds-3ubuntu1"
+    },
+    {
+      "filename": "python3-numpy-dev_2.3.5+ds-3ubuntu1_amd64.deb",
+      "name": "python3-numpy-dev",
+      "sha256": "dbc9b87b1aabd3fd70e9013bf47652ed3fa2cbd208b39184bd496b9a28a65d06",
+      "version": "1:2.3.5+ds-3ubuntu1"
+    },
+    {
+      "filename": "python3-pil_12.1.1-2ubuntu1.3_amd64.deb",
+      "name": "python3-pil",
+      "sha256": "0e33c688dbe2842ed401b7bc7ef901fb1bc41c117825d50a06f5d88fcc4534f0",
+      "version": "12.1.1-2ubuntu1.3"
+    },
+    {
+      "filename": "python3-pil.imagetk_12.1.1-2ubuntu1.3_amd64.deb",
+      "name": "python3-pil.imagetk",
+      "sha256": "a9877f6170d74ceaaf32d4636ddf8bdd85e8f975c5ec04c406d324390ec71cd7",
+      "version": "12.1.1-2ubuntu1.3"
+    },
+    {
+      "filename": "python3-scipy_1.16.3-4build1_amd64.deb",
+      "name": "python3-scipy",
+      "sha256": "9bcbbbdac88604653fc6b8fe479d45a9c71b047557007e51772525dd49defaf1",
+      "version": "1.16.3-4build1"
+    },
+    {
+      "filename": "python3-sympy_1.14.0-2_all.deb",
+      "name": "python3-sympy",
+      "sha256": "82fdfadeb2949bf7d235750279c84ec840f69005579e77673a4140a603180150",
+      "version": "1.14.0-2"
+    },
+    {
+      "filename": "python3-tk_3.14.3-0ubuntu2_amd64.deb",
+      "name": "python3-tk",
+      "sha256": "8178789dc8142a23b3d91117b72d46faf26aec85585225034ceb86c7d9064905",
+      "version": "3.14.3-0ubuntu2"
+    },
+    {
+      "filename": "python3-ufolib2_0.18.1+dfsg1-1_all.deb",
+      "name": "python3-ufolib2",
+      "sha256": "aa0b47cd4c3c913ab848d50a4ceafe44ed46f6121508eb1a87b3c2db1f4907b3",
+      "version": "0.18.1+dfsg1-1"
+    },
+    {
+      "filename": "python3-unicodedata2_16.0.0+ds-1build2_amd64.deb",
+      "name": "python3-unicodedata2",
+      "sha256": "96bd5d9af7735e00c076170bc6025bd358bfd254db60254bcf057b7a21b8882b",
+      "version": "16.0.0+ds-1build2"
+    },
+    {
+      "filename": "python3-zopfli_0.4.1-1_amd64.deb",
+      "name": "python3-zopfli",
+      "sha256": "22b3d20e9126bb50e2759e84d3a6a28269b4f2599ad0c3548cf93f9423ec53e9",
+      "version": "0.4.1-1"
+    },
+    {
+      "filename": "python3.14-tk_3.14.4-1ubuntu0.2_amd64.deb",
+      "name": "python3.14-tk",
+      "sha256": "7dbd69bdfebb4eb433ad7ea3429349f6ac86f5dab8fde65770e3aea4ec822a2e",
+      "version": "3.14.4-1ubuntu0.2"
+    },
+    {
+      "filename": "r-base-core_4.5.2-1ubuntu2_amd64.deb",
+      "name": "r-base-core",
+      "sha256": "df99ab5948f6cf56dab735d882ff980c10e3c731581b48eb6cd8da4808fc80b9",
+      "version": "4.5.2-1ubuntu2"
+    },
+    {
+      "filename": "r-cran-boot_1.3-32-1_all.deb",
+      "name": "r-cran-boot",
+      "sha256": "3e1bd06b27a0d83600036f7c120dabfbbd442aaecb846786b373f3b9e65d7829",
+      "version": "1.3-32-1"
+    },
+    {
+      "filename": "r-cran-jsonlite_2.0.0+dfsg-2_amd64.deb",
+      "name": "r-cran-jsonlite",
+      "sha256": "cc4268d05a9d03389334f449bc332243813060c39f1bb6af6196fb3ba0954851",
+      "version": "2.0.0+dfsg-2"
+    },
+    {
+      "filename": "r-cran-lattice_0.22-9-1_amd64.deb",
+      "name": "r-cran-lattice",
+      "sha256": "4d4397419965df8326cea0b44df08f0ec1ff1c00d8b84a2be638f9c1964c82ea",
+      "version": "0.22-9-1"
+    },
+    {
+      "filename": "r-cran-littler_0.3.22-1_amd64.deb",
+      "name": "r-cran-littler",
+      "sha256": "15cc1c53b3107d7c163d211f5105b2dccfb692cc0dfa5422ed78e59ffd54bf27",
+      "version": "0.3.22-1"
+    },
+    {
+      "filename": "r-cran-lme4_1.1-38-1_amd64.deb",
+      "name": "r-cran-lme4",
+      "sha256": "ecba70d688681ad1b683b7ab51da79a444a4a91bf6a060c1d287fdcbe4df2824",
+      "version": "1.1-38-1"
+    },
+    {
+      "filename": "r-cran-mass_7.3-65-1_amd64.deb",
+      "name": "r-cran-mass",
+      "sha256": "328c652374b7952eebcb848e163a4a160563df0d6175593091894ee27702b0be",
+      "version": "7.3-65-1"
+    },
+    {
+      "filename": "r-cran-matrix_1.7-4-1_amd64.deb",
+      "name": "r-cran-matrix",
+      "sha256": "1b13fa4429500d6ff7ca46d67e9829cfc4dda99a550d6687b5f57d9099a58724",
+      "version": "1.7-4-1"
+    },
+    {
+      "filename": "r-cran-minqa_1.2.8-1_amd64.deb",
+      "name": "r-cran-minqa",
+      "sha256": "e0e37c96af15eb2cac63b12979164ddb661f11dc33494324846849381ae18ead",
+      "version": "1.2.8-1"
+    },
+    {
+      "filename": "r-cran-nlme_3.1.168-1build1_amd64.deb",
+      "name": "r-cran-nlme",
+      "sha256": "3aab96fe17adfe0c754653c535950ab7068f60ebad9c19c95ac71fd09b5e60f1",
+      "version": "3.1.168-1build1"
+    },
+    {
+      "filename": "r-cran-nloptr_2.2.1-2_amd64.deb",
+      "name": "r-cran-nloptr",
+      "sha256": "ee61edcd7a9b6ccc8315df41d462ca365b21e8ea5cfaa9097b1e371c5ae4105b",
+      "version": "2.2.1-2"
+    },
+    {
+      "filename": "r-cran-pkgkitten_0.2.4-1_all.deb",
+      "name": "r-cran-pkgkitten",
+      "sha256": "0ca7a8ef52f63677ebdde617141f35c1f523d1f27e9072ed8da8c72a5b53bdd1",
+      "version": "0.2.4-1"
+    },
+    {
+      "filename": "r-cran-rbibutils_2.4.1-1_amd64.deb",
+      "name": "r-cran-rbibutils",
+      "sha256": "5bfd54050192c2ab312430ca2b0fcb941898ed1244c9f6c938be92cf0312efd0",
+      "version": "2.4.1-1"
+    },
+    {
+      "filename": "r-cran-rcpp_1.1.1-2_amd64.deb",
+      "name": "r-cran-rcpp",
+      "sha256": "2e97e1e6bdcd96d8bfa63183f25c7f07bc2bb72102bd459d270256b2bbb36752",
+      "version": "1.1.1-2"
+    },
+    {
+      "filename": "r-cran-rcppeigen_0.3.4.0.2-1_amd64.deb",
+      "name": "r-cran-rcppeigen",
+      "sha256": "03a9e1ca988ff002046f45531e325bd47e5393e15b182ffd59daf36dc190c730",
+      "version": "0.3.4.0.2-1"
+    },
+    {
+      "filename": "r-cran-rdpack_2.6.6-1_all.deb",
+      "name": "r-cran-rdpack",
+      "sha256": "064af2377aaec6134df38ef32a263a271b6b7ccae32dbedad2af1eda46dda609",
+      "version": "2.6.6-1"
+    },
+    {
+      "filename": "r-cran-reformulas_0.4.4-1_all.deb",
+      "name": "r-cran-reformulas",
+      "sha256": "bde33cc98254d30d29eaa2aa8865a469e33b3329deedef58684f98419681f21d",
+      "version": "0.4.4-1"
+    },
+    {
+      "filename": "r-cran-renv_1.1.7-1_amd64.deb",
+      "name": "r-cran-renv",
+      "sha256": "188616674e279503ce2aee89dbf70b111ec4c32484c8ea3d582d2a88631eeae7",
+      "version": "1.1.7-1"
+    },
+    {
+      "filename": "r-cran-rlang_1.1.7-2_amd64.deb",
+      "name": "r-cran-rlang",
+      "sha256": "b7b687ded898693eefa414963433082be4f6a40f81b271a115bf7e27b730b2e4",
+      "version": "1.1.7-2"
+    },
+    {
+      "filename": "r-cran-statmod_1.5.0-1_amd64.deb",
+      "name": "r-cran-statmod",
+      "sha256": "f1b3dbd8a2359d5e208bb405aac4f200d6992623adf871384a22c345ee2c0453",
+      "version": "1.5.0-1"
+    },
+    {
+      "filename": "unicode-data_16.0.0-1build1_all.deb",
+      "name": "unicode-data",
+      "sha256": "65a8afe2c6532cdd32877350070289450e6bf9687b00eb1b7ca39946c1970449",
+      "version": "16.0.0-1build1"
+    },
+    {
+      "filename": "xdg-utils_1.2.1-2ubuntu2_all.deb",
+      "name": "xdg-utils",
+      "sha256": "ab0236062d2552e8c67763d9514e751900b0d64cf86c5df6e20f67cb2bd4789e",
+      "version": "1.2.1-2ubuntu2"
+    },
+    {
+      "filename": "zip_3.0-15ubuntu3_amd64.deb",
+      "name": "zip",
+      "sha256": "ef8e6376ecdaa82f4f7fbd1f6fb8cbf7818a1305c8e7b015c1aa9f4bdc77d12a",
+      "version": "3.0-15ubuntu3"
+    }
+  ],
+  "platform": "Ubuntu 26.04 amd64; Python 3.14",
+  "runtime_versions": {
+    "R": "4.5.2",
+    "jsonlite": "2.0.0",
+    "lme4": "1.1.38",
+    "matplotlib": "3.10.7+dfsg1",
+    "numpy": "2.3.5",
+    "python": "3.14.4",
+    "scipy": "1.16.3"
+  }
+}

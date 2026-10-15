@@ -5,4 +5,4 @@ The controlled pilot compares compiler optimization and symbol stripping effects
 
 The local DeepSeek/llama.cpp analyzer, blinded request contract, resumable pilot execution, private scoring, and method-freeze procedure are documented in [llm_analysis/README.md](llm_analysis/README.md).
 
-The [frozen final-v1 corpus and inference handoff](datasets/final-v1/README.md) contains 20 new source pairs across O0/O1/O2/O3 and both symbol conditions: 320 planned observations, 216 eligible observations, and 176 distinct records. Compiler elimination and unavailable context are recorded separately; final LLM inference has not been run.
+The [frozen final-v1 corpus and inference handoff](datasets/final-v1/README.md) contains 20 new source pairs across O0/O1/O2/O3 and both symbol conditions: 320 planned observations, 216 eligible observations, and 176 distinct records. Final inference and quantitative analysis are complete. See the [Phase H results](results/final-v1/analysis/report.md) and [analysis reproduction instructions](evaluation/phase_h.md). The 104 proven-eliminated observations are never scored.

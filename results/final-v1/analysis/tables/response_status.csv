@@ -1,0 +1,274 @@
+view,method,factor,level,status,n,n_pairs,events,event_pairs,estimate,ci_low,ci_high,bootstrap_usable,bootstrap_total,reason,zero_event_pair_upper_95
+distinct_requests,llm,overall,all,valid,528,20,524,20,0.9924242424242424,0.9825581395348837,1.0,10000,10000,,
+distinct_requests,llm,overall,all,timeout,528,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+distinct_requests,llm,overall,all,schema_invalid,528,20,4,3,0.007575757575757576,0.0,0.01744186046511628,10000,10000,,
+distinct_requests,llm,overall,all,length_limit,528,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+distinct_requests,llm,overall,all,empty_response,528,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+distinct_requests,llm,overall,all,invalid_json,528,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+distinct_requests,llm,overall,all,evidence_invalid,528,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+distinct_requests,llm,overall,all,response_invalid,528,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+distinct_requests,llm,overall,all,transport_error,528,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+distinct_requests,llm,overall,all,interrupted,528,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+distinct_requests,llm,overall,all,http_error,528,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+distinct_requests,llm,overall,all,context_overflow,528,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+distinct_requests,llm,overall,all,any_failure,528,20,4,3,0.007575757575757576,0.0,0.01744186046511628,10000,10000,,
+observation_weighted,llm,overall,all,valid,648,20,643,20,0.9922839506172839,0.9825268817204301,1.0,10000,10000,,
+observation_weighted,llm,overall,all,timeout,648,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,overall,all,schema_invalid,648,20,5,3,0.007716049382716049,0.0,0.01747311827956989,10000,10000,,
+observation_weighted,llm,overall,all,length_limit,648,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,overall,all,empty_response,648,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,overall,all,invalid_json,648,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,overall,all,evidence_invalid,648,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,overall,all,response_invalid,648,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,overall,all,transport_error,648,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,overall,all,interrupted,648,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,overall,all,http_error,648,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,overall,all,context_overflow,648,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,overall,all,any_failure,648,20,5,3,0.007716049382716049,0.0,0.01747311827956989,10000,10000,,
+observation_weighted,llm,optimization,O0,valid,240,20,237,20,0.9875,0.9666666666666667,1.0,10000,10000,,
+observation_weighted,llm,optimization,O0,timeout,240,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,optimization,O0,schema_invalid,240,20,3,2,0.0125,0.0,0.03333333333333333,10000,10000,,
+observation_weighted,llm,optimization,O0,length_limit,240,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,optimization,O0,empty_response,240,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,optimization,O0,invalid_json,240,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,optimization,O0,evidence_invalid,240,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,optimization,O0,response_invalid,240,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,optimization,O0,transport_error,240,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,optimization,O0,interrupted,240,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,optimization,O0,http_error,240,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,optimization,O0,context_overflow,240,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,optimization,O0,any_failure,240,20,3,2,0.0125,0.0,0.03333333333333333,10000,10000,,
+observation_weighted,llm,optimization,O1,valid,168,14,168,14,1.0,1.0,1.0,10000,10000,,
+observation_weighted,llm,optimization,O1,timeout,168,14,0,0,0.0,0.0,0.0,10000,10000,,0.19263617565013536
+observation_weighted,llm,optimization,O1,schema_invalid,168,14,0,0,0.0,0.0,0.0,10000,10000,,0.19263617565013536
+observation_weighted,llm,optimization,O1,length_limit,168,14,0,0,0.0,0.0,0.0,10000,10000,,0.19263617565013536
+observation_weighted,llm,optimization,O1,empty_response,168,14,0,0,0.0,0.0,0.0,10000,10000,,0.19263617565013536
+observation_weighted,llm,optimization,O1,invalid_json,168,14,0,0,0.0,0.0,0.0,10000,10000,,0.19263617565013536
+observation_weighted,llm,optimization,O1,evidence_invalid,168,14,0,0,0.0,0.0,0.0,10000,10000,,0.19263617565013536
+observation_weighted,llm,optimization,O1,response_invalid,168,14,0,0,0.0,0.0,0.0,10000,10000,,0.19263617565013536
+observation_weighted,llm,optimization,O1,transport_error,168,14,0,0,0.0,0.0,0.0,10000,10000,,0.19263617565013536
+observation_weighted,llm,optimization,O1,interrupted,168,14,0,0,0.0,0.0,0.0,10000,10000,,0.19263617565013536
+observation_weighted,llm,optimization,O1,http_error,168,14,0,0,0.0,0.0,0.0,10000,10000,,0.19263617565013536
+observation_weighted,llm,optimization,O1,context_overflow,168,14,0,0,0.0,0.0,0.0,10000,10000,,0.19263617565013536
+observation_weighted,llm,optimization,O1,any_failure,168,14,0,0,0.0,0.0,0.0,10000,10000,,0.19263617565013536
+observation_weighted,llm,optimization,O2,valid,120,10,119,10,0.9916666666666667,0.9722222222222222,1.0,10000,10000,,
+observation_weighted,llm,optimization,O2,timeout,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O2,schema_invalid,120,10,1,1,0.008333333333333333,0.0,0.027777777777777776,10000,10000,,
+observation_weighted,llm,optimization,O2,length_limit,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O2,empty_response,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O2,invalid_json,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O2,evidence_invalid,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O2,response_invalid,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O2,transport_error,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O2,interrupted,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O2,http_error,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O2,context_overflow,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O2,any_failure,120,10,1,1,0.008333333333333333,0.0,0.027777777777777776,10000,10000,,
+observation_weighted,llm,optimization,O3,valid,120,10,119,10,0.9916666666666667,0.9722222222222222,1.0,10000,10000,,
+observation_weighted,llm,optimization,O3,timeout,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O3,schema_invalid,120,10,1,1,0.008333333333333333,0.0,0.027777777777777776,10000,10000,,
+observation_weighted,llm,optimization,O3,length_limit,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O3,empty_response,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O3,invalid_json,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O3,evidence_invalid,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O3,response_invalid,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O3,transport_error,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O3,interrupted,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O3,http_error,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O3,context_overflow,120,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,optimization,O3,any_failure,120,10,1,1,0.008333333333333333,0.0,0.027777777777777776,10000,10000,,
+observation_weighted,llm,condition,retained,valid,324,20,320,20,0.9876543209876543,0.9691358024691358,1.0,10000,10000,,
+observation_weighted,llm,condition,retained,timeout,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,retained,schema_invalid,324,20,4,2,0.012345679012345678,0.0,0.030864197530864196,10000,10000,,
+observation_weighted,llm,condition,retained,length_limit,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,retained,empty_response,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,retained,invalid_json,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,retained,evidence_invalid,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,retained,response_invalid,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,retained,transport_error,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,retained,interrupted,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,retained,http_error,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,retained,context_overflow,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,retained,any_failure,324,20,4,2,0.012345679012345678,0.0,0.030864197530864196,10000,10000,,
+observation_weighted,llm,condition,stripped,valid,324,20,323,20,0.9969135802469136,0.9893617021276596,1.0,10000,10000,,
+observation_weighted,llm,condition,stripped,timeout,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,stripped,schema_invalid,324,20,1,1,0.0030864197530864196,0.0,0.010638297872340425,10000,10000,,
+observation_weighted,llm,condition,stripped,length_limit,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,stripped,empty_response,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,stripped,invalid_json,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,stripped,evidence_invalid,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,stripped,response_invalid,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,stripped,transport_error,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,stripped,interrupted,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,stripped,http_error,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,stripped,context_overflow,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,condition,stripped,any_failure,324,20,1,1,0.0030864197530864196,0.0,0.010638297872340425,10000,10000,,
+observation_weighted,llm,truth_cwe,CWE-121,valid,324,10,323,10,0.9969135802469136,0.9886363636363636,1.0,10000,10000,,
+observation_weighted,llm,truth_cwe,CWE-121,timeout,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-121,schema_invalid,324,10,1,1,0.0030864197530864196,0.0,0.011363636363636364,10000,10000,,
+observation_weighted,llm,truth_cwe,CWE-121,length_limit,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-121,empty_response,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-121,invalid_json,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-121,evidence_invalid,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-121,response_invalid,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-121,transport_error,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-121,interrupted,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-121,http_error,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-121,context_overflow,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-121,any_failure,324,10,1,1,0.0030864197530864196,0.0,0.011363636363636364,10000,10000,,
+observation_weighted,llm,truth_cwe,CWE-122,valid,324,10,320,10,0.9876543209876543,0.9691358024691358,1.0,10000,10000,,
+observation_weighted,llm,truth_cwe,CWE-122,timeout,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-122,schema_invalid,324,10,4,2,0.012345679012345678,0.0,0.030864197530864196,10000,10000,,
+observation_weighted,llm,truth_cwe,CWE-122,length_limit,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-122,empty_response,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-122,invalid_json,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-122,evidence_invalid,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-122,response_invalid,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-122,transport_error,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-122,interrupted,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-122,http_error,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-122,context_overflow,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,truth_cwe,CWE-122,any_failure,324,10,4,2,0.012345679012345678,0.0,0.030864197530864196,10000,10000,,
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,valid,324,20,322,20,0.9938271604938271,0.9803921568627451,1.0,10000,10000,,
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,timeout,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,schema_invalid,324,20,2,1,0.006172839506172839,0.0,0.0196078431372549,10000,10000,,
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,length_limit,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,empty_response,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,invalid_json,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,evidence_invalid,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,response_invalid,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,transport_error,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,interrupted,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,http_error,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,context_overflow,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,not_vulnerable,any_failure,324,20,2,1,0.006172839506172839,0.0,0.0196078431372549,10000,10000,,
+observation_weighted,llm,target_effect_ground_truth,vulnerable,valid,324,20,321,20,0.9907407407407407,0.9741379310344828,1.0,10000,10000,,
+observation_weighted,llm,target_effect_ground_truth,vulnerable,timeout,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,vulnerable,schema_invalid,324,20,3,2,0.009259259259259259,0.0,0.02586206896551724,10000,10000,,
+observation_weighted,llm,target_effect_ground_truth,vulnerable,length_limit,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,vulnerable,empty_response,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,vulnerable,invalid_json,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,vulnerable,evidence_invalid,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,vulnerable,response_invalid,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,vulnerable,transport_error,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,vulnerable,interrupted,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,vulnerable,http_error,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,vulnerable,context_overflow,324,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,target_effect_ground_truth,vulnerable,any_failure,324,20,3,2,0.009259259259259259,0.0,0.02586206896551724,10000,10000,,
+observation_weighted,llm,capacity_visibility,explicit,valid,324,10,320,10,0.9876543209876543,0.9691358024691358,1.0,10000,10000,,
+observation_weighted,llm,capacity_visibility,explicit,timeout,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,explicit,schema_invalid,324,10,4,2,0.012345679012345678,0.0,0.030864197530864196,10000,10000,,
+observation_weighted,llm,capacity_visibility,explicit,length_limit,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,explicit,empty_response,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,explicit,invalid_json,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,explicit,evidence_invalid,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,explicit,response_invalid,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,explicit,transport_error,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,explicit,interrupted,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,explicit,http_error,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,explicit,context_overflow,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,explicit,any_failure,324,10,4,2,0.012345679012345678,0.0,0.030864197530864196,10000,10000,,
+observation_weighted,llm,capacity_visibility,not_explicit,valid,324,10,323,10,0.9969135802469136,0.9886363636363636,1.0,10000,10000,,
+observation_weighted,llm,capacity_visibility,not_explicit,timeout,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,not_explicit,schema_invalid,324,10,1,1,0.0030864197530864196,0.0,0.011363636363636364,10000,10000,,
+observation_weighted,llm,capacity_visibility,not_explicit,length_limit,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,not_explicit,empty_response,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,not_explicit,invalid_json,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,not_explicit,evidence_invalid,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,not_explicit,response_invalid,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,not_explicit,transport_error,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,not_explicit,interrupted,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,not_explicit,http_error,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,not_explicit,context_overflow,324,10,0,0,0.0,0.0,0.0,10000,10000,,0.2588655508930523
+observation_weighted,llm,capacity_visibility,not_explicit,any_failure,324,10,1,1,0.0030864197530864196,0.0,0.011363636363636364,10000,10000,,
+observation_weighted,llm,binary_manifestation,present,valid,600,20,595,20,0.9916666666666667,0.9814814814814815,1.0,10000,10000,,
+observation_weighted,llm,binary_manifestation,present,timeout,600,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,binary_manifestation,present,schema_invalid,600,20,5,3,0.008333333333333333,0.0,0.018518518518518517,10000,10000,,
+observation_weighted,llm,binary_manifestation,present,length_limit,600,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,binary_manifestation,present,empty_response,600,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,binary_manifestation,present,invalid_json,600,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,binary_manifestation,present,evidence_invalid,600,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,binary_manifestation,present,response_invalid,600,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,binary_manifestation,present,transport_error,600,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,binary_manifestation,present,interrupted,600,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,binary_manifestation,present,http_error,600,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,binary_manifestation,present,context_overflow,600,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,binary_manifestation,present,any_failure,600,20,5,3,0.008333333333333333,0.0,0.018518518518518517,10000,10000,,
+observation_weighted,llm,binary_manifestation,transformed,valid,48,2,48,2,1.0,,,8795,10000,more than 5% undefined bootstrap replicates,
+observation_weighted,llm,binary_manifestation,transformed,timeout,48,2,0,0,0.0,,,8795,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,binary_manifestation,transformed,schema_invalid,48,2,0,0,0.0,,,8795,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,binary_manifestation,transformed,length_limit,48,2,0,0,0.0,,,8795,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,binary_manifestation,transformed,empty_response,48,2,0,0,0.0,,,8795,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,binary_manifestation,transformed,invalid_json,48,2,0,0,0.0,,,8795,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,binary_manifestation,transformed,evidence_invalid,48,2,0,0,0.0,,,8795,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,binary_manifestation,transformed,response_invalid,48,2,0,0,0.0,,,8795,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,binary_manifestation,transformed,transport_error,48,2,0,0,0.0,,,8795,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,binary_manifestation,transformed,interrupted,48,2,0,0,0.0,,,8795,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,binary_manifestation,transformed,http_error,48,2,0,0,0.0,,,8795,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,binary_manifestation,transformed,context_overflow,48,2,0,0,0.0,,,8795,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,binary_manifestation,transformed,any_failure,48,2,0,0,0.0,,,8795,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,input_label_conflict_group,False,valid,576,20,571,20,0.9913194444444444,0.9806201550387597,1.0,10000,10000,,
+observation_weighted,llm,input_label_conflict_group,False,timeout,576,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,input_label_conflict_group,False,schema_invalid,576,20,5,3,0.008680555555555556,0.0,0.01937984496124031,10000,10000,,
+observation_weighted,llm,input_label_conflict_group,False,length_limit,576,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,input_label_conflict_group,False,empty_response,576,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,input_label_conflict_group,False,invalid_json,576,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,input_label_conflict_group,False,evidence_invalid,576,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,input_label_conflict_group,False,response_invalid,576,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,input_label_conflict_group,False,transport_error,576,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,input_label_conflict_group,False,interrupted,576,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,input_label_conflict_group,False,http_error,576,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,input_label_conflict_group,False,context_overflow,576,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,input_label_conflict_group,False,any_failure,576,20,5,3,0.008680555555555556,0.0,0.01937984496124031,10000,10000,,
+observation_weighted,llm,input_label_conflict_group,True,valid,72,2,72,2,1.0,,,8735,10000,more than 5% undefined bootstrap replicates,
+observation_weighted,llm,input_label_conflict_group,True,timeout,72,2,0,0,0.0,,,8735,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,input_label_conflict_group,True,schema_invalid,72,2,0,0,0.0,,,8735,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,input_label_conflict_group,True,length_limit,72,2,0,0,0.0,,,8735,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,input_label_conflict_group,True,empty_response,72,2,0,0,0.0,,,8735,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,input_label_conflict_group,True,invalid_json,72,2,0,0,0.0,,,8735,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,input_label_conflict_group,True,evidence_invalid,72,2,0,0,0.0,,,8735,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,input_label_conflict_group,True,response_invalid,72,2,0,0,0.0,,,8735,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,input_label_conflict_group,True,transport_error,72,2,0,0,0.0,,,8735,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,input_label_conflict_group,True,interrupted,72,2,0,0,0.0,,,8735,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,input_label_conflict_group,True,http_error,72,2,0,0,0.0,,,8735,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,input_label_conflict_group,True,context_overflow,72,2,0,0,0.0,,,8735,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,input_label_conflict_group,True,any_failure,72,2,0,0,0.0,,,8735,10000,more than 5% undefined bootstrap replicates,0.7763932022500211
+observation_weighted,llm,repetition,1,valid,216,20,215,20,0.9953703703703703,0.9840425531914894,1.0,10000,10000,,
+observation_weighted,llm,repetition,1,timeout,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,1,schema_invalid,216,20,1,1,0.004629629629629629,0.0,0.015957446808510637,10000,10000,,
+observation_weighted,llm,repetition,1,length_limit,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,1,empty_response,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,1,invalid_json,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,1,evidence_invalid,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,1,response_invalid,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,1,transport_error,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,1,interrupted,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,1,http_error,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,1,context_overflow,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,1,any_failure,216,20,1,1,0.004629629629629629,0.0,0.015957446808510637,10000,10000,,
+observation_weighted,llm,repetition,2,valid,216,20,215,20,0.9953703703703703,0.9840425531914894,1.0,10000,10000,,
+observation_weighted,llm,repetition,2,timeout,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,2,schema_invalid,216,20,1,1,0.004629629629629629,0.0,0.015957446808510637,10000,10000,,
+observation_weighted,llm,repetition,2,length_limit,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,2,empty_response,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,2,invalid_json,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,2,evidence_invalid,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,2,response_invalid,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,2,transport_error,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,2,interrupted,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,2,http_error,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,2,context_overflow,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,2,any_failure,216,20,1,1,0.004629629629629629,0.0,0.015957446808510637,10000,10000,,
+observation_weighted,llm,repetition,3,valid,216,20,213,20,0.9861111111111112,0.9637096774193549,1.0,10000,10000,,
+observation_weighted,llm,repetition,3,timeout,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,3,schema_invalid,216,20,3,2,0.013888888888888888,0.0,0.036290322580645164,10000,10000,,
+observation_weighted,llm,repetition,3,length_limit,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,3,empty_response,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,3,invalid_json,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,3,evidence_invalid,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,3,response_invalid,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,3,transport_error,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,3,interrupted,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,3,http_error,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,3,context_overflow,216,20,0,0,0.0,0.0,0.0,10000,10000,,0.13910834066826516
+observation_weighted,llm,repetition,3,any_failure,216,20,3,2,0.013888888888888888,0.0,0.036290322580645164,10000,10000,,

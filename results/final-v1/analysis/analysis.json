@@ -1,0 +1,227 @@
+{
+  "amendment_provenance": "Pre-analysis amendments documented before aggregate metrics were computed. The amendments are committed with the implementation and results, not as part of the original preregistration.",
+  "amendments": [
+    "Replace custom Python GLMM with R/lme4 maximum likelihood, nAGQ=30; fixed BOBYQA and scaled-gradient diagnostics.",
+    "Remove Firth fitting; fallback is full GLMM, main-effects GLMM, then descriptive pair-cluster intervals with no model of record."
+  ],
+  "backend_validation": {
+    "cbpp_coefficients": [
+      -1.3992301918370047,
+      -0.9914038575956159,
+      -1.127819755252696,
+      -1.579470998502777
+    ],
+    "self_test": true
+  },
+  "bootstrap": {
+    "cluster": "pair_id",
+    "n_clusters": 20,
+    "pair_order": [
+      "pair_0013",
+      "pair_0014",
+      "pair_0015",
+      "pair_0017",
+      "pair_0022",
+      "pair_0031",
+      "pair_0069",
+      "pair_0089",
+      "pair_0129",
+      "pair_0195",
+      "pair_0231",
+      "pair_0232",
+      "pair_0233",
+      "pair_0235",
+      "pair_0252",
+      "pair_0259",
+      "pair_0277",
+      "pair_0285",
+      "pair_0307",
+      "pair_0337"
+    ],
+    "replicates": 10000,
+    "seed": 20261014,
+    "weight_matrix_sha256": "e0e92d4217ff7454ee5b1c52e328e09eb2e60c489317ce4c5757c420321d00a9"
+  },
+  "campaign_id": "ad3bd1652d6a18461914be5cb0f12b8786f76e72807d1ae725b5fe4e60f2f478",
+  "cardinality": {
+    "condition_rows": 432,
+    "distinct_records": 176,
+    "eligible_observations": 216,
+    "llm_runs_rows": 648,
+    "non_analyzable_rows": 104,
+    "planned_observations": 320,
+    "records_shared_by_two_observations": 40
+  },
+  "definitions": {
+    "agreement": "All-three-valid identical / all records or observations. Pairwise agreement pools equal classification pairs / valid repetition pairs; missing comparisons excluded and denominators shown.",
+    "confidence": "Raw correctness/confidence is observation weighted. Majority confidence is frozen median over ALL valid repetitions, not only winning votes. High confidence >=0.8; explicit negative calls define high-confidence FN, with abstentions listed separately.",
+    "coverage": "(correct + incorrect) / N; abstention_rate = abstain / N; selective_accuracy = correct / (correct + incorrect). Always report these with counts.",
+    "forced_alert": "vulnerable alerts; not_vulnerable, uncertain and unavailable do not. Failed-run nullable binary_correct is never reused; the operational policy is applied explicitly.",
+    "forced_metrics": "accuracy=(TP+TN)/N; balanced_accuracy=(TP/(TP+FN)+TN/(TN+FP))/2; precision=TP/(TP+FP); recall=TP/(TP+FN); F1=2TP/(2TP+FP+FN); FPR=FP/(FP+TN); FNR=FN/(FN+TP).",
+    "intervals": "95% percentile whole-pair bootstrap, 10000 replicates, seed 20261014, shared weights across strata and paired method differences. Undefined denominators are null; intervals not estimable if >5% replicates undefined.",
+    "primary_Correct": "1 for a correct decided classification ignoring CWE, 0 for incorrect, abstaining or unavailable outcomes. Fixed-case abstention scores 0.",
+    "sampling": "20 source-program pairs are the clusters. 528 distinct requests expand to 648 observation-linked rows; 216 observations per method. 104 eliminated observations are excluded entirely.",
+    "sensitivity_Correct_forced": "1 when forced alert/no-alert matches truth, including fixed-case abstention/failure; 0 otherwise.",
+    "three_way": "Correct: vulnerable with exact CWE on vulnerable truth, or not_vulnerable on fixed truth. Other decided calls incorrect; uncertain abstains; failed response unavailable."
+  },
+  "deviations": [
+    "Post-analysis reporting correction: distinct-request status summaries are overall only; factor subgroups use observation-weighted rows because a request can span factor levels. Overall request counts, performance estimates, intervals and model selection are unchanged."
+  ],
+  "environment": {
+    "R": {
+      "R": "4.5.2",
+      "jsonlite": "2.0.0",
+      "lme4": "1.1.38"
+    },
+    "matplotlib": "3.10.7+dfsg1",
+    "numpy": "2.3.5",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "python": "3.14.4",
+    "scipy": "1.16.3"
+  },
+  "input_hashes": {
+    "datasets/final-v1/private/corpus-freeze.json": "99d4dc74a94236d613829c12ad13fb4dd4f19727b3bc947bb364deb3f20646bf",
+    "datasets/final-v1/private/inputs-freeze.json": "9f10fa1312834910a06f2614e18d4db3579931d370b4aa98efd27b52f8a6f3d4",
+    "evaluation/experiments/final.json": "f967bf01d2ace0b64bb20e5701ea0c37b08bbe7939522284af2921b739265258",
+    "llm_analysis/output/campaigns/ad3bd1652d6a18461914be5cb0f12b8786f76e72807d1ae725b5fe4e60f2f478/checksums.sha256": "7ba232aaa351a99774d3b44afe3537e42e6fc50bb1e43e321ed38b03bf311c3b",
+    "llm_analysis/output/campaigns/ad3bd1652d6a18461914be5cb0f12b8786f76e72807d1ae725b5fe4e60f2f478/manifest.json": "a4593a6a8becb5b2cfb935d36df26b7709fadb124650cb0729fb825f19abb31c",
+    "llm_analysis/output/campaigns/ad3bd1652d6a18461914be5cb0f12b8786f76e72807d1ae725b5fe4e60f2f478/predictions.json": "98277cedbf3cb45328d7fd5a1e76e2f1d0f068f560217b2edb099aed9782cce5",
+    "llm_analysis/output/campaigns/ad3bd1652d6a18461914be5cb0f12b8786f76e72807d1ae725b5fe4e60f2f478/run_results.json": "1c9ed0f18142f025afc6beff8446bb4249c18b31c3ca166e6874e8d187b345f0",
+    "results/final-v1/acceptance.json": "24b5b93c63a1c417532a74490d969aaf9af1875c47721118bd5f67d3ffca0d54",
+    "results/final-v1/llm/server_final_run.log": "2faca5430d815a57c63fce97fe25428b13074c3d7a618b88a01637227e6d9381",
+    "results/final-v1/private/condition_comparison.csv": "5c268f4589f251dadc197e16958f909cbbb56897a5617b73dbd0947dcdb17a84",
+    "results/final-v1/private/condition_comparison.jsonl": "41e6c551bd66f82f753723f3e9a16294b50c3b252415539de100a743f9fd401f",
+    "results/final-v1/private/llm_runs.csv": "74608ff7f671e6a9cbbd98dddbfa95866b69a96699a8faaab29e098bb25c1115",
+    "results/final-v1/private/llm_runs.jsonl": "40e3093f4619d030b1f0a0a3c6d43bc240b3ff2bd1038ded3b9eb638c84fdf0f",
+    "results/final-v1/private/non_analyzable.csv": "fde846d832dcd934b54c6daeeba8950d68b7190e13b60de044a5e646194ac80b",
+    "results/final-v1/private/non_analyzable.jsonl": "7b33ddb76a87c7da9881b7e407fc738190030dc12453e9b2abd07c6866b285c5",
+    "results/final-v1/private/tables_manifest.json": "ae9b555b3032572bc4ee8a7ea4115c0492570de35a1b2b779d914595e858f2a9",
+    "results/final-v1/static/execution.json": "85102d6c2c5873ab035f72286dbf751da9d0a85d14450ff4ac3b556d4a9e698c",
+    "results/final-v1/static/predictions.json": "7d08b3d2a5847796f965d094826818caacc36dfa5afdaca4d67217e09be66e0c"
+  },
+  "model_of_record": {
+    "Correct": "main_effects",
+    "Correct_forced": "full"
+  },
+  "original_preregistration": "7856cce",
+  "outputs": {
+    "figures/confidence_distributions.png": {
+      "bytes": 56299,
+      "sha256": "9b87447b68b2dbe3c834b0f515619a9f5a85e184b658fab558086a5032715af8"
+    },
+    "figures/coverage_selective_accuracy.png": {
+      "bytes": 47777,
+      "sha256": "af852e5eca39f179c5c76ba9efec8b90dddac7a02e09beaaba34c74308520b67"
+    },
+    "figures/forced_accuracy_by_factor.png": {
+      "bytes": 82327,
+      "sha256": "6002188505332c95a43a3068f2d273ac422532635881b40c3cd13b7cfdac1c53"
+    },
+    "models.json": {
+      "bytes": 14725,
+      "sha256": "cb48d4a359f5182253d7adeaf444f1d54b382a7f2d3e33447e3ab5d8b7490db1"
+    },
+    "report.md": {
+      "bytes": 25147,
+      "sha256": "bf5a1d8a9e1819d9752babc077e31c10b42f6700a8aec280b9bf2ad1356404cb"
+    },
+    "tables/confidence.csv": {
+      "bytes": 15562,
+      "rows": 148,
+      "sha256": "e3e041941830d9980df41dfd759858ab38e17b49ab9dfb8388451b1ff7f13c8d"
+    },
+    "tables/correct_repetitions.csv": {
+      "bytes": 6453,
+      "rows": 100,
+      "sha256": "d162398ea288a5aeb2357f5367635278adcdd58d54646f2596048f9203a16655"
+    },
+    "tables/decision_reasons.csv": {
+      "bytes": 11776,
+      "rows": 151,
+      "sha256": "54a972e2a2955b7af528f728d89bb86ddc34ccdfad57f1d7853a80f20c4821eb"
+    },
+    "tables/descriptive_contrasts.csv": {
+      "bytes": 26116,
+      "rows": 187,
+      "sha256": "01615fe5b4f126f9c654c863d1145965c144cc0eea6b8c8204c3e492e9984540"
+    },
+    "tables/forced_alert.csv": {
+      "bytes": 41911,
+      "rows": 78,
+      "sha256": "07e82d0292dec103596af8eb7f23ec76ca3a0b82b123ee7d261b685af695d052"
+    },
+    "tables/high_confidence_cases.csv": {
+      "bytes": 94511,
+      "rows": 362,
+      "sha256": "3d8f24fcc28161f899f800004a40b7c0afdb9a63d3fd07691231431520abaee6"
+    },
+    "tables/model_coefficients.csv": {
+      "bytes": 6125,
+      "rows": 31,
+      "sha256": "264e0b0e04d944bbcb82fc0b53682ac894e7219d79f60d257b6f73c8074702b6"
+    },
+    "tables/model_interactions.csv": {
+      "bytes": 387,
+      "rows": 3,
+      "sha256": "96dab527c8d471241daa6e340f983aa74ea61b1229fa894aa3d5ea853359d929"
+    },
+    "tables/model_status.csv": {
+      "bytes": 550,
+      "rows": 4,
+      "sha256": "e7e9380998e6e51d6775e9dc8427c3c390a8b6fb9ac913cabfbdad8d92cd17db"
+    },
+    "tables/performance.csv": {
+      "bytes": 64070,
+      "rows": 78,
+      "sha256": "1cf7e8113a744623f1cb958b68ea4e4907200a1f29a22a7ab8fda95335936ef3"
+    },
+    "tables/repetition_agreement.csv": {
+      "bytes": 11537,
+      "rows": 78,
+      "sha256": "48beee54e198402f42d0bd4adf9ac39b604fe21d74c2833acd1b8df39b9b1d0f"
+    },
+    "tables/resources.csv": {
+      "bytes": 1370,
+      "rows": 10,
+      "sha256": "42a8e67ea718338dafbd09af8eb1ab003c6deb8215623c4ef93128081638ff7a"
+    },
+    "tables/response_status.csv": {
+      "bytes": 33438,
+      "rows": 273,
+      "sha256": "1173b25bd490e385b7a47a92f7ab91f16029d6e21080ee56acddf0c264b0df7e"
+    },
+    "tables/symbol_agreement.csv": {
+      "bytes": 1848,
+      "rows": 20,
+      "sha256": "9bdfd2a2df7a133d494b4a9f245a74173a32e5ccbe953f956b9f8958d9f634c6"
+    },
+    "tables/three_way.csv": {
+      "bytes": 27011,
+      "rows": 78,
+      "sha256": "4fc280d61930df42120e3cafa1841563b4086e2de87b26819bf24fdb57ce490f"
+    },
+    "tables/vote_patterns.csv": {
+      "bytes": 4831,
+      "rows": 47,
+      "sha256": "10b5bc2b55ebbb22f41def9c15fb27d0d2bce3ebc5b10fe3c5b753460433df73"
+    }
+  },
+  "phase": "H",
+  "schema_version": "1.0",
+  "source_hashes": {
+    "evaluation/analysis_environment.lock.json": "7dc4e9663a542a314e0e6144ce468b1228063e048d0376c92018a5fddaaaec8a",
+    "evaluation/analysis_environment.py": "15578145a42d407c101962293b8bcd7530341801353d5b54069eea2c814f14cf",
+    "evaluation/build_final_tables.py": "28747d7b950e559cedb07ae3e2c16bfdead7e132c536632fdb0fb98cb4879ce0",
+    "evaluation/check_final_acceptance.py": "5b36ce37a90050be249e77d5ab4f6f4ff888dfea6632489e1e1713f41ef2010e",
+    "evaluation/final_analysis_data.py": "8c2cb73eefcec3b406b02f67eba85694fa1fb134d30c989caacd042c84525dd1",
+    "evaluation/final_analysis_plan.md": "41b323d5c2cd46612e55a4b8222df44786a5fb676ba87f9cae05188ef41538f3",
+    "evaluation/final_glmm.R": "eb1d6aaebcfa88ed33dc607e1f4765475f4cc5de078737bbbfe77c48962601cb",
+    "evaluation/final_llm_summaries.py": "3adb6aaca0c3d52d082183187e68924795e2076be751825bdb4334bac5c6e0df",
+    "evaluation/final_metrics.py": "1acdca4e2d61da69661b46c1243424a668fc950861f28a530751efc90eeb9cee",
+    "evaluation/final_models.py": "00dc12cccb0c0db9848047aacb4497787dcee7001fa7607f7c3f0c51a500ab52",
+    "evaluation/phase_h.md": "27894e559c7df415daa23534ec6cbd0f907ab1aa5af08533c92399a42eba88b1",
+    "evaluation/run_final_analysis.py": "071a15f36c525f1cdad7de00222df95cf1bd9566b8cd6eaceb53663dd105f979",
+    "evaluation/tests/test_final_acceptance.py": "0c516f1c97a2e8ef483ccff174881e077de2602f2258e2e18f5e804da8a85780",
+    "evaluation/tests/test_final_analysis.py": "3fd8f76d17084ab78a9e624bd9df295166a6ead198e637d5c5bdafca55ccc8af"
+  }
+}

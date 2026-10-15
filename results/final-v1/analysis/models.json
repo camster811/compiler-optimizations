@@ -1,0 +1,407 @@
+{
+  "fits": [
+    {
+      "accepted": false,
+      "coefficients": [],
+      "interactions": [],
+      "n": 432,
+      "n_pairs": 20,
+      "outcome": "Correct",
+      "reasons": [
+        "complete or quasi-complete separation"
+      ],
+      "specification": "full"
+    },
+    {
+      "accepted": true,
+      "boundary": false,
+      "coefficients": [
+        {
+          "approximate_wald_p": 4.398048829100162e-19,
+          "estimate": -4.9622476507703155,
+          "odds_ratio": 0.006997182921100081,
+          "odds_ratio_ci_high": 0.02080214750637774,
+          "odds_ratio_ci_low": 0.0023536304997512315,
+          "standard_error": 0.5559023570122467,
+          "term": "(Intercept)"
+        },
+        {
+          "approximate_wald_p": 0.7128879068785177,
+          "estimate": 0.13284125440061045,
+          "odds_ratio": 1.1420686855619393,
+          "odds_ratio_ci_high": 2.31727090673909,
+          "odds_ratio_ci_low": 0.5628693989761613,
+          "standard_error": 0.3610009730451487,
+          "term": "OptimizationO1"
+        },
+        {
+          "approximate_wald_p": 0.03336553591871905,
+          "estimate": 0.8570000709389618,
+          "odds_ratio": 2.3560820023595523,
+          "odds_ratio_ci_high": 5.188553762734959,
+          "odds_ratio_ci_low": 1.0698785549282857,
+          "standard_error": 0.4027905283979245,
+          "term": "OptimizationO2"
+        },
+        {
+          "approximate_wald_p": 0.033365527378378085,
+          "estimate": 0.8570001352929466,
+          "odds_ratio": 2.3560821539828223,
+          "odds_ratio_ci_high": 5.188554206066119,
+          "odds_ratio_ci_low": 1.0698786012154071,
+          "standard_error": 0.4027905391583688,
+          "term": "OptimizationO3"
+        },
+        {
+          "approximate_wald_p": 0.681590287162489,
+          "estimate": -0.11233389769694775,
+          "odds_ratio": 0.8937457880137186,
+          "odds_ratio_ci_high": 1.5284929642264529,
+          "odds_ratio_ci_low": 0.5225941841325479,
+          "standard_error": 0.27378878449311417,
+          "term": "Stripped"
+        },
+        {
+          "approximate_wald_p": 1.5612356947535202e-20,
+          "estimate": 3.45352653864321,
+          "odds_ratio": 31.611675766877596,
+          "odds_ratio_ci_high": 65.51213203819573,
+          "odds_ratio_ci_low": 15.253633391256036,
+          "standard_error": 0.3717970404311895,
+          "term": "Methodllm_majority"
+        },
+        {
+          "approximate_wald_p": 3.26281617522423e-05,
+          "estimate": 1.4928622715274646,
+          "odds_ratio": 4.449813884196597,
+          "odds_ratio_ci_high": 8.99961515815104,
+          "odds_ratio_ci_low": 2.2001878142594777,
+          "standard_error": 0.35935330967540935,
+          "term": "CWECWE-122"
+        },
+        {
+          "approximate_wald_p": 8.731118181870408e-07,
+          "estimate": 1.42791383949258,
+          "odds_ratio": 4.169990841363456,
+          "odds_ratio_ci_high": 7.366530793884804,
+          "odds_ratio_ci_low": 2.360517332187103,
+          "standard_error": 0.2903283123630581,
+          "term": "GroundTruthLabelvulnerable"
+        }
+      ],
+      "convergence_messages": [],
+      "hessian_positive_definite": true,
+      "interactions": [],
+      "log_likelihood": -170.35141924915825,
+      "max_absolute_scaled_gradient": 1.4275735334763376e-06,
+      "n": 432,
+      "n_pairs": 20,
+      "outcome": "Correct",
+      "random_intercept_variance": 0.18517008516697353,
+      "reasons": [],
+      "specification": "main_effects",
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "boundary": false,
+      "coefficients": [
+        {
+          "approximate_wald_p": 0.40426360201325673,
+          "estimate": 0.29553473351279536,
+          "odds_ratio": 1.3438447654231456,
+          "odds_ratio_ci_high": 2.6913376671667644,
+          "odds_ratio_ci_low": 0.6710115849031769,
+          "standard_error": 0.354345087980716,
+          "term": "(Intercept)"
+        },
+        {
+          "approximate_wald_p": 0.38915165269921254,
+          "estimate": 0.40119355304478693,
+          "odds_ratio": 1.4936063325778248,
+          "odds_ratio_ci_high": 3.7221317265904106,
+          "odds_ratio_ci_low": 0.5993500608212265,
+          "standard_error": 0.465877436063935,
+          "term": "OptimizationO1"
+        },
+        {
+          "approximate_wald_p": 0.4006618528133563,
+          "estimate": 0.4385763624041162,
+          "odds_ratio": 1.550498298863268,
+          "odds_ratio_ci_high": 4.311849472982165,
+          "odds_ratio_ci_low": 0.5575438080205521,
+          "standard_error": 0.5218415082102319,
+          "term": "OptimizationO2"
+        },
+        {
+          "approximate_wald_p": 0.4006605176676862,
+          "estimate": 0.43857708692171526,
+          "odds_ratio": 1.5504994222269797,
+          "odds_ratio_ci_high": 4.3118473823529175,
+          "odds_ratio_ci_low": 0.5575448862511319,
+          "standard_error": 0.5218408911711133,
+          "term": "OptimizationO3"
+        },
+        {
+          "approximate_wald_p": 0.3663727331638838,
+          "estimate": 0.36510173566666426,
+          "odds_ratio": 1.4406605672571933,
+          "odds_ratio_ci_high": 3.181341136409129,
+          "odds_ratio_ci_low": 0.6523987152137031,
+          "standard_error": 0.40419166855902444,
+          "term": "Stripped"
+        },
+        {
+          "approximate_wald_p": 0.2323778605111503,
+          "estimate": 0.4835198229844754,
+          "odds_ratio": 1.6217727206714203,
+          "odds_ratio_ci_high": 3.586055177028452,
+          "odds_ratio_ci_low": 0.7334373364810924,
+          "standard_error": 0.4048711839244196,
+          "term": "Methodllm_majority"
+        },
+        {
+          "approximate_wald_p": 0.020524072934497418,
+          "estimate": 0.5599715621363528,
+          "odds_ratio": 1.750622715618135,
+          "odds_ratio_ci_high": 2.811536504896662,
+          "odds_ratio_ci_low": 1.0900373824421874,
+          "standard_error": 0.24171850830006228,
+          "term": "CWECWE-122"
+        },
+        {
+          "approximate_wald_p": 2.440166513142283e-12,
+          "estimate": -1.5154459720793607,
+          "odds_ratio": 0.21971017839020085,
+          "odds_ratio_ci_high": 0.33570105742679396,
+          "odds_ratio_ci_low": 0.1437962777307624,
+          "standard_error": 0.2162854778648956,
+          "term": "GroundTruthLabelvulnerable"
+        },
+        {
+          "approximate_wald_p": 0.6486054322211354,
+          "estimate": -0.24505478848372564,
+          "odds_ratio": 0.7826616562217439,
+          "odds_ratio_ci_high": 2.2454905438693538,
+          "odds_ratio_ci_low": 0.27279530069372804,
+          "standard_error": 0.5377541624168297,
+          "term": "OptimizationO1:Methodllm_majority"
+        },
+        {
+          "approximate_wald_p": 0.739185110880499,
+          "estimate": 0.20221211807701003,
+          "odds_ratio": 1.2241076359322949,
+          "odds_ratio_ci_high": 4.02541659411956,
+          "odds_ratio_ci_low": 0.3722445787441513,
+          "standard_error": 0.6073664100320487,
+          "term": "OptimizationO2:Methodllm_majority"
+        },
+        {
+          "approximate_wald_p": 0.7391857241536839,
+          "estimate": 0.20221151957015834,
+          "odds_ratio": 1.2241069032957068,
+          "odds_ratio_ci_high": 4.025411695049424,
+          "odds_ratio_ci_low": 0.37224458619699197,
+          "standard_error": 0.6073660944506345,
+          "term": "OptimizationO3:Methodllm_majority"
+        },
+        {
+          "approximate_wald_p": 0.13608287095474328,
+          "estimate": -0.8028729827124521,
+          "odds_ratio": 0.4480399023838092,
+          "odds_ratio_ci_high": 1.2876962091021478,
+          "odds_ratio_ci_low": 0.15589061512269264,
+          "standard_error": 0.538646489631337,
+          "term": "OptimizationO1:Stripped"
+        },
+        {
+          "approximate_wald_p": 0.48437246006282664,
+          "estimate": -0.4245264434948454,
+          "odds_ratio": 0.6540794553818631,
+          "odds_ratio_ci_high": 2.149718906718425,
+          "odds_ratio_ci_low": 0.1990120348365487,
+          "standard_error": 0.6070843879843475,
+          "term": "OptimizationO2:Stripped"
+        },
+        {
+          "approximate_wald_p": 0.48437115586950774,
+          "estimate": -0.42452704739758723,
+          "odds_ratio": 0.6540790603816059,
+          "odds_ratio_ci_high": 2.149713612138216,
+          "odds_ratio_ci_low": 0.1990122846196955,
+          "standard_error": 0.6070834394884791,
+          "term": "OptimizationO3:Stripped"
+        },
+        {
+          "approximate_wald_p": 0.7467952910984267,
+          "estimate": -0.1367973422502072,
+          "odds_ratio": 0.8721469555632132,
+          "odds_ratio_ci_high": 2.0009629952578987,
+          "odds_ratio_ci_low": 0.3801371209266889,
+          "standard_error": 0.42369447148346046,
+          "term": "Stripped:Methodllm_majority"
+        }
+      ],
+      "convergence_messages": [],
+      "hessian_positive_definite": true,
+      "interactions": [
+        {
+          "approximate_wald_p": 0.8780316602536236,
+          "df": 3,
+          "statistic": 0.6794281266144608,
+          "term": "Optimization.*:Method"
+        },
+        {
+          "approximate_wald_p": 0.5190522506817469,
+          "df": 3,
+          "statistic": 2.2660694220127695,
+          "term": "Optimization.*:Stripped"
+        },
+        {
+          "approximate_wald_p": 0.7467952910984266,
+          "df": 1,
+          "statistic": 0.1042436778034063,
+          "term": "Stripped:Method"
+        }
+      ],
+      "log_likelihood": -261.6298106879876,
+      "max_absolute_scaled_gradient": 1.5205038297777595e-06,
+      "n": 432,
+      "n_pairs": 20,
+      "outcome": "Correct_forced",
+      "random_intercept_variance": 0.05357579462139275,
+      "reasons": [],
+      "specification": "full",
+      "warnings": []
+    },
+    {
+      "accepted": true,
+      "boundary": false,
+      "coefficients": [
+        {
+          "approximate_wald_p": 0.07128467809244224,
+          "estimate": 0.5039442348761831,
+          "odds_ratio": 1.6552370560839424,
+          "odds_ratio_ci_high": 2.8621126741678444,
+          "odds_ratio_ci_low": 0.9572682922519926,
+          "standard_error": 0.27940095779006763,
+          "term": "(Intercept)"
+        },
+        {
+          "approximate_wald_p": 0.6494320426276228,
+          "estimate": -0.12270444587947851,
+          "odds_ratio": 0.8845250489549283,
+          "odds_ratio_ci_high": 1.5013737794595257,
+          "odds_ratio_ci_low": 0.5211124457697445,
+          "standard_error": 0.2699462806442228,
+          "term": "OptimizationO1"
+        },
+        {
+          "approximate_wald_p": 0.29188733245896137,
+          "estimate": 0.3225767437739397,
+          "odds_ratio": 1.38068084545253,
+          "odds_ratio_ci_high": 2.515393597180879,
+          "odds_ratio_ci_low": 0.7578454517559283,
+          "standard_error": 0.30605284185709974,
+          "term": "OptimizationO2"
+        },
+        {
+          "approximate_wald_p": 0.2918868938394823,
+          "estimate": 0.32257677068677704,
+          "odds_ratio": 1.3806808826105694,
+          "odds_ratio_ci_high": 2.5153924192834185,
+          "odds_ratio_ci_low": 0.7578458474281954,
+          "standard_error": 0.3060525892052364,
+          "term": "OptimizationO3"
+        },
+        {
+          "approximate_wald_p": 0.7517776635368911,
+          "estimate": -0.06671417528567088,
+          "odds_ratio": 0.9354625414424252,
+          "odds_ratio_ci_high": 1.4143745954244076,
+          "odds_ratio_ci_low": 0.6187117396430153,
+          "standard_error": 0.2109230730292303,
+          "term": "Stripped"
+        },
+        {
+          "approximate_wald_p": 0.04678020775123039,
+          "estimate": 0.420749467359737,
+          "odds_ratio": 1.5231026436780595,
+          "odds_ratio_ci_high": 2.305980253072857,
+          "odds_ratio_ci_low": 1.0060110706012189,
+          "standard_error": 0.21161429211991079,
+          "term": "Methodllm_majority"
+        },
+        {
+          "approximate_wald_p": 0.020616249405868238,
+          "estimate": 0.555698120758971,
+          "odds_ratio": 1.743157494522395,
+          "odds_ratio_ci_high": 2.7903997583779403,
+          "odds_ratio_ci_low": 1.0889472168231304,
+          "standard_error": 0.24004866981955483,
+          "term": "CWECWE-122"
+        },
+        {
+          "approximate_wald_p": 2.7451795300132197e-12,
+          "estimate": -1.5034884757230713,
+          "odds_ratio": 0.22235313211138968,
+          "odds_ratio_ci_high": 0.3389412341995043,
+          "odds_ratio_ci_low": 0.1458686945437972,
+          "standard_error": 0.21508555359982665,
+          "term": "GroundTruthLabelvulnerable"
+        }
+      ],
+      "convergence_messages": [],
+      "hessian_positive_definite": true,
+      "interactions": [],
+      "log_likelihood": -263.16508047977817,
+      "max_absolute_scaled_gradient": 1.7842875320484315e-06,
+      "n": 432,
+      "n_pairs": 20,
+      "outcome": "Correct_forced",
+      "random_intercept_variance": 0.05167640715176171,
+      "reasons": [],
+      "specification": "main_effects",
+      "warnings": []
+    }
+  ],
+  "model_of_record": {
+    "Correct": "main_effects",
+    "Correct_forced": "full"
+  },
+  "session_info": [
+    "R version 4.5.2 (2025-10-31)",
+    "Platform: x86_64-pc-linux-gnu",
+    "Running under: Ubuntu 26.04.1 LTS",
+    "",
+    "Matrix products: default",
+    "BLAS:   <REPO>/.analysis-env/usr/lib/x86_64-linux-gnu/blas/libblas.so.3.12.1 ",
+    "LAPACK: <REPO>/.analysis-env/usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.12.1;  LAPACK version 3.12.0",
+    "",
+    "locale:",
+    " [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       ",
+    " [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   ",
+    " [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          ",
+    "[10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   ",
+    "",
+    "time zone: America/New_York",
+    "tzcode source: system (glibc)",
+    "",
+    "attached base packages:",
+    "[1] stats     graphics  grDevices utils     datasets  methods   base     ",
+    "",
+    "other attached packages:",
+    "[1] jsonlite_2.0.0 lme4_1.1-38    Matrix_1.7-4  ",
+    "",
+    "loaded via a namespace (and not attached):",
+    " [1] lattice_0.22-9   splines_4.5.2    Rdpack_2.6.6     nloptr_2.2.1    ",
+    " [5] grid_4.5.2       reformulas_0.4.4 compiler_4.5.2   boot_1.3-32     ",
+    " [9] rbibutils_2.4.1  tools_4.5.2      nlme_3.1-168     minqa_1.2.8     ",
+    "[13] Rcpp_1.1.1       rlang_1.1.7      MASS_7.3-65     "
+  ],
+  "versions": {
+    "R": "4.5.2",
+    "jsonlite": "2.0.0",
+    "lme4": "1.1.38"
+  }
+}

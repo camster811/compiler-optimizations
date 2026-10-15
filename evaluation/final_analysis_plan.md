@@ -1,8 +1,37 @@
 # Phase H analysis plan (final-v1)
 
-Written and committed **before** any correctness aggregate was computed. `evaluation/run_final_analysis.py`
-implements this plan. Anything changed after results are visible must appear as a labelled deviation in the
-generated report, never silently.
+The original analysis plan was committed as `7856cce` before aggregate metrics were computed.
+This version also contains pre-analysis amendments documented before aggregate metrics were computed;
+those amendments are committed with the implementation and results, not as part of the original
+preregistration. `evaluation/run_final_analysis.py` implements this version. Anything changed after results
+are visible must appear as a labelled deviation in the generated report, never silently.
+
+## Pre-analysis amendments
+
+Pre-analysis amendments documented before aggregate metrics were computed:
+
+1. Use R/lme4 rather than a custom Python GLMM, retaining maximum likelihood and 30 adaptive quadrature
+   points. Pin the runtime/package environment. Use a fixed BOBYQA optimizer (`maxfun=200000`,
+   `rhoend=1e-9`) with no result-driven tuning. The gradient diagnostic is maximum absolute Hessian-scaled
+   gradient, threshold 1e-3; at a variance boundary use the fixed-effect block for this diagnostic.
+2. Remove Firth fitting. The fixed ladder is full GLMM, main-effects GLMM, then descriptive pair-cluster
+   contrasts with confidence intervals and no model of record. Both GLMM specifications are evaluated.
+
+The runner records this plan's hash, the original preregistration, and these amendments. Missing dependencies,
+failed separation checks, or broken execution stop the pipeline; they are not statistical fallbacks.
+Operational response summaries use 528 distinct requests at the overall level only; factor subgroups use
+648 observation-weighted rows and are labelled separately. Confidence/correctness summaries retain observation weighting because one response
+may map to different truths. Distinct-record stability (176 records) is separate from observation stability
+(216 observations). All intervals continue to resample the 20 whole source pairs.
+
+## Post-analysis reporting correction
+
+Review found that distinct-request factor subgroups inherited a representative observation's factor values
+even when a request was shared across levels (notably O2/O3). Those subgroups are removed; distinct-request
+status summaries are overall only, and observation-weighted subgroup summaries are retained. This is a
+reporting correction after results were visible, not a change to scoring, intervals, or model selection.
+F3 also now verifies the preserved campaign server-log slice rather than an ignored live server log;
+its refreshed acceptance receipt and Phase G manifest bind the same frozen prediction tables.
 
 ## What had been seen before this plan
 
@@ -70,11 +99,11 @@ Optimization:Method + Optimization:Stripped + Method:Stripped + (1 | pair_id)`, 
 Optimization reference O0; Stripped 1 = stripped; Method reference static; CWE reference CWE-121; GroundTruth
 reference fixed. No continuous covariates.
 
-Rung 1 (**primary**): random-intercept logistic GLMM, maximum likelihood with 30-node Gauss-Hermite quadrature
-(own implementation, `evaluation/glmm.py`, validated by simulation in `evaluation/tests/test_glmm.py`; no R/lme4
-is available). A rung is **rejected** if any of these holds: the fixed-effect design is completely or
+Rung 1 (**primary**): random-intercept logistic GLMM, maximum likelihood with 30-node adaptive Gauss-Hermite
+quadrature using R/lme4. A rung is **rejected** if any of these holds: the fixed-effect design is rank deficient,
+completely or
 quasi-completely separated (linear-programming check on the design with the outcome); the optimizer does not
-report convergence or the gradient norm exceeds 1e-3; the Hessian is not positive definite; any |coefficient| >
+report convergence or the maximum absolute scaled gradient exceeds 1e-3; the Hessian is not positive definite; any |coefficient| >
 10 or any standard error is non-finite or > 10. A random-intercept variance at the boundary (< 1e-3) is
 **not** a failure; it is reported as such.
 
@@ -82,16 +111,15 @@ If rung 1 is rejected, the **model of record** is the first accepted of, in this
 the rejection rules above, never by estimates or p-values:
 
 * Rung 2: the same GLMM with main effects only (the three interactions dropped).
-* Rung 3: Firth-penalised logistic regression with the full formula (handles separation, ignores the random
-  intercept) with percentile CIs from a 2,000-replicate pair-cluster bootstrap; accepted if at least 95% of
-  replicates fit.
-* Rung 4: no model; only the descriptive pair-stratified contrasts below.
+* Rung 3: no model; only the descriptive pair-cluster contrasts below.
 
-All of rungs 1-3 are fitted and shown (rejected ones with their reason, labelled "diagnostic, not of record").
+Both GLMM rungs are evaluated and shown (rejected ones with their reason, labelled "diagnostic, not of record").
 Wald tests use the fitted covariance; with 20 clusters they are anti-conservative and are reported as
 approximate. Joint Wald tests are given for each interaction. The same ladder is run on `Correct_forced` as a
 sensitivity analysis. **Always shown, whatever the model does:** descriptive pair-bootstrap contrasts of the
 primary `Correct` rate (LLM - static; each factor level vs reference), labelled descriptive.
+Factor contrasts are unadjusted marginal eligible-case rate differences; eligible-case composition can vary
+across levels, and CWE is a between-pair factor. They are not causal or adjusted model effects.
 
 ## LLM-specific reporting (H3)
 
@@ -109,3 +137,10 @@ as FNs of this kind). Retained-vs-stripped agreement of the prediction is report
 `results/final-v1/analysis/`: `tables/*.csv`, `figures/*.png`, `report.md`, `analysis.json` with input hashes and
 the deviations list. `python evaluation/run_final_analysis.py` regenerates all of it and exits nonzero if the
 inputs do not match the frozen files. Every table and figure states its exact N (rows) and number of pairs.
+`--check` regenerates into a temporary directory and compares every output byte. Undefined ratios are null
+with a reason; confidence intervals record the number of usable bootstrap replicates. No timestamps or
+temporary paths enter generated artifacts. Near-zero/one bootstrap intervals are explicitly labelled as
+potentially too narrow. No population-representativeness or confirmatory significance claims are made.
+
+Backend documentation: https://lme4.github.io/lme4/reference/glmer.html and
+https://lme4.github.io/lme4/reference/convergence.html.

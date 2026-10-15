@@ -1,0 +1,4 @@
+outcome,specification,model_of_record,n,n_pairs,accepted,term,df,statistic,approximate_wald_p
+Correct_forced,full,True,432,20,True,Optimization.*:Method,3,0.6794281266144608,0.8780316602536236
+Correct_forced,full,True,432,20,True,Optimization.*:Stripped,3,2.2660694220127695,0.5190522506817469
+Correct_forced,full,True,432,20,True,Stripped:Method,1,0.1042436778034063,0.7467952910984266

@@ -1,0 +1,5 @@
+outcome,specification,model_of_record,n,n_pairs,accepted,reasons,boundary,random_intercept_variance,max_absolute_scaled_gradient,hessian_positive_definite,warnings
+Correct,full,False,432,20,False,"[""complete or quasi-complete separation""]",,,,,[]
+Correct,main_effects,True,432,20,True,[],False,0.18517008516697353,1.4275735334763376e-06,True,[]
+Correct_forced,full,True,432,20,True,[],False,0.05357579462139275,1.5205038297777595e-06,True,[]
+Correct_forced,main_effects,False,432,20,True,[],False,0.05167640715176171,1.7842875320484315e-06,True,[]
